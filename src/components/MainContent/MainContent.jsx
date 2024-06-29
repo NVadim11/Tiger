@@ -5,9 +5,10 @@ import moment from 'moment-timezone';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { GameInfoContext } from '../../helpers/context';
-import { useUpdateBalanceMutation } from '../../services/phpService';
 import tigerImg from '../../img/Tigran_full.webp';
 import energy from '../../img/energy.webp';
+import { useUpdateBalanceMutation } from '../../services/phpService';
+import './MainContent.scss';
 
 const MainContent = ({ user }) => {
 	const { state } = useContext(GameInfoContext);
@@ -15,7 +16,7 @@ const MainContent = ({ user }) => {
 	const [currentImage, setCurrentImage] = useState(true);
 	const [coinState, setCoinState] = useState(false);
 	const [currCoins, setCurrCoins] = useState(0);
-	const [currEnergy, setCurrEnergy] = useState(0); //user?.energy
+	const [currEnergy, setCurrEnergy] = useState(user?.energy); //user?.energy
 	const [tigerIdle, setTigerIdle] = useState(tigerImg);
 	const [tigerActive, setTigerActive] = useState(tigerImg);
 	const coinRef = useRef(null);
@@ -434,6 +435,7 @@ const MainContent = ({ user }) => {
 			fetchData();
 		}
 	}, [user]);
+
 	return (
 		<div className='mainContent'>
 			<div className='mainContent__container'>

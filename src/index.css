@@ -1,5 +1,6 @@
 :root {
   --text: "BakBak";
+  --altText: "Acme";
   --mainColor: #1c2520;
   --minWidth: 390px;
   --maxWidth: 1920px;
@@ -45,8 +46,17 @@
   @font-face {
     font-family: "BakBak";
     font-display: swap;
-    src: local("Orbitron"),
+    src: local("BakBak"),
       url("./fonts/BakbakOne-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Acme";
+    font-display: swap;
+    src: local("Acme"),
+      url("./fonts/Acme-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
   }
