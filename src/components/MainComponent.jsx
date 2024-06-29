@@ -27,11 +27,11 @@ const MainComponent = () => {
 	const { updateState } = useContext(GameInfoContext);
 	const { data, isLoading, isError } = useGetGameInfoQuery();
 
-	useEffect(() => {
-		if (!isLoading && data) {
-			updateState(data);
-		}
-	}, [isLoading, data, updateState]);
+	// useEffect(() => {
+	// 	if (!isLoading && data) {
+	// 		updateState(data);
+	// 	}
+	// }, [isLoading, data, updateState]);
 
 	useEffect(() => {
 		const loadImage = (src) => {
@@ -90,22 +90,22 @@ const MainComponent = () => {
 				{/* {!isMobileDevice ? (
 					<TelegramLinking />
 				) : ( */}
+				<>
+					{/* <Preloader loaded={preloaderLoaded} /> */}
+					{/* {user ? ( */}
 					<>
-						{/* <Preloader loaded={preloaderLoaded} /> */}
-						{/* {user ? ( */}
-							<>
-								<Header user={user} />
-								<main id='main' className='main'>
-									<MainContent user={user} />
-								</main>
-								<Footer user={user} />
-							</>
-						{/* ) : ( */}
-							{/* // <ComingSoon /> */}
-							{/* // <Maintenance /> */}
-							{/* <NotFound /> */}
-						{/* )} */}
+						<Header user={user} />
+						<main id='main' className='main'>
+							<MainContent user={user} />
+						</main>
+						<Footer user={user} />
 					</>
+					{/* ) : ( */}
+					{/* // <ComingSoon /> */}
+					{/* // <Maintenance /> */}
+					{/* <NotFound /> */}
+					{/* )} */}
+				</>
 				{/* )} */}
 			</>
 		</>

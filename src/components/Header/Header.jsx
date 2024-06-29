@@ -1,15 +1,23 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useGetLeaderboardMutation } from '../../services/phpService';
+<<<<<<< Updated upstream
 import face from '../../img/face.webp';
+=======
+import face from '../../img/Tigran_full.webp';
+>>>>>>> Stashed changes
 
 import { GameInfoContext } from '../../helpers/context';
 
 const Header = ({ user }) => {
+<<<<<<< Updated upstream
 	
     
     
     
     /* Styles */
+=======
+	/* Styles */
+>>>>>>> Stashed changes
 
 	const buttonStyle = {
 		display: 'flex',
@@ -53,6 +61,7 @@ const Header = ({ user }) => {
 		width: '100%',
 		height: '100%',
 	};
+<<<<<<< Updated upstream
 
 	const btnGroup = {
 		display: 'flex',
@@ -143,6 +152,30 @@ const Header = ({ user }) => {
                         />
                     </svg>
                 </button>
+=======
+
+	const btnGroup = {};
+
+	const socialBtns = {};
+
+	const menuBtn = {};
+
+	const socialBtn = {};
+	return (
+		<header style={header}>
+			<div style={faceBox}>
+				<img style={faceImg} src={face} alt='logo' />
+			</div>
+
+			<div style={btnGroup}>
+				<div style={socialBtns}>
+					<button style={socialBtn}></button>
+					<button style={socialBtn}></button>
+				</div>
+				<div>
+					<button style={menuBtn}></button>
+				</div>
+>>>>>>> Stashed changes
 			</div>
 			{/* <div>
 					<a style={buttonStyle} onClick={openLeaderboard}>

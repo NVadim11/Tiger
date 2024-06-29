@@ -1,5 +1,5 @@
 import React from 'react';
-import QRimg from '../img/qr.png';
+// import QRimg from '../img/qr.png';
 const TelegramLinking = () => {
 	return (
 		<div
@@ -52,7 +52,7 @@ const TelegramLinking = () => {
 					}}
 				>
 					<img
-						src={QRimg}
+						// src={QRimg}
 						alt='QR redirect'
 						style={{
 							borderRadius: '20px',
