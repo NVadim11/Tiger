@@ -1,2 +1,48 @@
-header {
+.header {
+    padding: 0 12px;
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    align-items: center;
+    &__logo {
+        width: 44px;
+		height: 44px;
+		border: 2px solid #1c2520;
+		border-radius: 62px;
+		background: #80c27d;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__btn-group {
+        display: flex;
+		align-items: center;
+        gap: 16px;
+    }
+    &__social-links {
+        display: flex;
+		gap: 12px;
+    }
+    &__social-link {
+        width: 36px;
+		height: 36px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+    }
+    &__menuBtn {
+        border: 2px solid #1c2520;
+        border-radius: 60px;
+        padding: 8px 16px;
+        width: 118px;
+        height: 44px;
+        background: #80c27d;
+        font-weight: 400;
+        font-size: 20px;
+        display: flex;
+		align-items: center;
+        gap: 10px;
+    }
 }
+

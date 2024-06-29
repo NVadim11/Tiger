@@ -6,93 +6,23 @@ import './Header.scss';
 import { GameInfoContext } from '../../helpers/context';
 
 const Header = ({ user }) => {
-	/* Styles */
+	const [isShown, setIsShown] = useState(false);
 
-	const buttonStyle = {
-		display: 'flex',
-		alignItems: 'center',
-		border: '1px solid #ccc',
-		padding: '8px 12px',
-		borderRadius: '4px',
-		textDecoration: 'none',
-		cursor: 'pointer',
-		color: '#fff',
-		transition: 'background-color 0.3s ease',
-		background: 'linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6)',
-		boxShadow: '0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08)',
-	};
+    const containerRef = useRef(null);
 
-	const titleStyle = {
-		color: '#fff',
-		fontSize: '32px',
-		fontWeight: 700,
-		lineHeight: '100%',
-		marginTop: '27px',
-		textAlign: 'center',
+    const toggleMenu = () => {
+		setIsShown(!isShown);
 	};
-
-	const header = {
-		padding: '0 12px',
-		display: 'flex',
-		justifyContent: 'space-between',
-		height: '64px',
-		alignItems: 'center',
-	};
-
-	const faceBox = {
-		width: '44px',
-		height: '44px',
-		border: '2px solid #1c2520',
-		borderRadius: '62px',
-		background: '#80c27d',
-	};
-	const faceImg = {
-		width: '100%',
-		height: '100%',
-	};
-
-	const btnGroup = {
-		display: 'flex',
-		alignItems: 'center',
-        gap: '16px'
-	};
-
-	const socialBtns = {
-		display: 'flex',
-		gap: '12px',
-	};
-
-	const socialBtn = {
-		width: '36px',
-		height: '36px',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	};
-
-	const menuBtn = {
-        border: '2px solid #1c2520',
-        borderRadius: '60px',
-        padding: '8px 16px',
-        width: '118px',
-        height: '44px',
-        background: '#80c27d',
-        fontWeight: '400',
-        fontSize: '20px',
-        display: 'flex',
-		alignItems: 'center',
-        gap: '10px'
-    };
 
 	return (
-		<header style={header}>
-			<div style={faceBox}>
-				<img style={faceImg} src={face} alt='logo' />
+		<header className='header'>
+			<div className='header__logo'>
+				<img src={face} alt='logo' />
 			</div>
 
-			<div style={btnGroup}>
-				<div style={socialBtns}>
-					<a style={socialBtn}>
+			<div className='header__btn-group'>
+				<div className='header__social-links'>
+					<a className='header__social-link'>
 						<svg
 							width='24'
 							height='19'
@@ -108,7 +38,7 @@ const Header = ({ user }) => {
 							/>
 						</svg>
 					</a>
-					<a style={socialBtn}>
+                    <a className='header__social-link'>
 						<svg
 							width='24'
 							height='22'
@@ -123,7 +53,9 @@ const Header = ({ user }) => {
 						</svg>
 					</a>
 				</div>
-                <button style={menuBtn}>
+                <button className='header__menuBtn'
+                	ref={containerRef}
+                    onClick={toggleMenu}>
                     Menu
                     <svg
                         width='24'
@@ -140,6 +72,39 @@ const Header = ({ user }) => {
                         />
                     </svg>
                 </button>
+                {isShown && (
+								// <div className='header__mobileMenu'>
+								// 	<a className='header__mobileMenu-links' onClick={leaderBordBtn}>
+								// 		Leadboard
+								// 	</a>
+								// 	{connected && (
+								// 		<a
+								// 			className='header__mobileMenu-links'
+								// 			onClick={inviteFriendsBtn}
+								// 			rel='noopener noreferrer'
+								// 		>
+								// 			Invite a friend
+								// 		</a>
+								// 	)}
+								// 	<a
+								// 		className='header__mobileMenu-links'
+								// 		href='https://twitter.com/TimCatSol'
+								// 		target='_blank'
+								// 		rel='noopener noreferrer'
+								// 	>
+								// 		TW
+								// 	</a>
+								// 	<a
+								// 		className='header__mobileMenu-links'
+								// 		href='https://t.me/tomo_cat'
+								// 		target='_blank'
+								// 		rel='noopener noreferrer'
+								// 	>
+								// 		Telegram
+								// 	</a>
+								// </div>
+                                <div>test</div>
+							)}
 			</div>
 			{/* <div>
 					<a style={buttonStyle} onClick={openLeaderboard}>
