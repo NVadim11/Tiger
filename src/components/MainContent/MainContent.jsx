@@ -11,7 +11,7 @@ import { useUpdateBalanceMutation } from '../../services/phpService';
 const MainContent = ({ user }) => {
 
     return (
-        <div>TEST TEST TEST TEST TEST</div>
+        <div></div>
     );
 }
 
