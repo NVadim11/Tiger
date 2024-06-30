@@ -438,328 +438,113 @@ const MainContent = ({ user }) => {
 
 	return (
 		<div className='mainContent'>
-			<div className='mainContent__container'>
-				<div className='mainContent__phaseTwo'>
-					<div className='gameContentBox'>
-						{gamePaused ? (
-							<div className='gameContentBox__box'>
-								{timeRemaining ? (
-									<p
-										style={{
-											fontSize: '22px',
-											textAlign: 'center',
-											alignContent: 'center',
-										}}
-									>
-										Time remaining: {formatTime(timeRemaining)} minutes
-									</p>
-								) : (
-									<></>
-								)}
-								<img
-									src={tigerImg}
-									alt='cat face'
-									style={{
-										width: '275px',
-										marginTop: '15px',
-									}}
-								/>
-								<p
-									style={{
-										fontSize: '16px',
-										textAlign: 'center',
-										alignContent: 'center',
-										marginTop: '15px',
-									}}
-								>
-									Blackie is tired, come back when timer is over.
-								</p>
-							</div>
-						) : (
-							<>
-								{tigerVisible && (
-									<>
-										{currentImage ? (
-											<div
-												className='mainContent__catBox'
-												id='coinClicker'
-												onClick={isDesktop() ? coinClicker : null}
-												onTouchStart={handleTouchStart}
-												onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
-											>
-												{animations.map((anim, index) => (
-													<AnimatePresence key={index}>
-														{isAnimationActive && (
-															<motion.div
-																className='clickerAnimation'
-																initial={{ opacity: 1, y: 0 }}
-																animate={{ opacity: [1, 0], y: [-30, -120] }}
-																exit={{ opacity: 0 }}
-																transition={{ duration: 2 }}
-																style={{
-																	fontSize: '45px',
-																	left: `${anim.x}px`,
-																	top: `${anim.y}px`,
-																	position: 'absolute',
-																	color: boostPhase ? '#FFDA17' : 'white',
-																	zIndex: 0,
-																	textShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)',
-																}}
-																onAnimationComplete={() => {
-																	clearAnimations(index);
-																}}
-															>
-																+{clickNewCoins}
-															</motion.div>
-														)}
-													</AnimatePresence>
-												))}
-												<img
-													id='catGif'
-													className='mainContent__catIdle'
-													src={boostPhase ? tigerImg : tigerImg}
-													draggable='false'
-													alt='cat animation'
-												/>
-											</div>
-										) : (
-											<div
-												className='mainContent__catBox'
-												id='coinClicker'
-												onClick={isDesktop() ? coinClicker : null}
-												onTouchStart={handleTouchStart}
-												onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
-											>
-												{animations.map((anim, index) => (
-													<AnimatePresence key={index}>
-														{isAnimationActive && (
-															<motion.div
-																className='clickerAnimation'
-																initial={{ opacity: 1, y: 0 }}
-																animate={{ opacity: [1, 0], y: [-30, -120] }}
-																exit={{ opacity: 0 }}
-																transition={{ duration: 2 }}
-																style={{
-																	fontSize: '45px',
-																	left: `${anim.x}px`,
-																	top: `${anim.y}px`,
-																	position: 'absolute',
-																	color: boostPhase ? '#FFDA17' : 'white',
-																	zIndex: 0,
-																	textShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)',
-																}}
-																onAnimationComplete={() => {
-																	clearAnimations(index);
-																}}
-															>
-																+{clickNewCoins}
-															</motion.div>
-														)}
-													</AnimatePresence>
-												))}
-
-												<img
-													id='catGif'
-													className='mainContent__catMeow'
-													src={boostPhase ? tigerImg : tigerImg}
-													draggable='false'
-													alt='cat animation'
-												/>
-											</div>
-										)}
-									</>
-								)}
-							</>
-						)}
-					</div>
-					{!gamePaused && (
-						<div className='mainContent__energyBox'>
-							<div className='mainContent__energyContainer'>
-								<img src={energy} alt='' />
-								<div className='mainContent__energyValue'>
-									<p className='energyCount' id='energyCount'>
-										{currEnergy}
-									</p>
-									<span>/</span>
-									<p className='maximumEnergy' id='maximumEnergy'>
-										{maxEnergy}
-									</p>
-								</div>
-							</div>
-							<div className='mainContent__energyBar'>
-								<svg
-									viewBox='0 0 100 100'
-									style={{
-										position: 'absolute',
-										width: '100%',
-										height: '100%',
-										borderRadius: '100%',
-									}}
-								>
-									{/* Define the filter for the box shadow */}
-									<defs>
-										<filter id='boxShadow' x='-20%' y='-20%' width='140%' height='140%'>
-											<feGaussianBlur in='SourceAlpha' stdDeviation='3' />
-											<feOffset dx='0' dy='0' result='offsetblur' />
-											<feComponentTransfer>
-												<feFuncA type='linear' slope='0.5' />
-											</feComponentTransfer>
-											<feMerge>
-												<feMergeNode />
-												<feMergeNode in='SourceGraphic' />
-											</feMerge>
-										</filter>
-									</defs>
-
-									{/* Circle with background */}
-									<circle
-										cx='50'
-										cy='50'
-										r='45'
-										fill='none'
-										stroke='#80C27D' // color of the progress bar background
-										strokeWidth='1' // thickness of the progress bar
-										filter='inset 0 0 20px 20px rgba(30, 226, 97, 0.5)' // Apply the box shadow
-									></circle>
-								</svg>
-							</div>
+			<div className='mainContent__gameContent'>
+				<div className='gameContentBox'>
+					{!gamePaused ? (
+						<div className='mainContent__gamePaused'>
+							{timeRemaining ? (
+								<h4>Time remaining: {formatTime(timeRemaining)} minutes</h4>
+							) : (
+								<></>
+							)}
+							<img src={tigerImg} alt='cat face' />
+							<p>Tigran is tired, come back when timer is over.</p>
 						</div>
-					)}
-
-					{!gamePaused && visible ? (
-						<motion.div
-							initial={{
-								y: 7,
-								rotate: 0,
-								opacity: 1,
-							}}
-							animate={{
-								y: [0, -10, 0],
-								rotate: [0, 3, -7, 0],
-							}}
-							transition={{
-								duration: 4,
-								repeat: Infinity,
-								repeatType: 'mirror',
-								ease: 'easeInOut',
-							}}
-							style={{
-								position: 'absolute',
-								top: '50%',
-								left: 0,
-								zIndex: 1500,
-							}}
-						>
-							<motion.div
-								animate={{
-									opacity: [0, 1],
-								}}
-								transition={{
-									duration: 4,
-									repeat: Infinity,
-									repeatType: 'mirror',
-									ease: 'easeInOut',
-								}}
-							>
-								<div
-									className='boost-element'
-									style={{
-										position: 'absolute',
-										overflow: 'hidden',
-										left: `${position.x}px`,
-										top: `${position.y}px`,
-										cursor: 'pointer',
-										width: '150px',
-										height: '150px',
-										borderRadius: '150px',
-										zIndex: 1500,
-										...(isMedia && {
-											scale: '100%',
-										}),
-									}}
-									onClick={boostClickedHandler}
-								>
-									<motion.img
-										src={tigerImg}
-										alt='Boost coin'
-										style={{
-											width: '100%',
-											height: '100%',
-											userSelect: 'none',
-										}}
-										initial={{ opacity: 0, rotate: 0 }}
-										animate={{ opacity: 1, rotate: 360 }}
-										transition={{
-											duration: 4,
-											repeat: Infinity,
-											repeatType: 'mirror',
-											ease: 'easeInOut',
-										}}
-									/>
-								</div>
-							</motion.div>
-						</motion.div>
-					) : null}
-					{!gamePaused && (
-						<div className='mainContent__coins'>
-							<div className='mainContent__coinBox'>
-								<div className='mainContent__coinImg' draggable='false'>
-									<img src={tigerImg} alt='coin animation' draggable='false' />
-								</div>
-
-								{user && totalPoints !== null && (
-									<div className='mainContent__coinAmount'>
-										<span>{totalPoints}</span>
-									</div>
-								)}
-							</div>
-						</div>
-					)}
-
-					{!gamePaused && (
-						<div className='mainContent__totalPoints'>
-							<div className='mainContent__totalPoints-img'>
-								<img src={tigerImg} alt='' />
-							</div>
-							<div className='mainContent__totalPoints-text'>
-								<span>For Session</span>
-								<svg
-									width='82'
-									height='1'
-									viewBox='0 0 82 1'
-									fill='none'
-									xmlns='http://www.w3.org/2000/svg'
-								>
-									<line
-										y1='0.5'
-										x2='82'
-										y2='0.5'
-										stroke='url(#paint0_linear_5228_4664)'
-									/>
-									<defs>
-										<linearGradient
-											id='paint0_linear_5228_4664'
-											x1='82'
-											y1='1.5'
-											x2='0'
-											y2='1.5'
-											gradientUnits='userSpaceOnUse'
+					) : (
+						<>
+							{tigerVisible && (
+								<>
+									{currentImage ? (
+										<div
+											className='mainContent__catBox'
+											id='coinClicker'
+											onClick={isDesktop() ? coinClicker : null}
+											onTouchStart={handleTouchStart}
+											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
 										>
-											<stop stop-color='#999999' stop-opacity='0' />
-											<stop offset='0.5' stop-color='white' />
-											<stop offset='1' stop-color='#999999' stop-opacity='0' />
-										</linearGradient>
-									</defs>
-								</svg>
-								<div className='mainContent__totalPoints-coins'>{currCoins}</div>
-							</div>
-						</div>
-					)}
+											{animations.map((anim, index) => (
+												<AnimatePresence key={index}>
+													{isAnimationActive && (
+														<motion.div
+															className='clickerAnimation'
+															initial={{ opacity: 1, y: 0 }}
+															animate={{ opacity: [1, 0], y: [-30, -120] }}
+															exit={{ opacity: 0 }}
+															transition={{ duration: 2 }}
+															style={{
+																fontSize: '45px',
+																left: `${anim.x}px`,
+																top: `${anim.y}px`,
+																position: 'absolute',
+																color: boostPhase ? '#FFDA17' : 'white',
+																zIndex: 0,
+																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)',
+															}}
+															onAnimationComplete={() => {
+																clearAnimations(index);
+															}}
+														>
+															+{clickNewCoins}
+														</motion.div>
+													)}
+												</AnimatePresence>
+											))}
+											<img
+												id='catGif'
+												className='mainContent__catIdle'
+												src={boostPhase ? tigerImg : tigerImg}
+												draggable='false'
+												alt='cat animation'
+											/>
+										</div>
+									) : (
+										<div
+											className='mainContent__catBox'
+											id='coinClicker'
+											onClick={isDesktop() ? coinClicker : null}
+											onTouchStart={handleTouchStart}
+											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
+										>
+											{animations.map((anim, index) => (
+												<AnimatePresence key={index}>
+													{isAnimationActive && (
+														<motion.div
+															className='clickerAnimation'
+															initial={{ opacity: 1, y: 0 }}
+															animate={{ opacity: [1, 0], y: [-30, -120] }}
+															exit={{ opacity: 0 }}
+															transition={{ duration: 2 }}
+															style={{
+																fontSize: '45px',
+																left: `${anim.x}px`,
+																top: `${anim.y}px`,
+																position: 'absolute',
+																color: boostPhase ? '#FFDA17' : 'white',
+																zIndex: 0,
+																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)',
+															}}
+															onAnimationComplete={() => {
+																clearAnimations(index);
+															}}
+														>
+															+{clickNewCoins}
+														</motion.div>
+													)}
+												</AnimatePresence>
+											))}
 
-					{!gamePaused && (
-						<div className='mainContent__energyHint'>
-							<p>{state?.info.mainContent__energyHint}</p>
-						</div>
+											<img
+												id='catGif'
+												className='mainContent__catMeow'
+												src={boostPhase ? tigerImg : tigerImg}
+												draggable='false'
+												alt='cat animation'
+											/>
+										</div>
+									)}
+								</>
+							)}
+						</>
 					)}
 				</div>
 			</div>
