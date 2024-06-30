@@ -5,8 +5,7 @@ import moment from 'moment-timezone';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { GameInfoContext } from '../../helpers/context';
-import tigerImg from '../../img/Tigran_full.webp';
-import energy from '../../img/energy.webp';
+import tigranCircle from '../../img/Tigran_circle.webp';
 import { useUpdateBalanceMutation } from '../../services/phpService';
 import './MainContent.scss';
 
@@ -17,8 +16,8 @@ const MainContent = ({ user }) => {
 	const [coinState, setCoinState] = useState(false);
 	const [currCoins, setCurrCoins] = useState(0);
 	const [currEnergy, setCurrEnergy] = useState(user?.energy); //user?.energy
-	const [tigerIdle, setTigerIdle] = useState(tigerImg);
-	const [tigerActive, setTigerActive] = useState(tigerImg);
+	const [tigerIdle, setTigerIdle] = useState(tigranCircle);
+	const [tigerActive, setTigerActive] = useState(tigranCircle);
 	const coinRef = useRef(null);
 	const [updateBalance] = useUpdateBalanceMutation();
 	const [position, setPosition] = useState({ x: '0', y: '0' });
@@ -439,24 +438,40 @@ const MainContent = ({ user }) => {
 	return (
 		<div className='mainContent'>
 			<div className='mainContent__gameContent'>
-				<div className='gameContentBox'>
-					{!gamePaused ? (
+				<div className='mainContent__gameContentBox'>
+					{gamePaused ? (
 						<div className='mainContent__gamePaused'>
 							{timeRemaining ? (
 								<h4>Time remaining: {formatTime(timeRemaining)} minutes</h4>
 							) : (
-								<></>
+								<h4>Calculating...</h4>
 							)}
-							<img src={tigerImg} alt='cat face' />
+							<div className='mainContent__imageContainer'>
+								<img src={tigranCircle} alt='Tigran face' />
+							</div>
 							<p>Tigran is tired, come back when timer is over.</p>
 						</div>
 					) : (
 						<>
 							{tigerVisible && (
 								<>
+									{!gamePaused && (
+										<div className='mainContent__coins'>
+											<div className='mainContent__coinBox'>
+												<div className='mainContent__coinImg' draggable='false'>
+													<img src={tigranCircle} draggable='false' />
+												</div>
+												{!user && !totalPoints !== null && (
+													<div className='mainContent__coinAmount'>
+														<span>{totalPoints}123123</span>
+													</div>
+												)}
+											</div>
+										</div>
+									)}
 									{currentImage ? (
 										<div
-											className='mainContent__catBox'
+											className='mainContent__clickArea'
 											id='coinClicker'
 											onClick={isDesktop() ? coinClicker : null}
 											onTouchStart={handleTouchStart}
@@ -472,12 +487,13 @@ const MainContent = ({ user }) => {
 															exit={{ opacity: 0 }}
 															transition={{ duration: 2 }}
 															style={{
+																color: '#000',
 																fontSize: '45px',
 																left: `${anim.x}px`,
 																top: `${anim.y}px`,
 																position: 'absolute',
-																color: boostPhase ? '#FFDA17' : 'white',
-																zIndex: 0,
+																color: boostPhase ? '#FFDA17' : '#000',
+																zIndex: 10,
 																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)',
 															}}
 															onAnimationComplete={() => {
@@ -489,17 +505,17 @@ const MainContent = ({ user }) => {
 													)}
 												</AnimatePresence>
 											))}
-											<img
-												id='catGif'
-												className='mainContent__catIdle'
-												src={boostPhase ? tigerImg : tigerImg}
-												draggable='false'
-												alt='cat animation'
-											/>
+											<div className='mainContent__imageContainer'>
+												<img
+													src={boostPhase ? tigranCircle : tigranCircle}
+													draggable='false'
+													alt='Tigran animation'
+												/>
+											</div>
 										</div>
 									) : (
 										<div
-											className='mainContent__catBox'
+											className='mainContent__clickArea'
 											id='coinClicker'
 											onClick={isDesktop() ? coinClicker : null}
 											onTouchStart={handleTouchStart}
@@ -519,8 +535,8 @@ const MainContent = ({ user }) => {
 																left: `${anim.x}px`,
 																top: `${anim.y}px`,
 																position: 'absolute',
-																color: boostPhase ? '#FFDA17' : 'white',
-																zIndex: 0,
+																color: boostPhase ? '#FFDA17' : '#000',
+																zIndex: 10,
 																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)',
 															}}
 															onAnimationComplete={() => {
@@ -532,14 +548,13 @@ const MainContent = ({ user }) => {
 													)}
 												</AnimatePresence>
 											))}
-
-											<img
-												id='catGif'
-												className='mainContent__catMeow'
-												src={boostPhase ? tigerImg : tigerImg}
-												draggable='false'
-												alt='cat animation'
-											/>
+											<div className='mainContent__imageContainer'>
+												<img
+													src={boostPhase ? tigranCircle : tigranCircle}
+													draggable='false'
+													alt='Tigran animation'
+												/>
+											</div>
 										</div>
 									)}
 								</>
