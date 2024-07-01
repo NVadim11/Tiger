@@ -1,4 +1,5 @@
 import React from 'react';
+import './Modal.scss';
 
 export default function Modal({ modalText, modalVisible, onClose }) {
 	const errorCloseToggler = () => {
