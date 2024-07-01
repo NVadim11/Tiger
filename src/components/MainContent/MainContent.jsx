@@ -438,8 +438,12 @@ const MainContent = ({ user }) => {
 
 	// Modal logic
 	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [modalText, setModalText] = useState('');
+	const [modalType, setModalType] = useState('green'); // Default modal type
 
-	const openModal = () => {
+	const openModal = (type, text) => {
+		setModalType(type);
+		setModalText(text);
 		setIsModalVisible(true);
 	};
 
@@ -583,12 +587,16 @@ const MainContent = ({ user }) => {
 							)}
 						</>
 					)}
+
 					<h1>My React App</h1>
-					<button onClick={openModal}>Show Modal</button>
+					<button onClick={() => openModal('green')}>Show Green Modal</button>
+					<button onClick={() => openModal('yellow')}>Show Yellow Modal</button>
+					<button onClick={() => openModal('red')}>Show Red Modal</button>
 					<Modal
-						modalText='This is a modal window'
+						modalText={modalText}
 						modalVisible={isModalVisible}
 						onClose={closeModal}
+						modalType={modalType}
 					/>
 				</div>
 			</div>

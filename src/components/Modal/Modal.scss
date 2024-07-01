@@ -7,7 +7,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  &__wrapper {
+&__wrapper {
     height: 100%;
     min-height: 100%;
     width: 100%;
@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: center;
   }
-  &__content {
+&__content {
     flex-direction: column;
     border: 2px solid #fff;
     border-radius: 20px;
@@ -26,12 +26,18 @@
     transition: transform .3s ease 0s;
     width: 100%;
   }
-  &__close {
+&__close {
     position: absolute;
     top: 12px;
     right: 12px;
 }
-  &__title {
+&__icon {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+ &__title {
     font-size: 1.25rem;
     position: relative;
     color: #fff;
