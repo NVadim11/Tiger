@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import { GameInfoContext } from '../../helpers/context';
 import tigranCircle from '../../img/Tigran_circle.webp';
 import { useUpdateBalanceMutation } from '../../services/phpService';
+import Modal from '../Modal/Modal';
 import './MainContent.scss';
 
 const MainContent = ({ user }) => {
@@ -435,6 +436,17 @@ const MainContent = ({ user }) => {
 		}
 	}, [user]);
 
+	// Modal logic
+	const [isModalVisible, setIsModalVisible] = useState(false);
+
+	const openModal = () => {
+		setIsModalVisible(true);
+	};
+
+	const closeModal = () => {
+		setIsModalVisible(false);
+	};
+
 	return (
 		<div className='mainContent'>
 			<div className='mainContent__gameContent'>
@@ -571,6 +583,13 @@ const MainContent = ({ user }) => {
 							)}
 						</>
 					)}
+					<h1>My React App</h1>
+					<button onClick={openModal}>Show Modal</button>
+					<Modal
+						modalText='This is a modal window'
+						modalVisible={isModalVisible}
+						onClose={closeModal}
+					/>
 				</div>
 			</div>
 		</div>
