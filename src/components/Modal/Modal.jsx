@@ -3,6 +3,8 @@ import GreenIcon from './Icons/GreenIcon';
 import YellowIcon from './Icons/YellowIcon';
 import RedIcon from './Icons/RedIcon';
 
+import './Modal.scss';
+
 // <div className='ModalTest'>
 // <h1>My React App</h1>
 // <button
@@ -28,7 +30,26 @@ import RedIcon from './Icons/RedIcon';
 // />
 // </div>
 
-import './Modal.scss';
+// Modal logic
+// const [isModalVisible, setIsModalVisible] = useState(false);
+// const [modalText, setModalText] = useState('');
+// const [modalType, setModalType] = useState('green'); // Default modal type
+// const [buttonText, setButtonText] = useState('');
+
+// const openModal = (type, text, btnText) => {
+// 	setModalType(type);
+// 	setModalText(text);
+// 	setButtonText(btnText);
+// 	setIsModalVisible(true);
+// };
+
+// const closeModal = () => {
+// 	setIsModalVisible(false);
+// };
+
+// const handleModalButtonClick = () => {
+// 	alert('Button inside modal clicked');
+// };
 
 export default function Modal({
 	modalText,

@@ -8,7 +8,7 @@ import { GameInfoContext } from '../../helpers/context';
 import tigranCircle from '../../img/Tigran_circle.webp';
 import energy from '../../img/energy.webp';
 import { useUpdateBalanceMutation } from '../../services/phpService';
-import Modal from '../Modal/Modal';
+import GamePaused from './GamePaused/GamePaused';
 import './MainContent.scss';
 
 const MainContent = ({ user }) => {
@@ -172,11 +172,6 @@ const MainContent = ({ user }) => {
 			};
 		}
 	}, [userId, user]);
-
-	const formatTime = (seconds) => {
-		const minutes = Math.floor(seconds / 60);
-		return `${minutes}`;
-	};
 
 	let tigerIdleImage = tigerIdle;
 	let tigerActiveImage = tigerActive;
@@ -430,43 +425,12 @@ const MainContent = ({ user }) => {
 		}
 	}, [user]);
 
-	// Modal logic
-	const [isModalVisible, setIsModalVisible] = useState(false);
-	const [modalText, setModalText] = useState('');
-	const [modalType, setModalType] = useState('green'); // Default modal type
-	const [buttonText, setButtonText] = useState('');
-
-	const openModal = (type, text, btnText) => {
-		setModalType(type);
-		setModalText(text);
-		setButtonText(btnText);
-		setIsModalVisible(true);
-	};
-
-	const closeModal = () => {
-		setIsModalVisible(false);
-	};
-
-	const handleModalButtonClick = () => {
-		alert('Button inside modal clicked');
-	};
-
 	return (
 		<div className='mainContent'>
 			<div className='mainContent__gameContent'>
 				<div className='mainContent__gameContentBox'>
 					{gamePaused ? (
-						<div className='mainContent__gamePaused'>
-							{timeRemaining ? (
-								<h4>Time remaining: {formatTime(timeRemaining)} minutes</h4>
-							) : (
-								<h4>Calculating...</h4>
-							)}
-							<div className='mainContent__imageContainer'>
-								<img src={tigranCircle} alt='Tigran face' />
-							</div>
-							<p>Tigran is tired, come back when timer is over.</p>
-						</div>
+						<GamePaused remainingTime={timeRemaining} />
 					) : (
 						<>
 							{tigerVisible && (
