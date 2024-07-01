@@ -44,5 +44,272 @@
 		align-items: center;
         gap: 10px;
     }
+    &__menu {
+        display: flex;
+        border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+        // position: absolute;
+        top: 0;
+        flex-direction: column;
+        position: absolute;
+        background: #80c27d;
+        z-index: 100;
+        border: 1px solid #000000;
+        border-radius: 20px;
+        padding: 12px;
+        gap: 14px;
+        margin-top: 64px;
+        right: 12px;
+    }
+    &__menu-links {
+        border: 1px solid #172610;
+        border-radius: 10px;
+        padding: 16px 24px;
+        height: 56px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        letter-spacing: 0.02em;
+        color: #fff;
+        width: 256px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
+.popupInvite,
+.popupLeaderboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: visibility 0.8s ease 0s;
+    pointer-events: none;
+  }
+  .popupInvite_show, 
+  .popupLeaderboard_show {
+    z-index: 302;
+    display: flex;  
+    overflow: auto;
+    pointer-events: auto;
+  }
+  .popupInvite_show .popupInvite__content,
+  .popupLeaderboard_show .popupLeaderboard__content
+   {
+    display: flex;
+  }
+  .popupInvite__wrapper,
+  .popupLeaderboard__wrapper{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  .popupInvite__content,
+  .popupLeaderboard__content {
+    display: none;
+    transition: transform 0.3s ease 0s;
+    background-color: #eee;
+    width: 100%;
+  }
+
+  .popupInvite {
+    padding: 0 12px;
+    &__wrapper {
+      flex-direction: column;
+      align-items: center;
+      min-height: 100%;
+      width: 100%;
+      display: flex;
+    }
+    &__content {
+      margin-top: 64px;
+      border: 2px solid #0d9047;
+      border-radius: 20px;
+      padding: 0px 12px 17px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #84c881;
+      position: relative;
+    }
+    &__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+    }
+    &__title {
+        margin-top: 50px;
+        h4 {
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 110%;
+            text-align: center;
+            color: #1c2520;
+        }
+    }
+    &__header {
+      display: flex;
+      margin-top: 60px;
+      h6 {
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 110%;
+        text-align: center;
+        color: #1c2520;
+      }
+    
+    }
+    &__refInfo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      border: 1px solid #3f3773;
+      border-radius: 10px;
+      background: #3a5b4d;
+      margin-top: 30px;
+    }
+    &__refInfo-box {
+        width: 50%;  
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 0;
+      p {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: 0.01em;
+        color: #fff;
+      }
+    }
+    &__refInfo-item {
+        span {
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 100%;
+            letter-spacing: 0.01em;
+            color: #fff;
+        }
+    }
+    &__grid {
+        margin-top: 30px;
+        width: 100%;
+    }
+    &__grid-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    &__list-item {
+        border: 1px solid #0d9047;
+        border-radius: 10px;
+        padding: 16px 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    &__list-itemDescr {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        h5 {
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 100%;
+            letter-spacing: 0.01em;
+            color: #1c2520;
+        }
+        p {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 100%;
+            color: #0d9047;
+        }
+    }
+ 
+  &__icon {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: #000;
+      border-radius: 50%;
+    
+    }
+ 
+    &__item-box {
+      border: 0.125rem solid #fff;
+      border-radius: 1.875rem;
+      padding: 3.125rem 1.875rem;
+    }
+    &__item-group {
+      display: flex;
+      flex-direction: column;
+      &:not(:last-child) {
+        margin-bottom: 1.875rem;
+      }
+      p {
+        font-weight: 400;
+        font-size: 1.125rem;
+        line-height: 140%;
+        color: #fff;
+        &:not(:last-child) {
+          margin-bottom: 0.9375rem;
+        }
+      }
+    }
+    .inviteLinkBtn {
+        border-radius: 10px;
+        height: 44px;
+        background: #2cb726;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 24px;
+      button {
+        width: 100%;
+        padding: 12px;
+        height: 100%;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0.02em;
+        color: #fff;
+      }
+    }
+  }
+
+  .popupLeaderboard {
+    &__wrapper {
+        flex-direction: column;
+        align-items: center;
+        min-height: 100%;
+        width: 100%;
+        display: flex;
+      }
+      &__content {
+        margin-top: 64px;
+        border: 2px solid #0d9047;
+        border-radius: 20px;
+        padding: 0px 12px 17px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #84c881;
+        position: relative;
+      }
+      &__close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+      }
+  }
