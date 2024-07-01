@@ -27,6 +27,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    @supports (overflow: clip) {
+      overflow: clip;
+    }
+    > main {
+      flex: 1 1 auto;
+    }
+    > * {
+      min-width: 0;
+    }
   }
   
   .show-blur {
@@ -161,12 +170,6 @@
     border: 1px solid #fff;
     background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-  }
-
-  .blackLine {
-    border: 1px solid #1c2520;
-    width: 76px;
-    height: 0px;
   }
 
   /* body::-webkit-scrollbar {
