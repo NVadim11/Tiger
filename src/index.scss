@@ -34,11 +34,13 @@
     }
     > main {
       flex: 1 1 auto;
+      position: relative;
     }
     > * {
       min-width: 0;
     }
   }
+  
   
   .show-blur {
     filter: blur(1rem);
