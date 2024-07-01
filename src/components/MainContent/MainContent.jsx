@@ -472,7 +472,6 @@ const MainContent = ({ user }) => {
 									{currentImage ? (
 										<div
 											className='mainContent__clickArea'
-											id='coinClicker'
 											onClick={isDesktop() ? coinClicker : null}
 											onTouchStart={handleTouchStart}
 											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
@@ -516,7 +515,6 @@ const MainContent = ({ user }) => {
 									) : (
 										<div
 											className='mainContent__clickArea'
-											id='coinClicker'
 											onClick={isDesktop() ? coinClicker : null}
 											onTouchStart={handleTouchStart}
 											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
