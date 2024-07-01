@@ -6,6 +6,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { GameInfoContext } from '../../helpers/context';
 import tigranCircle from '../../img/Tigran_circle.webp';
+import energy from '../../img/energy.webp';
 import { useUpdateBalanceMutation } from '../../services/phpService';
 import Modal from '../Modal/Modal';
 import './MainContent.scss';
@@ -36,6 +37,7 @@ const MainContent = ({ user }) => {
 	const [isCoinsChanged, setIsCoinsChanged] = useState(false);
 	const isCoinsChangedRef = useRef(isCoinsChanged);
 	const [resetCoinsCalled, setResetCoinsCalled] = useState(false);
+	const maxEnergy = 1000;
 	const timeoutRef = useRef(null);
 	const tigerImgRef = useRef(null);
 
@@ -416,14 +418,6 @@ const MainContent = ({ user }) => {
 		setIsAnimationActive(true);
 	};
 
-	const maxEnergy = 1000;
-
-	const calculateStrokeDasharray = (currEnergy) => {
-		const circleCircumference = 2 * Math.PI * 45; // 2 * PI * radius
-		const percentage = (currEnergy / maxEnergy) * circleCircumference;
-		return `${percentage} ${circleCircumference}`;
-	};
-
 	useEffect(() => {
 		const fetchData = async () => {
 			if (Object.keys(user).length) {
@@ -477,20 +471,36 @@ const MainContent = ({ user }) => {
 						<>
 							{tigerVisible && (
 								<>
-									{!gamePaused && (
-										<div className='mainContent__coins'>
-											<div className='mainContent__coinBox'>
-												<div className='mainContent__coinImg' draggable='false'>
-													<img src={tigranCircle} draggable='false' />
-												</div>
-												{!user && !totalPoints !== null && (
-													<div className='mainContent__coinAmount'>
-														<span>{totalPoints}123123</span>
+									<div className='mainContent__header'>
+										{!gamePaused && (
+											<div className='mainContent__totalCoins'>
+												<div className='mainContent__totalCoinsBox'>
+													<div className='mainContent__totalCoinsImg' draggable='false'>
+														<img src={tigranCircle} draggable='false' />
 													</div>
-												)}
+													{!user && !totalPoints !== null && (
+														<div className='mainContent__totalCoinsAmount'>
+															<span>{totalPoints}123123</span>
+														</div>
+													)}
+												</div>
 											</div>
-										</div>
-									)}
+										)}
+										{!gamePaused && (
+											<div className='mainContent__energyContainer'>
+												<img src={energy} alt='' />
+												<div className='mainContent__energyValue'>
+													<p className='energyCount' id='energyCount'>
+														{currEnergy}
+													</p>
+													<span>/</span>
+													<p className='maximumEnergy' id='maximumEnergy'>
+														{maxEnergy}
+													</p>
+												</div>
+											</div>
+										)}
+									</div>
 									{currentImage ? (
 										<div
 											className='mainContent__clickArea'
@@ -577,47 +587,34 @@ const MainContent = ({ user }) => {
 											</div>
 										</div>
 									)}
-									{!gamePaused && (
-										<div className='mainContent__totalPoints'>
-											<div className='mainContent__totalPoints-img' draggable='false'>
-												<img src={tigranCircle} draggable='false' />
+									<div className='mainContent__footer'>
+										{!gamePaused && (
+											<div className='mainContent__sessionCoins'>
+												<div className='mainContent__sessionCoins-img' draggable='false'>
+													<img src={tigranCircle} draggable='false' />
+												</div>
+												<div className='mainContent__sessionCoins-text'>
+													<span>For Session</span>
+													<div className='blackLine'></div>
+													<div className='mainContent__sessionCoins-coins'>
+														{currCoins}
+													</div>
+												</div>
 											</div>
-											<div className='mainContent__totalPoints-text'>
-												<span>For Session</span>
-												<div className='blackLine'></div>
-												<div className='mainContent__totalPoints-coins'>{currCoins}</div>
+										)}
+										{!gamePaused && (
+											<div className='mainContent__energyHint'>
+												<p>
+													The happier the Tigran — the more you get  Make it rain and
+													enjoy rewards{state?.info.mainContent__energyHint}
+												</p>
 											</div>
-										</div>
-									)}
+										)}
+									</div>
 								</>
 							)}
 						</>
 					)}
-
-					<div className='ModalTest'>
-						<h1>My React App</h1>
-						<button
-							onClick={() => openModal('green', 'This is a green modal', 'Confirm')}
-						>
-							Show Green Modal
-						</button>
-						<button onClick={() => openModal('red', 'This is a red modal', 'Delete')}>
-							Show Red Modal
-						</button>
-						<button
-							onClick={() => openModal('yellow', 'This is a yellow modal', 'Proceed')}
-						>
-							Show Yellow Modal
-						</button>
-						<Modal
-							modalText={modalText}
-							modalVisible={isModalVisible}
-							onClose={closeModal}
-							modalType={modalType}
-							buttonText={buttonText}
-							onButtonClick={handleModalButtonClick}
-						/>
-					</div>
 				</div>
 			</div>
 		</div>

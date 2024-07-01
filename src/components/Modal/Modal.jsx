@@ -3,6 +3,31 @@ import GreenIcon from './Icons/GreenIcon';
 import YellowIcon from './Icons/YellowIcon';
 import RedIcon from './Icons/RedIcon';
 
+// <div className='ModalTest'>
+// <h1>My React App</h1>
+// <button
+// 	onClick={() => openModal('green', 'This is a green modal', 'Confirm')}
+// >
+// 	Show Green Modal
+// </button>
+// <button onClick={() => openModal('red', 'This is a red modal', 'Delete')}>
+// 	Show Red Modal
+// </button>
+// <button
+// 	onClick={() => openModal('yellow', 'This is a yellow modal', 'Proceed')}
+// >
+// 	Show Yellow Modal
+// </button>
+// <Modal
+// 	modalText={modalText}
+// 	modalVisible={isModalVisible}
+// 	onClose={closeModal}
+// 	modalType={modalType}
+// 	buttonText={buttonText}
+// 	onButtonClick={handleModalButtonClick}
+// />
+// </div>
+
 import './Modal.scss';
 
 export default function Modal({
