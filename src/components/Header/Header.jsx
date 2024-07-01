@@ -157,7 +157,7 @@ const Header = ({ user }) => {
         <>
 		<header className='header'>
 			<div className='header__logo'>
-				<img src={face} alt='logo' />
+				<img src={face} alt='Tigran-logo' />
 			</div>
 
 			<div className='header__btn-group'>

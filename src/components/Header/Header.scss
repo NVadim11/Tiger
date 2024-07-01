@@ -139,8 +139,8 @@
     }
     &__close {
       position: absolute;
-      top: 24px;
-      right: 24px;
+      top: 12px;
+      right: 12px;
     }
     &__title {
         margin-top: 50px;
@@ -279,18 +279,18 @@
     }
     &__close {
         position: absolute;
-        top: 24px;
-        right: 24px;
+        top: 12px;
+        right: 12px;
     }
     &__title {
         width: 100%;
         display: flex;
         align-items: center;
-        margin-top: 24px;
+        margin-top: 22px;
         gap: 12px;
         h4 {
             font-weight: 400;
-            font-size: 20px;
+            font-size: 24px;
             line-height: 100%;
             color: #1c2520;
         }
@@ -298,46 +298,46 @@
     &__playerList {
         margin-top: 28px;
         width: 100%;
-      }
-      &__table {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 0.625rem;
-      }
-      &__tableItem {
-        border: 1px solid #3f3773;
-        display: flex;
-        flex-direction: row;
-        border-radius: 10px;
-        justify-content: space-between;
-        padding-left: 20px;
-        padding-right: 10px;
-        height: 40px;
+    }
+    &__table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.625rem;
+    }
+    &__tableItem {
+    border: 1px solid #3f3773;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 10px;
+    height: 40px;
         .popupLeaderboard__id {
-          font-weight: 700;
-          font-size: 20px;
-          line-height: 100%;
-          letter-spacing: 0.02em;
-          text-align: center;
-          svg {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: 0.02em;
+            text-align: center;
+            svg {
             display: none;
             position: absolute;
-          }
+            }
         }
         .popupLeaderboard__playerName {
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 100%;
-          letter-spacing: 0.02em;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 100%;
+            letter-spacing: 0.02em;
         }
         .popupLeaderboard__coins {
-          font-weight: 700;
-          font-size: 20px;
-          line-height: 100%;
-          letter-spacing: 0.02em;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: 0.02em;
         }
-      }
+    }
       &__tableItem:first-child {
         border-bottom: 1px solid #3dff34;
         border-left: 10px solid #3dff34;
