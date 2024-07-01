@@ -557,6 +557,18 @@ const MainContent = ({ user }) => {
 											</div>
 										</div>
 									)}
+									{!gamePaused && (
+										<div className='mainContent__totalPoints'>
+											<div className='mainContent__totalPoints-img' draggable='false'>
+												<img src={tigranCircle} draggable='false' />
+											</div>
+											<div className='mainContent__totalPoints-text'>
+												<span>For Session</span>
+												<div className='blackLine'></div>
+												<div className='mainContent__totalPoints-coins'>{currCoins}</div>
+											</div>
+										</div>
+									)}
 								</>
 							)}
 						</>
