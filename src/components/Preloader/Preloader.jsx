@@ -101,8 +101,7 @@ const Preloader = ({ loaded }) => {
 					style={{
 						zIndex: '1000',
 					}}
-				>
-				</div>
+				></div>
 			</div>
 		</>
 	);

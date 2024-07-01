@@ -3,7 +3,8 @@
   --altText: "Acme";
   --mainColor: #1c2520;
   --minWidth: 390px;
-  --maxWidth: 1920px;
+  --mainBG: #A0F39C;
+  --altBG: #80c27d;
   }
   
   *,
@@ -21,7 +22,7 @@
   }
   
   #root {
-    background: #A0F39C;
+    background: var(--mainBG);
     background-size: cover;
     min-height: 100%;
     position: relative;
@@ -166,14 +167,14 @@
 
   .active button {
     opacity: 1;
-    color: #fff;
+    color: var(--mainColor);
     border: 1px solid #fff;
     background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 
   .blackLine {
-    border: 1px solid #1c2520;
+    border: 1px solid var(--mainColor);
     width: 76px;
     height: 0px;
   }

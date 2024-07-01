@@ -440,15 +440,21 @@ const MainContent = ({ user }) => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [modalText, setModalText] = useState('');
 	const [modalType, setModalType] = useState('green'); // Default modal type
+	const [buttonText, setButtonText] = useState('');
 
-	const openModal = (type, text) => {
+	const openModal = (type, text, btnText) => {
 		setModalType(type);
 		setModalText(text);
+		setButtonText(btnText);
 		setIsModalVisible(true);
 	};
 
 	const closeModal = () => {
 		setIsModalVisible(false);
+	};
+
+	const handleModalButtonClick = () => {
+		alert('Button inside modal clicked');
 	};
 
 	return (
@@ -588,16 +594,30 @@ const MainContent = ({ user }) => {
 						</>
 					)}
 
-					<h1>My React App</h1>
-					<button onClick={() => openModal('green')}>Show Green Modal</button>
-					<button onClick={() => openModal('yellow')}>Show Yellow Modal</button>
-					<button onClick={() => openModal('red')}>Show Red Modal</button>
-					<Modal
-						modalText={modalText}
-						modalVisible={isModalVisible}
-						onClose={closeModal}
-						modalType={modalType}
-					/>
+					<div className='ModalTest'>
+						<h1>My React App</h1>
+						<button
+							onClick={() => openModal('green', 'This is a green modal', 'Confirm')}
+						>
+							Show Green Modal
+						</button>
+						<button onClick={() => openModal('red', 'This is a red modal', 'Delete')}>
+							Show Red Modal
+						</button>
+						<button
+							onClick={() => openModal('yellow', 'This is a yellow modal', 'Proceed')}
+						>
+							Show Yellow Modal
+						</button>
+						<Modal
+							modalText={modalText}
+							modalVisible={isModalVisible}
+							onClose={closeModal}
+							modalType={modalType}
+							buttonText={buttonText}
+							onButtonClick={handleModalButtonClick}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

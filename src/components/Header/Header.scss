@@ -7,9 +7,9 @@
     &__logo {
         width: 44px;
 		height: 44px;
-		border: 2px solid #1c2520;
+		border: 2px solid var(--mainColor);
 		border-radius: 62px;
-		background: #80c27d;
+		background: var(--altBG);
         img {
             width: 100%;
             height: 100%;
@@ -32,12 +32,12 @@
 		justify-content: center;
     }
     &__menuBtn {
-        border: 2px solid #1c2520;
+        border: 2px solid var(--mainColor);
         border-radius: 60px;
         padding: 8px 16px;
         width: 118px;
         height: 44px;
-        background: #80c27d;
+        background: var(--altBG);
         font-weight: 400;
         font-size: 20px;
         display: flex;
@@ -51,7 +51,7 @@
         top: 0;
         flex-direction: column;
         position: absolute;
-        background: #80c27d;
+        background: var(--altBG);
         z-index: 100;
         border: 1px solid #000000;
         border-radius: 20px;
@@ -69,7 +69,7 @@
         font-size: 18px;
         line-height: 100%;
         letter-spacing: 0.02em;
-        color: #fff;
+        color: var(--mainColor);
         width: 256px;
         display: flex;
         justify-content: space-between;
@@ -149,7 +149,7 @@
             font-size: 32px;
             line-height: 110%;
             text-align: center;
-            color: #1c2520;
+            color: var(--mainColor);
         }
     }
     &__header {
@@ -188,7 +188,7 @@
         font-size: 24px;
         line-height: 100%;
         letter-spacing: 0.01em;
-        color: #fff;
+        color: var(--mainColor);
       }
     }
     &__refInfo-item {
@@ -197,7 +197,7 @@
             font-size: 24px;
             line-height: 100%;
             letter-spacing: 0.01em;
-            color: #fff;
+            color: var(--mainColor);
         }
     }
     &__grid {
@@ -251,7 +251,7 @@
         font-size: 20px;
         line-height: 100%;
         letter-spacing: 0.02em;
-        color: #fff;
+        color: var(--mainColor);
       }
     }
   }
@@ -399,10 +399,10 @@
         }
       }
       &__tableItem:last-child {
-        border: 2px solid #fff;
+        border: 2px solid var(--mainColor);
         backdrop-filter: blur(16px);
         background: #2cb726;
-        color: #ffffff;
+        color: var(--mainColor);
       }
       &__itemData {
         display: flex;
