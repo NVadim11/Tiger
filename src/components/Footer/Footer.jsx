@@ -12,7 +12,9 @@ import {
 const Footer = ({ user }) => {
 
 	return (
-        <div></div>
+        <footer>
+			
+		</footer>
     );
 }	
 
