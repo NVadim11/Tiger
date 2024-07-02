@@ -3,12 +3,12 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { GameInfoContext } from '../helpers/context';
 import { useGetGameInfoQuery } from '../services';
 import { useGetUserByTgIdQuery } from '../services/phpService';
-// import ComingSoon from './ComingSoon';
-// import Maintenance from './Maintenance';
-// import NotFound from './404';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import MainContent from './MainContent/MainContent';
+import DynamicScreen from './Screens/DynamicScreen/DynamicScreen';
+import TelegramLinking from './Screens/QRcode/QRcode';
+import Preloader from './Preloader/Preloader';
 
 const MainComponent = () => {
 	const tg = window.Telegram.WebApp;
@@ -24,6 +24,14 @@ const MainComponent = () => {
 
 	const { updateState } = useContext(GameInfoContext);
 	const { data, isLoading, isError } = useGetGameInfoQuery();
+
+	const [variant, setVariant] = useState('error');
+
+	const changeVariant = () => {
+		// Change the variant based on current state
+		// 'error' | 'maintenance' | 'comingSoon'
+		setVariant('error');
+	};
 
 	// useEffect(() => {
 	// 	if (!isLoading && data) {
@@ -85,26 +93,24 @@ const MainComponent = () => {
 	return (
 		<>
 			<>
-				{/* {!isMobileDevice ? (
+				{!isMobileDevice ? (
 					<TelegramLinking />
-				) : ( */}
-				<>
-					{/* <Preloader loaded={preloaderLoaded} /> */}
-					{/* {user ? ( */}
+				) : (
 					<>
-						<Header user={user} />
-						<main id='main' className='main'>
-							<MainContent user={user} />
-						</main>
-						<Footer user={user} />
+						{/* <Preloader loaded={preloaderLoaded} /> */}
+						{user ? (
+							<>
+								<Header user={user} />
+								<main id='main' className='main'>
+									<MainContent user={user} />
+								</main>
+								<Footer user={user} />
+							</>
+						) : (
+							<DynamicScreen variant={'error'} />
+						)}
 					</>
-					{/* ) : ( */}
-					{/* // <ComingSoon /> */}
-					{/* // <Maintenance /> */}
-					{/* <NotFound /> */}
-					{/* )} */}
-				</>
-				{/* )} */}
+				)}
 			</>
 		</>
 	);
