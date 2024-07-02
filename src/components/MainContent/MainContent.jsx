@@ -6,6 +6,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { GameInfoContext } from '../../helpers/context';
 import tigranCircle from '../../img/Tigran_circle.webp';
+import testAnimation from '../../img/test.gif';
 import energy from '../../img/energy.webp';
 import { useUpdateBalanceMutation } from '../../services/phpService';
 import GamePaused from './GamePaused/GamePaused';
@@ -352,7 +353,7 @@ const MainContent = ({ user }) => {
 		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
 		clearTimeout(tigerImgRef.current);
 		clearTimeout(coinRef.current);
-		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
+		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 2000);
 		coinRef.current = setTimeout(() => setCoinState(false), 4000);
 
 		const clickNewCoins = updateCurrCoins();
@@ -371,7 +372,7 @@ const MainContent = ({ user }) => {
 		handleShowAnimation(event);
 		clearTimeout(tigerImgRef.current);
 		clearTimeout(coinRef.current);
-		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
+		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 2000);
 		coinRef.current = setTimeout(() => setCoinState(false), 4000);
 	};
 
@@ -502,9 +503,9 @@ const MainContent = ({ user }) => {
 											))}
 											<div className='mainContent__imageContainer'>
 												<img
-													src={boostPhase ? tigranCircle : tigranCircle}
+													src={boostPhase ? tigranCircle : testAnimation}
 													draggable='false'
-													alt='Tigran animation'
+													alt='Tigran idle'
 												/>
 											</div>
 										</div>
@@ -544,7 +545,7 @@ const MainContent = ({ user }) => {
 											))}
 											<div className='mainContent__imageContainer'>
 												<img
-													src={boostPhase ? tigranCircle : tigranCircle}
+													src={boostPhase ? tigranCircle : testAnimation}
 													draggable='false'
 													alt='Tigran animation'
 												/>
