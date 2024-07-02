@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { GameInfoContext } from '../../helpers/context';
-import face from '../../img/Tigran_full.webp';
+import face from '../../img/avatar.webp';
 import cross from '../../img/cross.svg';
 import crown from '../../img/crown.svg';
 import lead_icon from '../../img/leaderboard.webp';

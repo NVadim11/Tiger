@@ -1,6 +1,5 @@
 import AOS from 'aos';
 import { useContext, useEffect, useRef, useState } from 'react';
-import TelegramLinking from '../components/QRcode';
 import { GameInfoContext } from '../helpers/context';
 import { useGetGameInfoQuery } from '../services';
 import { useGetUserByTgIdQuery } from '../services/phpService';
@@ -10,7 +9,6 @@ import { useGetUserByTgIdQuery } from '../services/phpService';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import MainContent from './MainContent/MainContent';
-import Preloader from './Preloader/Preloader';
 
 const MainComponent = () => {
 	const tg = window.Telegram.WebApp;
