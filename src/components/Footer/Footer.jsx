@@ -9,7 +9,12 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
-import cross from '../../img/cross.svg'
+import cross from '../../img/cross.svg';
+import tigerCoin from '../../img/Tigran_full.webp';
+import visitWeb from '../../img/visit_website.svg';
+import visitTGchannel from '../../img/visit_TG-channel.svg';
+import visitTGchat from '../../img/visit_TG-chat.svg';
+import visitX from '../../img/visit_X.svg';
 import './Footer.scss';
 
 const Footer = ({ user }) => {
@@ -466,27 +471,29 @@ const Footer = ({ user }) => {
 				<div id='popupTasks' aria-hidden='true' className={popupTasks}>
 					<div className='popupTasks__wrapper'>
 						<div className='popupTasks__content'>
-						<button
+							<button
 								onClick={tasksCloseToggler}
 								type='button'
 								className='popupTasks__close'
 							>
-                            <img src={cross}  />
-                        </button>
+								<img src={cross} />
+							</button>
 							<div className='popupTasks__title'>
 								<h4>Complete tasks and get rewarded!</h4>
 							</div>
 							<div className='popupTasks__coins'>
 								<div className='popupTasks__coinBox'>
-									{user?.wallet_balance && (
-										<>
-											<div className='popupTasks__coinImg' draggable='false'>
-											</div>
-											<div className='popupTasks__coinAmount'>
-												<span id='coinAmount'>{user?.wallet_balance}</span>
-											</div>
-										</>
-									)}
+									{/* {user?.wallet_balance && ( */}
+									<>
+										<div className='popupTasks__coinImg' draggable='false'>
+											<img src={tigerCoin} alt='Tigran coin' />
+										</div>
+										<div className='popupTasks__coinAmount'>
+											{/* <span id='coinAmount'>{user?.wallet_balance}</span> */}
+											<span id='coinAmount'>1233121</span>
+										</div>
+									</>
+									{/* )} */}
 								</div>
 							</div>
 							<div className='popupTasks__tabs-btns'>
@@ -532,17 +539,12 @@ const Footer = ({ user }) => {
 									{inputFirst && (
 										<>
 											<div className='popupTasks__walletTask-title'>
-												<span>Enter your wallet</span>
+												<span>Current wallet</span>
 											</div>
 											<div className='popupTasks__walletTask-input'>
 												<input
 													type='text'
 													placeholder='Enter Solana Wallet Address'
-													style={{
-														background: 'transparent',
-														color: '#fff',
-														fontSize: '0.75rem!important',
-													}}
 													value={walletVaL}
 													onChange={(e) => setWalletVal(e.target.value)}
 													disabled={walletInputDisabled === true}
@@ -559,10 +561,17 @@ const Footer = ({ user }) => {
 														fill='none'
 														xmlns='http://www.w3.org/2000/svg'
 													>
-														<path
-															d='M10.7071 6.29289C10.3166 5.90237 9.6834 5.90237 9.29289 6.29289C8.90237 6.6834 8.90237 7.31659 9.29289 7.70711L13.5858 12L9.29289 16.2929C8.90237 16.6834 8.90237 17.3166 9.29289 17.7071C9.6834 18.0977 10.3166 18.0977 10.7071 17.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L10.7071 6.29289Z'
-															fill='white'
-														/>
+														<g clip-path='url(#clip0_438_3037)'>
+															<path
+																d='M21.5966 4.90886C19.3742 2.00582 15.9949 0.34082 12.3252 0.34082C9.74522 0.34082 7.2987 1.16969 5.24998 2.73793C4.50871 3.30544 3.83811 3.96166 3.2543 4.68594L2.73374 1.73736C2.67675 1.41491 2.36892 1.19925 2.04678 1.25656L0.48984 1.53135C0.334977 1.5587 0.197346 1.64645 0.107148 1.77523C0.0169488 1.90408 -0.0183086 2.06337 0.00904354 2.21824L1.2459 9.22457C1.29673 9.51217 1.54685 9.71454 1.82907 9.71454C1.8633 9.71454 1.898 9.71154 1.93286 9.70537L8.93928 8.46852C9.26173 8.4116 9.47699 8.10408 9.42008 7.78163L9.14521 6.22469C9.11786 6.06983 9.03019 5.9322 8.90133 5.842C8.77248 5.7518 8.61319 5.71662 8.45832 5.7439L5.53868 6.25932C5.94936 5.77393 6.41419 5.33116 6.9319 4.93487C8.49413 3.73905 10.3597 3.10702 12.327 3.10702C15.1269 3.10702 17.7048 4.37684 19.3997 6.59078C20.8437 8.47697 21.4666 10.8127 21.1539 13.1675C20.8411 15.5224 19.63 17.6145 17.7437 19.0584C16.1771 20.2577 14.3144 20.8916 12.3572 20.8916C11.9622 20.8916 11.5618 20.865 11.1669 20.8126C8.81208 20.4999 6.71996 19.2889 5.27599 17.4025C4.39708 16.2545 3.80641 14.8998 3.56775 13.485C3.54158 13.33 3.45486 13.1917 3.32672 13.1005C3.19865 13.0094 3.03944 12.973 2.88442 12.999L1.32542 13.262C1.00257 13.3165 0.785022 13.6224 0.83941 13.9453C1.15269 15.8026 1.92709 17.5797 3.07897 19.0844C4.97211 21.5575 7.71515 23.1453 10.8025 23.5554C11.3191 23.624 11.8433 23.6588 12.3605 23.6588C14.9286 23.6588 17.3716 22.8276 19.4253 21.2554C21.8985 19.3623 23.4863 16.6192 23.8964 13.5317C24.3067 10.4443 23.4899 7.38194 21.5966 4.90886Z'
+																fill='white'
+															/>
+														</g>
+														<defs>
+															<clipPath id='clip0_438_3037'>
+																<rect width='24' height='24' fill='white' />
+															</clipPath>
+														</defs>
 													</svg>
 												</button>
 											</div>
@@ -574,16 +583,7 @@ const Footer = ({ user }) => {
 												<span>Current wallet</span>
 											</div>
 											<div className='popupTasks__walletTask-input'>
-												<input
-													type='text'
-													style={{
-														background: 'transparent',
-														color: '#fff',
-														fontSize: '0.75rem!important',
-													}}
-													value={walletVaL}
-													disabled
-												/>
+												<input type='text' value={walletVaL} disabled />
 												<button
 													className='popupTasks__walletTask-inputBtn'
 													onClick={resetWalletEnabler}
@@ -609,24 +609,9 @@ const Footer = ({ user }) => {
 														</defs>
 													</svg>
 												</button>
-												{/* <button className='popupTasks__walletTask-inputBtn' disabled>
-												<svg
-													width='15'
-													height='13'
-													viewBox='0 0 13 11'
-													fill='none'
-													xmlns='http://www.w3.org/2000/svg'
-												>
-													<path
-														d='M0 5.25832C0 5.04901 0.0838528 4.84827 0.233109 4.70027C0.382367 4.55226 0.584803 4.46911 0.795883 4.46911L10.1205 4.46911L6.63236 1.37437C6.47645 1.23446 6.38271 1.03904 6.37162 0.830819C6.36053 0.622593 6.433 0.418478 6.57319 0.263061C6.71338 0.107645 6.9099 0.0135581 7.11982 0.00135409C7.32974 -0.0108499 7.53599 0.0598205 7.69354 0.197928L12.7341 4.6701C12.8178 4.74413 12.8847 4.83485 12.9305 4.93631C12.9763 5.03777 13 5.14768 13 5.25885C13 5.37001 12.9763 5.47993 12.9305 5.58139C12.8847 5.68285 12.8178 5.77356 12.7341 5.8476L7.69354 10.3198C7.61575 10.3896 7.52482 10.4434 7.42597 10.4783C7.32712 10.5131 7.2223 10.5282 7.11754 10.5227C7.01278 10.5172 6.91015 10.4913 6.81554 10.4463C6.72094 10.4013 6.63623 10.3383 6.56629 10.2608C6.49636 10.1832 6.44256 10.0927 6.40802 9.99451C6.37347 9.89629 6.35884 9.79226 6.36498 9.68841C6.37112 9.58457 6.39791 9.48295 6.44379 9.3894C6.48968 9.29585 6.55376 9.21222 6.63236 9.14332L10.1205 6.04753L0.795883 6.04753C0.584803 6.04753 0.382367 5.96438 0.233109 5.81637C0.0838528 5.66837 0 5.46763 0 5.25832Z'
-														fill='white'
-													/>
-												</svg>
-											</button> */}
 											</div>
 										</>
 									)}
-
 									<div className='popupTasks__walletTask-box'>
 										<div className='popupTasks__walletTask-right'>
 											<div className='popupTasks__walletTask-rightHint'>
@@ -645,30 +630,7 @@ const Footer = ({ user }) => {
 								<div className='popupTasks__task'>
 									<button onClick={twitterClick} disabled={twitterQuest === 1}>
 										<div className='popupTasks__task-img'>
-											<svg
-												width='22'
-												height='22'
-												viewBox='0 0 22 22'
-												fill='none'
-												xmlns='http://www.w3.org/2000/svg'
-											>
-												<g clip-path='url(#clip0_5228_3816)'>
-													<path
-														d='M0.5 11C0.5 5.20122 5.20122 0.5 11 0.5C16.7988 0.5 21.5 5.20122 21.5 11C21.5 16.7988 16.7988 21.5 11 21.5C5.20122 21.5 0.5 16.7988 0.5 11Z'
-														fill='black'
-														stroke='white'
-													/>
-													<path
-														d='M12.2033 10.0045L16.9123 4.53076H15.7964L11.7076 9.28359L8.4419 4.53076H4.67529L9.61367 11.7179L4.67529 17.458H5.79123L10.1091 12.4388L13.5579 17.458H17.3245L12.203 10.0045H12.2033ZM6.19331 5.37083H7.90732L15.7969 16.6561H14.0829L6.19331 5.37083Z'
-														fill='white'
-													/>
-												</g>
-												<defs>
-													<clipPath id='clip0_5228_3816'>
-														<rect width='22' height='22' fill='white' />
-													</clipPath>
-												</defs>
-											</svg>
+											<img src={visitX} alt='visitX' />
 										</div>
 										Follow Twitter
 										{user?.twitter === 0 ? (
@@ -681,25 +643,14 @@ const Footer = ({ user }) => {
 												fill='none'
 												xmlns='http://www.w3.org/2000/svg'
 											>
-												<g clip-path='url(#clip0_5186_2457)'>
+												<g clip-path='url(#clip0_438_3053)'>
 													<path
 														d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-														fill='url(#paint0_linear_5186_2457)'
+														fill='#2CB726'
 													/>
 												</g>
 												<defs>
-													<linearGradient
-														id='paint0_linear_5186_2457'
-														x1='1.0739e-06'
-														y1='-6.78261'
-														x2='31.4402'
-														y2='1.97004'
-														gradientUnits='userSpaceOnUse'
-													>
-														<stop stop-color='#CAFFD6' />
-														<stop offset='1' stop-color='#1EE261' />
-													</linearGradient>
-													<clipPath id='clip0_5186_2457'>
+													<clipPath id='clip0_438_3053'>
 														<rect width='24' height='24' fill='white' />
 													</clipPath>
 												</defs>
@@ -710,22 +661,7 @@ const Footer = ({ user }) => {
 								<div className='popupTasks__task'>
 									<button onClick={tgClickChat} disabled={tgChatQuest === 1}>
 										<div className='popupTasks__task-img'>
-											<svg
-												width='22'
-												height='22'
-												viewBox='0 0 22 22'
-												fill='none'
-												xmlns='http://www.w3.org/2000/svg'
-											>
-												<path
-													d='M11 22C17.0751 22 22 17.0751 22 11C22 4.92487 17.0751 0 11 0C4.92487 0 0 4.92487 0 11C0 17.0751 4.92487 22 11 22Z'
-													fill='#039BE5'
-												/>
-												<path
-													d='M5.03292 10.7609L15.6388 6.67163C16.131 6.4938 16.5609 6.79171 16.4014 7.53605L16.4023 7.53513L14.5965 16.0427C14.4627 16.6459 14.1043 16.7925 13.6028 16.5084L10.8528 14.4816L9.52642 15.7595C9.37976 15.9061 9.25601 16.0299 8.97184 16.0299L9.16709 13.2313L14.2638 8.62688C14.4856 8.43163 14.2143 8.32163 13.9218 8.51596L7.62343 12.4815L4.90826 11.6345C4.31884 11.4475 4.30601 11.045 5.03292 10.7609Z'
-													fill='white'
-												/>
-											</svg>
+											<img src={visitTGchat} alt='TG chat' />
 										</div>
 										Follow TG Chat
 										{user?.tg_chat === 0 ? (
@@ -738,25 +674,14 @@ const Footer = ({ user }) => {
 												fill='none'
 												xmlns='http://www.w3.org/2000/svg'
 											>
-												<g clip-path='url(#clip0_5186_2457)'>
+												<g clip-path='url(#clip0_438_3053)'>
 													<path
 														d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-														fill='url(#paint0_linear_5186_2457)'
+														fill='#2CB726'
 													/>
 												</g>
 												<defs>
-													<linearGradient
-														id='paint0_linear_5186_2457'
-														x1='1.0739e-06'
-														y1='-6.78261'
-														x2='31.4402'
-														y2='1.97004'
-														gradientUnits='userSpaceOnUse'
-													>
-														<stop stop-color='#CAFFD6' />
-														<stop offset='1' stop-color='#1EE261' />
-													</linearGradient>
-													<clipPath id='clip0_5186_2457'>
+													<clipPath id='clip0_438_3053'>
 														<rect width='24' height='24' fill='white' />
 													</clipPath>
 												</defs>
@@ -767,22 +692,7 @@ const Footer = ({ user }) => {
 								<div className='popupTasks__task'>
 									<button onClick={tgClickChannel} disabled={tgChannelQuest === 1}>
 										<div className='popupTasks__task-img'>
-											<svg
-												width='22'
-												height='22'
-												viewBox='0 0 22 22'
-												fill='none'
-												xmlns='http://www.w3.org/2000/svg'
-											>
-												<path
-													d='M11 22C17.0751 22 22 17.0751 22 11C22 4.92487 17.0751 0 11 0C4.92487 0 0 4.92487 0 11C0 17.0751 4.92487 22 11 22Z'
-													fill='#039BE5'
-												/>
-												<path
-													d='M5.03292 10.7609L15.6388 6.67163C16.131 6.4938 16.5609 6.79171 16.4014 7.53605L16.4023 7.53513L14.5965 16.0427C14.4627 16.6459 14.1043 16.7925 13.6028 16.5084L10.8528 14.4816L9.52642 15.7595C9.37976 15.9061 9.25601 16.0299 8.97184 16.0299L9.16709 13.2313L14.2638 8.62688C14.4856 8.43163 14.2143 8.32163 13.9218 8.51596L7.62343 12.4815L4.90826 11.6345C4.31884 11.4475 4.30601 11.045 5.03292 10.7609Z'
-													fill='white'
-												/>
-											</svg>
+											<img src={visitTGchannel} alt='TG channel' />
 										</div>
 										Follow TG Channel
 										{user?.tg_channel === 0 ? (
@@ -795,25 +705,14 @@ const Footer = ({ user }) => {
 												fill='none'
 												xmlns='http://www.w3.org/2000/svg'
 											>
-												<g clip-path='url(#clip0_5186_2457)'>
+												<g clip-path='url(#clip0_438_3053)'>
 													<path
 														d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-														fill='url(#paint0_linear_5186_2457)'
+														fill='#2CB726'
 													/>
 												</g>
 												<defs>
-													<linearGradient
-														id='paint0_linear_5186_2457'
-														x1='1.0739e-06'
-														y1='-6.78261'
-														x2='31.4402'
-														y2='1.97004'
-														gradientUnits='userSpaceOnUse'
-													>
-														<stop stop-color='#CAFFD6' />
-														<stop offset='1' stop-color='#1EE261' />
-													</linearGradient>
-													<clipPath id='clip0_5186_2457'>
+													<clipPath id='clip0_438_3053'>
 														<rect width='24' height='24' fill='white' />
 													</clipPath>
 												</defs>
@@ -824,6 +723,7 @@ const Footer = ({ user }) => {
 								<div className='popupTasks__task'>
 									<button onClick={websiteClick} disabled={websiteQuest === 1}>
 										<div className='popupTasks__task-img'>
+											<img src={visitWeb} alt='Website' />
 										</div>
 										Visit Website
 										{user?.website === 0 ? (
@@ -836,25 +736,14 @@ const Footer = ({ user }) => {
 												fill='none'
 												xmlns='http://www.w3.org/2000/svg'
 											>
-												<g clip-path='url(#clip0_5186_2457)'>
+												<g clip-path='url(#clip0_438_3053)'>
 													<path
 														d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-														fill='url(#paint0_linear_5186_2457)'
+														fill='#2CB726'
 													/>
 												</g>
 												<defs>
-													<linearGradient
-														id='paint0_linear_5186_2457'
-														x1='1.0739e-06'
-														y1='-6.78261'
-														x2='31.4402'
-														y2='1.97004'
-														gradientUnits='userSpaceOnUse'
-													>
-														<stop stop-color='#CAFFD6' />
-														<stop offset='1' stop-color='#1EE261' />
-													</linearGradient>
-													<clipPath id='clip0_5186_2457'>
+													<clipPath id='clip0_438_3053'>
 														<rect width='24' height='24' fill='white' />
 													</clipPath>
 												</defs>
