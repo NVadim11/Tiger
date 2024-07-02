@@ -56,6 +56,29 @@ const Footer = ({ user }) => {
 	const [dailyQuests, setDailyQuests] = useState(dailyTasksObj);
 	const [partnerQuests, setPartnerQuests] = useState(partnerTaskObj);
 
+	// Modal logic
+	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [modalText, setModalText] = useState('');
+	const [modalType, setModalType] = useState('green'); // Default modal type
+	const [buttonText, setButtonText] = useState('');
+
+	const openModal = (type, text, btnText) => {
+		setModalType(type);
+		setModalText(text);
+		setButtonText(btnText);
+		setIsModalVisible(true);
+	};
+
+	const closeModal = () => {
+		setIsModalVisible(false);
+		const popupTasks = document.getElementById('popupTasks');
+		if (popupTasks) popupTasks.classList.remove('show-blur');
+	};
+
+	const handleModalButtonClick = () => {
+		alert('Button inside modal clicked');
+	};
+
 	// aws
 	const secretKey = process.env.REACT_APP_SECRET_KEY;
 
@@ -182,21 +205,15 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				// Update quest status to completed (status: 1)
 				setTwitterQuest(1);
-				setModalText('Task completed successfully.');
-				openModal();
+				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
-				setModalType('green');
 			} else {
-				setModalText('An error occurred. Please try again later.');
-				openModal();
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
 				blurPopupTasks();
-				setModalType('red');
 			}
 		} catch (e) {
-			setModalText('An error occurred. Please try again later.');
-			openModal();
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
 			blurPopupTasks();
-			setModalType('red');
 		}
 	};
 
@@ -429,29 +446,6 @@ const Footer = ({ user }) => {
 				quest.id === taskId ? { ...quest, status: status } : quest
 			)
 		);
-	};
-
-	// Modal logic
-	const [isModalVisible, setIsModalVisible] = useState(false);
-	const [modalText, setModalText] = useState('');
-	const [modalType, setModalType] = useState('green'); // Default modal type
-	const [buttonText, setButtonText] = useState('');
-
-	const openModal = (type, text, btnText) => {
-		setModalType(type);
-		setModalText(text);
-		setButtonText(btnText);
-		setIsModalVisible(true);
-	};
-
-	const closeModal = () => {
-		setIsModalVisible(false);
-		const popupTasks = document.getElementById('popupTasks');
-		if (popupTasks) popupTasks.classList.remove('show-blur');
-	};
-
-	const handleModalButtonClick = () => {
-		alert('Button inside modal clicked');
 	};
 
 	return (
