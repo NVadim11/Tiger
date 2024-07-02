@@ -12,11 +12,20 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
+    "assert": "^2.1.0",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
+    "browser": "^0.2.6",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.2.10",
+    "https-browserify": "^1.0.0",
     "moment-timezone": "^0.5.45",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "react": "^18.3.1",
     "react-code-input": "^3.10.1",
     "react-dom": "^18.3.1",
@@ -25,13 +34,21 @@
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "react-scroll-parallax": "^3.4.5",
-    "sass": "^1.77.6"
+    "rewire": "^7.0.0",
+    "sass": "^1.77.6",
+    "stream": "^0.0.3",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.3",
+    "vm-browserify": "^1.1.2",
+    "web-vitals": "^4.2.1",
+    "web3": "^4.10.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -50,5 +67,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.2.1"
   }
 }

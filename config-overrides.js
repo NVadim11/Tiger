@@ -7,19 +7,20 @@ module.exports = function override(config) {
   // Убедиться, что объект fallback существует в конфигурации resolve
   const fallback = config.resolve.fallback || {};
 
-  // Добавить полифиллы для необходимых модулей
-  Object.assign(fallback, {
-    zlib: require.resolve("browserify-zlib"),
-    crypto: require.resolve("crypto-browserify"),
-    stream: require.resolve("stream-browserify"),
-    assert: require.resolve("assert"),
-    http: require.resolve("stream-http"),
-    https: require.resolve("https-browserify"),
-    os: require.resolve("os-browserify"),
-    url: require.resolve("url"),
-    "process/browser": require.resolve("process/browser"),
-    path: require.resolve("path-browserify"),
-  });
+  // Добавить полифилл для модуля crypto
+  fallback.crypto = require.resolve("crypto-browserify");
+
+  // Добавить полифиллы для остальных модулей, если они используются в проекте
+  fallback.zlib = require.resolve("browserify-zlib");
+  fallback.stream = require.resolve("stream-browserify");
+  fallback.assert = require.resolve("assert");
+  fallback.http = require.resolve("stream-http");
+  fallback.https = require.resolve("https-browserify");
+  fallback.os = require.resolve("os-browserify");
+  fallback.url = require.resolve("url");
+  fallback["process/browser"] = require.resolve("process/browser");
+  fallback.path = require.resolve("path-browserify");
+  fallback.vm = require.resolve("vm-browserify");
 
   // Обновить fallback в конфигурации resolve webpack
   config.resolve.fallback = fallback;
