@@ -4,15 +4,16 @@
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	min-width: 328px;
-	min-height: 204px;
-  z-index: 15;
-  transition: visibility 0.8s ease 0s;
-	border-radius: 34px;
+	width: 95%;
+  	z-index: 25;
+  	transition: visibility 0.8s ease 0s;
+	border-radius: 24px;
 	overflow: hidden;
 	padding: 34px 28px 28px 28px;
 	border: 2px solid var(--mainColor);
 	background: var(--altBG);
+	margin: 40% 0 0 0;
+	align-self: center;
 &__close {
     position: absolute;
     top: 12px;
