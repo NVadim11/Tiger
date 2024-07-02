@@ -8,25 +8,36 @@ const DynamicScreen = ({ variant }) => {
 	// Define the different backgrounds and texts
 	const variants = {
 		error: {
-			background: errorBG,
+			backgroundImage: `url(${errorBG})`,
 			text: 'Something went wrong',
+			style: {
+				background: `url(${errorBG}) no-repeat center center/cover`,
+			},
 		},
 		maintenance: {
-			background: maintenanceBG,
+			backgroundImage: `url(${maintenanceBG})`,
 			text: 'Repairs and upgrades are underway',
+			style: {
+				background: `url(${maintenanceBG}) no-repeat center center/cover`,
+			},
 		},
 		comingSoon: {
-			background: comingSoonBG,
+			backgroundImage: `url(${comingSoonBG})`,
 			text: 'Coming Soon',
+			style: {
+				background: `url(${comingSoonBG}) no-repeat center center/cover`,
+			},
 		},
 	};
 
-	// Default to variant1 if an unknown variant is passed
-	const { background, text } = variants[variant] || variants.error;
+	// Default to error variant if an unknown variant is passed
+	const { text, style } = variants[variant] || variants.error;
 
 	return (
-		<div className={`component-container ${background}`}>
-			<h4>{text}</h4>
+		<div className='component-container' style={style}>
+			<div className='componentText'>
+				<h4>{text}</h4>
+			</div>
 		</div>
 	);
 };
