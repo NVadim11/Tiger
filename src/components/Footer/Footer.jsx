@@ -134,7 +134,7 @@ const Footer = ({ user }) => {
 					}
 				}
 			};
-
+			
 			const timer = setInterval(() => {
 				updateGameStatus();
 			}, 1000);
@@ -229,21 +229,15 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				// Update quest status to completed (status: 1)
 				setTgChatQuest(1);
-				setModalText('Task completed successfully.');
-				openModal();
+				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
-				setModalType('green');
 			} else {
-				setModalText('An error occurred. Please try again later.');
-				openModal();
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
 				blurPopupTasks();
-				setModalType('red');
 			}
 		} catch (e) {
-			setModalText('An error occurred. Please try again later.');
-			openModal();
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
 			blurPopupTasks();
-			setModalType('red');
 		}
 	};
 
@@ -259,21 +253,15 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				// Update quest status to completed (status: 1)
 				setTgChannelQuest(1);
-				setModalText('Task completed successfully.');
-				openModal();
+				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
-				setModalType('green');
 			} else {
-				setModalText('An error occurred. Please try again later.');
-				openModal();
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
 				blurPopupTasks();
-				setModalType('red');
 			}
 		} catch (e) {
-			setModalText('An error occurred. Please try again later.');
-			openModal();
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
 			blurPopupTasks();
-			setModalType('red');
 		}
 	};
 
@@ -289,21 +277,15 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				// Update quest status to completed (status: 1)
 				setWebsiteQuest(1);
-				setModalText('Task completed successfully.');
-				openModal();
+				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
-				setModalType('green');
 			} else {
-				setModalText('An error occurred. Please try again later.');
-				openModal();
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
 				blurPopupTasks();
-				setModalType('red');
 			}
 		} catch (e) {
-			setModalText('An error occurred. Please try again later.');
-			openModal();
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
 			blurPopupTasks();
-			setModalType('red');
 		}
 	};
 
@@ -324,16 +306,12 @@ const Footer = ({ user }) => {
 				}).unwrap();
 				setResetBtnDisabled(true);
 				setWalletInputDisabled(true);
-				setModalText('Wallet submitted successfully.');
-				openModal();
+				openModal('green', 'Wallet submitted successfully.', 'Return');
 				blurPopupTasks();
 				toggleSecond();
-				setModalType('green');
 			} catch (e) {
-				setModalText('This wallet is already in use.');
-				openModal();
+				openModal('red', 'This wallet is already in use.', 'Return');
 				blurPopupTasks();
-				setModalType('red');
 			}
 		}
 	};
@@ -348,16 +326,12 @@ const Footer = ({ user }) => {
 				}).unwrap();
 				setResetBtnDisabled(true);
 				setWalletInputDisabled(true);
-				setModalText('Wallet changed successfully.');
-				openModal();
+				openModal('green', 'Wallet changed successfully.', 'Return');
 				blurPopupTasks();
 				toggleSecond();
-				setModalType('green');
 			} catch (e) {
-				setModalText('This wallet is already in use.');
-				openModal();
+				openModal('red', 'This wallet is already in use.', 'Return');
 				blurPopupTasks();
-				setModalType('red');
 			}
 		}
 	};
@@ -378,21 +352,15 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				// Update quest status to completed (status: 1)
 				updateDailyQStatus(taskId, 1);
-				setModalText('Task completed successfully.');
-				openModal();
+				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
-				setModalType('green');
 			} else {
-				setModalText('An error occurred. Please try again later.');
-				openModal();
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
 				blurPopupTasks();
-				setModalType('red');
 			}
 		} catch (e) {
-			setModalText('An error occurred. Please try again later.');
-			openModal();
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
 			blurPopupTasks();
-			setModalType('red');
 		}
 	};
 
@@ -421,21 +389,15 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				// Update quest status to completed (status: 1)
 				updatePartnerQStatus(taskId, 1);
-				setModalText('Task completed successfully.');
-				openModal();
+				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
-				setModalType('green');
 			} else {
-				setModalText('An error occurred. Please try again later.');
-				openModal();
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
 				blurPopupTasks();
-				setModalType('red');
 			}
 		} catch (e) {
-			setModalText('An error occurred. Please try again later.');
-			openModal();
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
 			blurPopupTasks();
-			setModalType('red');
 		}
 	};
 
@@ -537,8 +499,7 @@ const Footer = ({ user }) => {
 										user?.wallet_address
 											? () => handleTabClick(1)
 											: () => {
-													setModalText('Submit your wallet first.');
-													openModal();
+													openModal('yellow', 'Submit your wallet first.', 'Return');
 													blurPopupTasks();
 											  }
 									}
@@ -552,8 +513,7 @@ const Footer = ({ user }) => {
 										user?.wallet_address
 											? () => handleTabClick(2)
 											: () => {
-													setModalText('Submit your wallet first.');
-													openModal();
+													openModal('yellow', 'Submit your wallet first.', 'Return');
 													blurPopupTasks();
 											  }
 									}
