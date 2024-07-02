@@ -25,13 +25,12 @@ const MainComponent = () => {
 	const { updateState } = useContext(GameInfoContext);
 	const { data, isLoading, isError } = useGetGameInfoQuery();
 
+	// Change the variant based on current state
+	// 'error' | 'maintenance' | 'comingSoon'
 	const [variant, setVariant] = useState('error');
-
-	const changeVariant = () => {
-		// Change the variant based on current state
-		// 'error' | 'maintenance' | 'comingSoon'
+	useEffect(() => {
 		setVariant('error');
-	};
+	}, []);
 
 	// useEffect(() => {
 	// 	if (!isLoading && data) {
@@ -107,7 +106,7 @@ const MainComponent = () => {
 								<Footer user={user} />
 							</>
 						) : (
-							<DynamicScreen variant={'error'} />
+							<DynamicScreen variant={variant} />
 						)}
 					</>
 				)}
