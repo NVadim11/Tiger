@@ -1,64 +1,39 @@
 import React from 'react';
-// import QRimg from '../img/qr.png';
+import preloaderBG from '../../../img/back2.webp';
+import QRimg from '../../../img/tigranQR.webp';
+import './QRcode.scss'; // Import the CSS file for styling
+
 const TelegramLinking = () => {
 	return (
 		<div
+			className='qrComponent'
 			style={{
-				position: 'fixed',
-				top: '0',
-				left: '0',
-				width: '100vw',
-				height: '100vh',
-				background: 'linear-gradient(180deg, #0b1f46 0%, #000 100%)',
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-				transition: 'opacity 1s ease-out, visibility 0s 1s, transform 1s ease-in-out',
-				opacity: '1',
-				visibility: 'visible',
-				overflow: 'hidden',
-				transformOrigin: 'center center',
-				zIndex: '10000',
+				background: `url(${preloaderBG}) no-repeat center center/cover`,
 			}}
 		>
 			<div
 				style={{
 					display: 'flex',
-					flexDirection: 'column',
+					scale: '100%',
 					alignItems: 'center',
 					justifyContent: 'center',
 				}}
 			>
-				<h1
+				<img
+					src={QRimg}
+					alt='QR redirect'
 					style={{
-						display: 'flex',
-						width: 'fit-content',
-						margin: '30px 0 30px 0',
-						fontWeight: '900',
-						fontSize: '24px',
-						lineHeight: '100%',
-						textAlign: 'center',
+						width: '300px',
+						borderRadius: '20px',
 					}}
-				>
+				/>
+			</div>
+			<div className='qrComponentText'>
+				<h4>
+					{' '}
 					Leave the desktop. <br />
 					Mobile gaming rocks!
-				</h1>
-				<div
-					style={{
-						display: 'flex',
-						scale: '90%',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					<img
-						// src={QRimg}
-						alt='QR redirect'
-						style={{
-							borderRadius: '20px',
-						}}
-					/>
-				</div>
+				</h4>
 			</div>
 		</div>
 	);
