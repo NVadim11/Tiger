@@ -13,6 +13,9 @@ const Preloader = () => {
 			<div className='preloaderText'>
 				<h4>TIGER TRADE</h4>
 			</div>
+			<div className='progressBar'>
+				<div className='progress'></div>
+			</div>
 		</div>
 	);
 };
