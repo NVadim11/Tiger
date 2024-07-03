@@ -169,6 +169,13 @@ const MainComponent = () => {
 			navigator.userAgent
 		);
 
+	// Change the variant based on current state
+	// 'error' | 'maintenance' | 'comingSoon'
+	const [variant, setVariant] = useState('error');
+	useEffect(() => {
+		setVariant('error');
+	}, []);
+
 	return (
 		<>
 			<>
