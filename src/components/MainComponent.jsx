@@ -185,7 +185,7 @@ const MainComponent = () => {
 				) : (
 					<>
 						<Preloader loaded={preloaderLoaded} />
-						{user ? (
+						{!user ? (
 							<>
 								<Header user={user} />
 								<main id='main' className='main'>

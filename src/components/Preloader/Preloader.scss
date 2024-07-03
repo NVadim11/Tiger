@@ -52,3 +52,9 @@
     width: 100%;
   }
 }
+
+.preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.5);
+}
