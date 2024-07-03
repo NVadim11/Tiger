@@ -1,3 +1,4 @@
+import AOS from 'aos';
 import moment from 'moment-timezone';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { GameInfoContext } from '../helpers/context';
