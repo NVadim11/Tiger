@@ -502,11 +502,17 @@ const MainContent = ({ user }) => {
 												</AnimatePresence>
 											))}
 											<div className='mainContent__imageContainer'>
-												<img
-													src={boostPhase ? tigranCircle : testAnimation}
-													draggable='false'
-													alt='Tigran idle'
-												/>
+												<div className='circleElement'>
+													<div className='outerCircle'>
+														<div className='innerCircle'>
+															<img
+																src={boostPhase ? tigranCircle : testAnimation}
+																draggable='false'
+																alt='Tigran idle'
+															/>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									) : (
@@ -544,11 +550,17 @@ const MainContent = ({ user }) => {
 												</AnimatePresence>
 											))}
 											<div className='mainContent__imageContainer'>
-												<img
-													src={boostPhase ? tigranCircle : testAnimation}
-													draggable='false'
-													alt='Tigran animation'
-												/>
+												<div className='circleElement'>
+													<div className='outerCircle'>
+														<div className='innerCircle'>
+															<img
+																src={boostPhase ? tigranCircle : testAnimation}
+																draggable='false'
+																alt='Tigran active'
+															/>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									)}
