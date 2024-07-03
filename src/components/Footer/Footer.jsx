@@ -11,10 +11,10 @@ import {
 
 import tigerCoin from '../../img/Tigran_circle.webp';
 import cross from '../../img/cross.svg';
-import visitTGchannel from '../../img/visit_TG-channel.svg';
-import visitTGchat from '../../img/visit_TG-chat.svg';
-import visitX from '../../img/visit_X.svg';
-import visitWeb from '../../img/visit_website.svg';
+import visitTGchannel from '../../img/telegramChannel.webp';
+import visitTGchat from '../../img/telegramChat.webp';
+import visitX from '../../img/twitterIcon.webp';
+import visitWeb from '../../img/websiteIcon.webp';
 import Modal from '../Modal/Modal';
 import './Footer.scss';
 
@@ -136,7 +136,7 @@ const Footer = ({ user }) => {
 					}
 				}
 			};
-			
+
 			const timer = setInterval(() => {
 				updateGameStatus();
 			}, 1000);

@@ -97,7 +97,7 @@ const MainComponent = () => {
 				) : (
 					<>
 						{/* <Preloader loaded={preloaderLoaded} /> */}
-						{!user ? (
+						{user ? (
 							<>
 								<Header user={user} />
 								<main id='main' className='main'>
@@ -106,7 +106,8 @@ const MainComponent = () => {
 								<Footer user={user} />
 							</>
 						) : (
-							<DynamicScreen variant={variant} />
+							<Preloader />
+							// <DynamicScreen variant={variant} />
 						)}
 					</>
 				)}

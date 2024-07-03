@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { GameInfoContext } from '../../helpers/context';
 import tigranCircle from '../../img/Tigran_circle.webp';
-import testAnimation from '../../img/test.gif';
+import tigranActive from '../../img/tigranActive.gif';
 import energy from '../../img/energy.webp';
 import { useUpdateBalanceMutation } from '../../services/phpService';
 import GamePaused from './GamePaused/GamePaused';
@@ -506,7 +506,7 @@ const MainContent = ({ user }) => {
 													<div className='outerCircle'>
 														<div className='innerCircle'>
 															<img
-																src={boostPhase ? tigranCircle : testAnimation}
+																src={boostPhase ? tigranCircle : tigranActive}
 																draggable='false'
 																alt='Tigran idle'
 															/>
@@ -554,7 +554,7 @@ const MainContent = ({ user }) => {
 													<div className='outerCircle'>
 														<div className='innerCircle'>
 															<img
-																src={boostPhase ? tigranCircle : testAnimation}
+																src={boostPhase ? tigranCircle : tigranActive}
 																draggable='false'
 																alt='Tigran active'
 															/>
