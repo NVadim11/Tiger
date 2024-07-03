@@ -108,11 +108,11 @@
     width: 100%;
     aspect-ratio: 466/685;
     img {        
-      position: absolute;
-      top: 25px;
-      left: 10px;
-      width: 90%;
-      height: 105%;
+     position: absolute;
+    top: -100px;
+    left: -55px;
+    width: 310px;
+    height: 490px;
     } 
     @media (max-height: 730px) {
       margin: 0;
