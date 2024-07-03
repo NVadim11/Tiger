@@ -342,7 +342,8 @@ const Header = ({ user }) => {
 							</div>
 							<div className='popupInvite__item-box'>
 								<div className='popupInvite__item-group'>
-									<p>{state?.info.popupInvite__ref_link_title}:</p>
+									{/* <p>{state?.info.popupInvite__ref_link_title}:</p> */}
+									<p>Your link:</p>
 									<p className='popupInvite__input'>
 										{generatedUrl.length
 											? `${generatedUrl}`
@@ -357,7 +358,8 @@ const Header = ({ user }) => {
 										className='popupInvite__submit'
 										onClick={() => generateUrl(user)}
 									>
-										{state?.info.popupInvite__submit}
+										{/* {state?.info.popupInvite__submit} */}
+										Generate
 									</button>
 								</div>
 							</div>
