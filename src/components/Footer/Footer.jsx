@@ -23,6 +23,8 @@ const Footer = ({ user }) => {
 	const userId = tg.initDataUnsafe?.user?.id;
 	const [isVisible, setIsVisible] = useState(false);
 	const [tasksOpen, setTasksOpen] = useState(false);
+	const [tasksDaily, setTasksDaily] = useState(false);
+	const [tasksPartn, setTasksPartn] = useState(false);
 	const [passTask] = usePassTaskMutation();
 	const [setWallet] = useSetWalletMutation();
 	const [changeWallet] = useChangeWalletMutation();
@@ -444,7 +446,7 @@ const Footer = ({ user }) => {
 								<span>Tasks</span>
 							</button>
 						</div>
-						<div className='footerMain__activitiesBtn'>
+						{/* <div className='footerMain__activitiesBtn'>
 							<button style={{ cursor: 'not-allowed' }} disabled>
 								<span>Coming soon</span>
 							</button>
@@ -453,7 +455,7 @@ const Footer = ({ user }) => {
 							<button style={{ cursor: 'not-allowed' }} disabled>
 								<span>Coming soon</span>
 							</button>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</footer>
