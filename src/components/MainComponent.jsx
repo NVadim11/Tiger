@@ -3,7 +3,7 @@ import moment from 'moment-timezone';
 import { useEffect, useRef, useState } from 'react';
 import { useGetUserByTgIdQuery } from '../services/phpService';
 
-import Tigran_circle from '../img/Tigran_circle.webp';
+import tigranCircle from '../img/tigran_circle.webp';
 import avatar from '../img/avatar.webp';
 import back1 from '../img/back1.webp';
 import back2 from '../img/back2.webp';
@@ -16,7 +16,9 @@ import telegramChannel from '../img/telegramChannel.webp';
 import telegramChat from '../img/telegramChat.webp';
 import tiger1 from '../img/tiger1.webp';
 import tiger_ava from '../img/tiger_ava.webp';
-import tigranActive from '../img/tigranActive.gif';
+import tigranCash from '../img/tigranCash.gif';
+import tigranChill from '../img/tigranChill.gif';
+import tigranGold from '../img/tigranGold.gif';
 import tigranQR from '../img/tigranQR.webp';
 import twitterIcon from '../img/twitterIcon.webp';
 import websiteIcon from '../img/websiteIcon.webp';
@@ -116,8 +118,10 @@ const MainComponent = () => {
 			telegramChat,
 			tiger_ava,
 			tiger1,
-			Tigran_circle,
-			tigranActive,
+			tigranCircle,
+			tigranCash,
+			tigranChill,
+			tigranGold,
 			tigranQR,
 			twitterIcon,
 			websiteIcon,

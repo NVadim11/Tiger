@@ -1,11 +1,14 @@
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+import { useMediaQuery } from 'react-responsive';
 import { AnimatePresence, motion } from 'framer-motion';
 import moment from 'moment-timezone';
 import React, { useEffect, useRef, useState } from 'react';
-import tigranCircle from '../../img/Tigran_circle.webp';
+import tigranCircle from '../../img/tigran_circle.webp';
+import boostCoin from '../../img/tigran_circle.webp';
 import energy from '../../img/energy.webp';
-import tigranActive from '../../img/tigranActive.gif';
+import tigranCash from '../../img/tigranCash.gif';
+import tigranGold from '../../img/tigranGold.gif';
 import { useUpdateBalanceMutation } from '../../services/phpService';
 import GamePaused from './GamePaused/GamePaused';
 import './MainContent.scss';
@@ -15,8 +18,8 @@ const MainContent = ({ user }) => {
 	const [coinState, setCoinState] = useState(false);
 	const [currCoins, setCurrCoins] = useState(0);
 	const [currEnergy, setCurrEnergy] = useState(0); //user?.energy
-	const [tigerIdle, setTigerIdle] = useState(tigranCircle);
-	const [tigerActive, setTigerActive] = useState(tigranCircle);
+	const [tigerIdle, setTigerIdle] = useState(tigranCash);
+	const [tigerActive, setTigerActive] = useState(tigranCash);
 	const coinRef = useRef(null);
 	const [updateBalance] = useUpdateBalanceMutation();
 	const [position, setPosition] = useState({ x: '0', y: '0' });
@@ -37,6 +40,7 @@ const MainContent = ({ user }) => {
 	const maxEnergy = 1000;
 	const timeoutRef = useRef(null);
 	const tigerImgRef = useRef(null);
+	const isMedia = useMediaQuery({ maxWidth: '1439.98px' });
 
 	const tg = window.Telegram.WebApp;
 	const userId = tg.initDataUnsafe?.user?.id;
@@ -170,9 +174,6 @@ const MainContent = ({ user }) => {
 		}
 	}, [userId, user]);
 
-	let tigerIdleImage = tigerIdle;
-	let tigerActiveImage = tigerActive;
-
 	const boostClickedHandler = () => {
 		handleBoostClick();
 	};
@@ -244,7 +245,7 @@ const MainContent = ({ user }) => {
 				showBoostTimeout = setTimeout(() => {
 					randomizePosition();
 					setVisible(true);
-				}, Math.random() * (30000 - 13000) + 13000);
+				}, 20000); // Set timeout to 20 seconds (20000 milliseconds)
 			} else {
 				hideBoostTimeout = setTimeout(() => {
 					setVisible(false);
@@ -265,26 +266,16 @@ const MainContent = ({ user }) => {
 	}, [currEnergy]);
 
 	const updateCurrCoins = () => {
-		if (currEnergy >= 0 && currEnergy <= 150) {
-		} else if (currEnergy >= 151 && currEnergy <= 300) {
-			tigerIdleImage = tigerIdleImage;
-			tigerActiveImage = tigerActiveImage;
-		} else if (currEnergy >= 301 && currEnergy <= 550 && !resetCoinsCalled) {
+		if (currEnergy >= 301 && currEnergy <= 550 && !resetCoinsCalled) {
 			setResetCoinsCalled(true); // Set the state to true
 			resetCoins(); // Call resetCoins only once
-			tigerIdleImage = tigerIdleImage;
-			tigerActiveImage = tigerActiveImage;
-		} else if (currEnergy >= 551 && currEnergy <= 800) {
-			tigerIdleImage = tigerIdleImage;
-			tigerActiveImage = tigerActiveImage;
-		} else if (currEnergy >= 801 && currEnergy <= 1000) {
-			tigerIdleImage = tigerIdleImage;
-			tigerActiveImage = tigerActiveImage;
 		}
-		setTigerIdle(tigerIdleImage);
-		setTigerActive(tigerActiveImage);
+
+		setTigerIdle(tigranCash);
+		setTigerActive(tigranCash);
 		setIsCoinsChanged(true);
 		resetTimeout();
+
 		return clickNewCoins;
 	};
 
@@ -427,26 +418,98 @@ const MainContent = ({ user }) => {
 			<div className='mainContent__gameContent'>
 				<div className='mainContent__gameContentBox'>
 					{gamePaused ? (
-						<GamePaused remainingTime={timeRemaining} />
+						<GamePaused user={user} remainingTime={timeRemaining} />
 					) : (
 						<>
 							{tigerVisible && (
 								<>
-									<div className='mainContent__header'>
-										{!gamePaused && (
-											<div className='mainContent__totalCoins'>
-												<div className='mainContent__totalCoinsBox'>
-													<div className='mainContent__totalCoinsImg' draggable='false'>
-														<img src={tigranCircle} draggable='false' />
-													</div>
-													{user && totalPoints !== null && (
-														<div className='mainContent__totalCoinsAmount'>
-															<span>{totalPoints}</span>
-														</div>
-													)}
+									{!gamePaused && visible ? (
+										<motion.div
+											initial={{
+												y: 7,
+												rotate: 0,
+												opacity: 1,
+											}}
+											animate={{
+												y: [0, -10, 0],
+												rotate: [0, 3, -7, 0],
+											}}
+											transition={{
+												duration: 4,
+												repeat: Infinity,
+												repeatType: 'mirror',
+												ease: 'easeInOut',
+											}}
+											style={{
+												position: 'absolute',
+												top: '50%',
+												left: 0,
+												zIndex: 1500,
+											}}
+										>
+											<motion.div
+												animate={{
+													opacity: [0, 1],
+												}}
+												transition={{
+													duration: 4,
+													repeat: Infinity,
+													repeatType: 'mirror',
+													ease: 'easeInOut',
+												}}
+											>
+												<div
+													className='boost-element'
+													style={{
+														position: 'absolute',
+														overflow: 'hidden',
+														left: `${position.x}px`,
+														top: `${position.y}px`,
+														cursor: 'pointer',
+														width: '150px',
+														height: '160px',
+														borderRadius: '150px',
+														zIndex: 1500,
+														...(isMedia && {
+															scale: '80%',
+														}),
+													}}
+													onClick={boostClickedHandler}
+												>
+													<motion.img
+														src={boostCoin}
+														alt='Boost coin'
+														style={{
+															width: '100%',
+															height: '100%',
+															userSelect: 'none',
+														}}
+														initial={{ opacity: 0, rotate: 0 }}
+														animate={{ opacity: 1, rotate: 360 }}
+														transition={{
+															duration: 4,
+															repeat: Infinity,
+															repeatType: 'mirror',
+															ease: 'easeInOut',
+														}}
+													/>
 												</div>
+											</motion.div>
+										</motion.div>
+									) : null}
+									<div className='mainContent__header'>
+										<div className='mainContent__totalCoins'>
+											<div className='mainContent__totalCoinsBox'>
+												<div className='mainContent__totalCoinsImg' draggable='false'>
+													<img src={tigranCircle} draggable='false' />
+												</div>
+												{user && totalPoints !== null && (
+													<div className='mainContent__totalCoinsAmount'>
+														<span>{totalPoints}</span>
+													</div>
+												)}
 											</div>
-										)}
+										</div>
 										{!gamePaused && (
 											<div className='mainContent__energyContainer'>
 												<img src={energy} alt='' />
@@ -502,7 +565,7 @@ const MainContent = ({ user }) => {
 													<div className='outerCircle'>
 														<div className='innerCircle'>
 															<img
-																src={boostPhase ? tigranCircle : tigranActive}
+																src={boostPhase ? tigranGold : tigranCash}
 																draggable='false'
 																alt='Tigran idle'
 															/>
@@ -550,7 +613,7 @@ const MainContent = ({ user }) => {
 													<div className='outerCircle'>
 														<div className='innerCircle'>
 															<img
-																src={boostPhase ? tigranCircle : tigranActive}
+																src={boostPhase ? tigranGold : tigranCash}
 																draggable='false'
 																alt='Tigran active'
 															/>

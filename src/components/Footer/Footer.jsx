@@ -9,7 +9,7 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
-import tigerCoin from '../../img/Tigran_circle.webp';
+import tigerCoin from '../../img/tigran_circle.webp';
 import cross from '../../img/cross.svg';
 import visitTGchannel from '../../img/telegramChannel.webp';
 import visitTGchat from '../../img/telegramChat.webp';
