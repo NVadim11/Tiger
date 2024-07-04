@@ -124,7 +124,7 @@ const Header = ({ user }) => {
 
 	const generateUrl = (user) => {
 		if (user.id_telegram) {
-			const referralURL = `https://t.me/tom_catmybot/app?startapp=${user.id_telegram}`;
+			const referralURL = `t.me/tigr_run_bot/app?startapp=${user.id_telegram}`;
 			setGeneratedUrl(referralURL);
 		}
 	};

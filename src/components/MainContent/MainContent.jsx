@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import moment from 'moment-timezone';
 import React, { useEffect, useRef, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import tigranCircle from '../../img/Tigran_circle.webp';
 import energy from '../../img/energy.webp';
 import tigranActive from '../../img/tigranActive.gif';
@@ -12,11 +11,10 @@ import GamePaused from './GamePaused/GamePaused';
 import './MainContent.scss';
 
 const MainContent = ({ user }) => {
-	const isMedia = useMediaQuery({ maxWidth: '1439.98px' });
 	const [currentImage, setCurrentImage] = useState(true);
 	const [coinState, setCoinState] = useState(false);
 	const [currCoins, setCurrCoins] = useState(0);
-	const [currEnergy, setCurrEnergy] = useState(user?.energy); //user?.energy
+	const [currEnergy, setCurrEnergy] = useState(0); //user?.energy
 	const [tigerIdle, setTigerIdle] = useState(tigranCircle);
 	const [tigerActive, setTigerActive] = useState(tigranCircle);
 	const coinRef = useRef(null);
@@ -441,9 +439,9 @@ const MainContent = ({ user }) => {
 													<div className='mainContent__totalCoinsImg' draggable='false'>
 														<img src={tigranCircle} draggable='false' />
 													</div>
-													{!user && !totalPoints !== null && (
+													{user && totalPoints !== null && (
 														<div className='mainContent__totalCoinsAmount'>
-															<span>{totalPoints}123123</span>
+															<span>{totalPoints}</span>
 														</div>
 													)}
 												</div>
