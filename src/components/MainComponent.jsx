@@ -1,10 +1,9 @@
 import AOS from 'aos';
 import moment from 'moment-timezone';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { GameInfoContext } from '../helpers/context';
-import { useGetGameInfoQuery } from '../services';
+import { useEffect, useRef, useState } from 'react';
 import { useGetUserByTgIdQuery } from '../services/phpService';
 
+import Tigran_circle from '../img/Tigran_circle.webp';
 import avatar from '../img/avatar.webp';
 import back1 from '../img/back1.webp';
 import back2 from '../img/back2.webp';
@@ -15,9 +14,8 @@ import leaderboard from '../img/leaderboard.webp';
 import referral from '../img/referral.webp';
 import telegramChannel from '../img/telegramChannel.webp';
 import telegramChat from '../img/telegramChat.webp';
-import tiger_ava from '../img/tiger_ava.webp';
 import tiger1 from '../img/tiger1.webp';
-import Tigran_circle from '../img/Tigran_circle.webp';
+import tiger_ava from '../img/tiger_ava.webp';
 import tigranActive from '../img/tigranActive.gif';
 import tigranQR from '../img/tigranQR.webp';
 import twitterIcon from '../img/twitterIcon.webp';
@@ -26,9 +24,9 @@ import websiteIcon from '../img/websiteIcon.webp';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import MainContent from './MainContent/MainContent';
+import Preloader from './Preloader/Preloader';
 import DynamicScreen from './Screens/DynamicScreen/DynamicScreen';
 import TelegramLinking from './Screens/QRcode/QRcode';
-import Preloader from './Preloader/Preloader';
 
 const MainComponent = () => {
 	const tg = window.Telegram.WebApp;
@@ -41,8 +39,6 @@ const MainComponent = () => {
 	});
 	const [preloaderLoaded, setPreloaderLoaded] = useState(false);
 	const imagesRef = useRef([]);
-	const { updateState } = useContext(GameInfoContext);
-	const { data, isLoading } = useGetGameInfoQuery();
 
 	const secretURL = process.env.REACT_APP_REGISTER_KEY;
 	const testURL = process.env.REACT_APP_TEST_URL;
@@ -98,12 +94,6 @@ const MainComponent = () => {
 	}, [initData, user, secretURL]);
 
 	useEffect(() => {
-		if (!isLoading && data) {
-			updateState(data);
-		}
-	}, [isLoading, data, updateState]);
-
-	useEffect(() => {
 		const loadImage = (src) => {
 			return new Promise((resolve, reject) => {
 				const img = new Image();
@@ -146,7 +136,7 @@ const MainComponent = () => {
 		};
 
 		const checkAllLoaded = () => {
-			if (!isLoading && data && imagesRef.current.length === imageSources.length) {
+			if (imagesRef.current.length === imageSources.length) {
 				setTimeout(() => {
 					setPreloaderLoaded(true);
 					AOS.init({
@@ -156,7 +146,7 @@ const MainComponent = () => {
 			}
 		};
 		loadImages();
-	}, [isLoading, data]);
+	}, []);
 
 	useEffect(() => {
 		if (tg && userId) {

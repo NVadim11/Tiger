@@ -2,18 +2,16 @@ import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import moment from 'moment-timezone';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { GameInfoContext } from '../../helpers/context';
 import tigranCircle from '../../img/Tigran_circle.webp';
-import tigranActive from '../../img/tigranActive.gif';
 import energy from '../../img/energy.webp';
+import tigranActive from '../../img/tigranActive.gif';
 import { useUpdateBalanceMutation } from '../../services/phpService';
 import GamePaused from './GamePaused/GamePaused';
 import './MainContent.scss';
 
 const MainContent = ({ user }) => {
-	const { state } = useContext(GameInfoContext);
 	const isMedia = useMediaQuery({ maxWidth: '1439.98px' });
 	const [currentImage, setCurrentImage] = useState(true);
 	const [coinState, setCoinState] = useState(false);
@@ -583,7 +581,7 @@ const MainContent = ({ user }) => {
 											<div className='mainContent__energyHint'>
 												<p>
 													The happier the Tigran — the more you get  Make it rain and
-													enjoy rewards{state?.info.mainContent__energyHint}
+													enjoy rewards
 												</p>
 											</div>
 										)}
