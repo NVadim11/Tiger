@@ -349,7 +349,7 @@ const MainContent = ({ user }) => {
 		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
 		clearTimeout(tigerImgRef.current);
 		clearTimeout(coinRef.current);
-		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 2000);
+		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
 		coinRef.current = setTimeout(() => setCoinState(false), 4000);
 
 		const clickNewCoins = updateCurrCoins();
@@ -368,7 +368,7 @@ const MainContent = ({ user }) => {
 		handleShowAnimation(event);
 		clearTimeout(tigerImgRef.current);
 		clearTimeout(coinRef.current);
-		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 2000);
+		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
 		coinRef.current = setTimeout(() => setCoinState(false), 4000);
 	};
 

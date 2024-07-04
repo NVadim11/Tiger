@@ -228,10 +228,11 @@ body::after {
   }
   &__tasks {
     display: none;
+    margin-top: 12px;
     &.active {
       display: flex;
       flex-direction: column;
-      gap: 4;
+      gap: 4px;
     }
   }
   &__task {
@@ -262,7 +263,7 @@ body::after {
     }
     svg {
         position: absolute;
-        right: 37px;
+        right: 12px;
     }
     p {
       display: flex;
@@ -273,12 +274,23 @@ body::after {
       padding: 6px 12px;
       width: 25%;
       justify-content: center;
+      position: absolute;
+      right: 12px;
     }
     .rewardCoin {
       margin-left: 5px;
       margin-top: 0px;
       right: 0;
       position: relative;
+      width: 24px;
+      height: 24px;
+      background: var(--altBG);
+      border: 2px solid var(--mainColor);
+      border-radius: 62px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
   &__task-img {
@@ -490,12 +502,12 @@ body::after {
       height: 100%;
     }
     progress::-webkit-progress-bar {
-   background-color: #383A69;
+   background-color: #0D9047;
    border-radius: 30px;
    // box-shadow: inset 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
   }
   progress::-webkit-progress-value {
-   background: linear-gradient(270deg, #1cafee, #35cf6e 71.63%, #3fdb3c);
+    background: #2cb726;
    border-radius: 30px;
    // box-shadow: inset 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
   }
