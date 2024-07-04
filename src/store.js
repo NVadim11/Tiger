@@ -1,12 +1,10 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
-import { adminApi } from './services';
-import { authApi } from './services/auth';
-import { phpApi } from './services/phpService';
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/query'
+import { adminApi } from './services'
+import { phpApi } from './services/phpService'
 
 const root = combineReducers({
 	// Add the generated reducer as a specific top-level slice
-	[authApi.reducerPath]: authApi.reducer,
 	[phpApi.reducerPath]: phpApi.reducer,
 	[adminApi.reducerPath]: adminApi.reducer,
 });
@@ -17,7 +15,6 @@ export const store = configureStore({
 	// and other useful features of `rtk-query`.
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat([
-			authApi.middleware,
 			phpApi.middleware,
 			adminApi.middleware,
 		]),

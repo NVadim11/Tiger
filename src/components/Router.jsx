@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { AuthContext } from './helper/contexts';
 import MainComponent from './MainComponent';
 
 const router = createBrowserRouter([
@@ -15,18 +13,7 @@ const router = createBrowserRouter([
 ]);
 
 const AppRouter = () => {
-	const [auth, setAuth] = useState({});
-
-	const contextValue = {
-		value: auth,
-		setValue: setAuth,
-	};
-
-	return (
-		<AuthContext.Provider value={contextValue}>
-			<RouterProvider router={router} />
-		</AuthContext.Provider>
-	);
+	return <RouterProvider router={router} />;
 };
 
 export default AppRouter;
