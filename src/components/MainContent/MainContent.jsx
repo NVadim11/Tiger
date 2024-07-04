@@ -245,7 +245,7 @@ const MainContent = ({ user }) => {
 				showBoostTimeout = setTimeout(() => {
 					randomizePosition();
 					setVisible(true);
-				}, 20000); // Set timeout to 20 seconds (20000 milliseconds)
+				}, 30000);
 			} else {
 				hideBoostTimeout = setTimeout(() => {
 					setVisible(false);

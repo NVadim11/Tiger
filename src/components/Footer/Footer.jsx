@@ -77,10 +77,6 @@ const Footer = ({ user }) => {
 		if (popupTasks) popupTasks.classList.remove('show-blur');
 	};
 
-	const handleModalButtonClick = () => {
-		alert('Button inside modal clicked');
-	};
-
 	// aws
 	const secretKey = process.env.REACT_APP_SECRET_KEY;
 
@@ -475,17 +471,16 @@ const Footer = ({ user }) => {
 							</div>
 							<div className='popupTasks__coins'>
 								<div className='popupTasks__coinBox'>
-									{/* {user?.wallet_balance && ( */}
-									<>
-										<div className='popupTasks__coinImg' draggable='false'>
-											<img src={tigerCoin} alt='Tigran coin' />
-										</div>
-										<div className='popupTasks__coinAmount'>
-											{/* <span id='coinAmount'>{user?.wallet_balance}</span> */}
-											<span id='coinAmount'>1233121</span>
-										</div>
-									</>
-									{/* )} */}
+									{user?.wallet_balance && (
+										<>
+											<div className='popupTasks__coinImg' draggable='false'>
+												<img src={tigerCoin} alt='Tigran coin' />
+											</div>
+											<div className='popupTasks__coinAmount'>
+												<span id='coinAmount'>{user?.wallet_balance}</span>
+											</div>
+										</>
+									)}
 								</div>
 							</div>
 							<div className='popupTasks__tabs-btns'>
@@ -898,7 +893,7 @@ const Footer = ({ user }) => {
 				onClose={closeModal}
 				modalType={modalType}
 				buttonText={buttonText}
-				onButtonClick={handleModalButtonClick}
+				onButtonClick={closeModal}
 			/>
 		</>
 	);

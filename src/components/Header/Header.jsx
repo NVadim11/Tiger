@@ -27,6 +27,12 @@ const Header = ({ user }) => {
 	const containerRef = useRef(null);
 	const menuRef = useRef(null);
 
+	const tg = window.Telegram.WebApp;
+
+	const openLink = (url) => {
+		tg.openLink(url);
+	};
+
 	const toggleMenu = () => {
 		setIsShown((prev) => !prev);
 	};
@@ -153,7 +159,14 @@ const Header = ({ user }) => {
 
 				<div className='header__btn-group'>
 					<div className='header__social-links'>
-						<a className='header__social-link'>
+						<a
+							className='header__social-link'
+							href='#'
+							onClick={(e) => {
+								e.preventDefault();
+								openLink('https://t.me/TigRunVerif');
+							}}
+						>
 							<svg
 								width='24'
 								height='19'
@@ -169,7 +182,14 @@ const Header = ({ user }) => {
 								/>
 							</svg>
 						</a>
-						<a className='header__social-link'>
+						<a
+							className='header__social-link'
+							href='#'
+							onClick={(e) => {
+								e.preventDefault();
+								openLink('https://x.com/tigrun_tap');
+							}}
+						>
 							<svg
 								width='24'
 								height='22'
