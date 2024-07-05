@@ -117,6 +117,7 @@
 
   .popupInvite {
     padding: 0 12px;
+    zoom: 0.9;
     &__wrapper {
       flex-direction: column;
       align-items: center;
@@ -145,19 +146,19 @@
         margin-top: 50px;
         h4 {
             font-weight: 400;
-            font-size: 32px;
-            line-height: 110%;
+            font-size: 28px;
+            line-height: 100%;
             text-align: center;
             color: var(--mainColor);
         }
     }
     &__header {
       display: flex;
-      margin-top: 30px;
+      margin-top: 20px;
       h6 {
         font-weight: 400;
-        font-size: 32px;
-        line-height: 110%;
+        font-size: 28px;
+        line-height: 100%;
         text-align: center;
         color: #1c2520;
       }
@@ -172,7 +173,7 @@
       border: 1px solid #0d9047;
       border-radius: 10px;
       background: #3a5b4d;
-      margin-top: 30px;
+      margin-top: 20px;
     }
     &__refInfo-box {
         width: 50%;  
@@ -184,7 +185,7 @@
         padding: 16px 0;
       p {
         font-weight: 400;
-        font-size: 24px;
+        font-size: 20px;
         line-height: 100%;
         letter-spacing: 0.01em;
         color: var(--altColor);
@@ -193,14 +194,14 @@
     &__refInfo-item {
         span {
             font-weight: 400;
-            font-size: 24px;
+            font-size: 20px;
             line-height: 100%;
             letter-spacing: 0.01em;
             color: var(--altColor);
         }
     }
-    &__grid {
-        margin-top: 30px;
+    &__grid { 
+        margin-top: 20px;
         width: 100%;
     }
     &__grid-list {
@@ -256,7 +257,7 @@
     &__item-box {
       border: 1px solid #0d9047;
       background: #3a5b4d;
-      margin-top: 22px; 
+      margin-top: 20px; 
       border-radius: 10px;
       width: 100%;
       padding: 10px;
@@ -265,15 +266,15 @@
       display: flex;
       flex-direction: column;
       &:not(:last-child) {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
       p {
         font-weight: 400;
-        font-size: 1.25rem;
-        line-height: 140%;
-        color: #fff;
+        font-size: 20px;
+        line-height: 100%;
+        color: var(--altColor);
         &:not(:last-child) {
-          margin-bottom: 0.9375rem;
+          margin-bottom: 10px;
         }
       }
     }
@@ -284,9 +285,9 @@
       align-items: flex-end;
       justify-content: space-between;
       font-weight: 400;
-      line-height: 140%;
-      color: #fff;
-      border: 2px solid #fff;
+      line-height: 100%;
+      color: var(--altColor);
+      border: 2px solid var(--altColor);
       font-size: 0.875rem !important;
       padding: 15px 25px 15px 10px;
     }
@@ -299,8 +300,8 @@
       display: flex;
       align-self: flex-end;
       font-weight: 600;
-      font-size: 1.625rem;
-      color: #fff;
+      font-size: 20px;
+      color: var(--altColor);
     }
   }
 

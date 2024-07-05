@@ -330,23 +330,22 @@ const MainContent = ({ user }) => {
 
 	const handleShowAnimation = (event) => {
 		if (!event) return;
-	  
+
 		const touch = event.touches ? event.touches[0] : event;
 		const clicker = event.currentTarget || touch.target;
 		if (!clicker) return;
-	  
+
 		const rect = clicker.getBoundingClientRect();
 		const x = touch.pageX - rect.left;
 		const y = touch.pageY - rect.top;
 
 		console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
 
-	  
 		setAnimations((prev) => [...prev, { x, y }]);
 		setIsAnimationActive(true);
-	  };
-	  
-	  const coinClicker = (event) => {
+	};
+
+	const coinClicker = (event) => {
 		if (!event.isTrusted) return;
 		setCurrentImage(false);
 		setCoinState(true);
@@ -356,69 +355,65 @@ const MainContent = ({ user }) => {
 		clearTimeout(coinRef.current);
 		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
 		coinRef.current = setTimeout(() => setCoinState(false), 4000);
-	  
+
 		const clickNewCoins = updateCurrCoins();
 		setCurrCoins((prevCoins) => prevCoins + clickNewCoins);
 		accumulatedCoinsRef.current += clickNewCoins;
-	  };
-	  
-	  const handleTouchStart = (event) => {
+	};
+
+	const handleTouchStart = (event) => {
 		event.preventDefault(); // Предотвращаем действие по умолчанию для мультитапа
-	  
+
 		if (event.touches) {
-		  Array.from(event.touches).forEach((touch) => {
-			const clicker = event.currentTarget || touch.target;
+			Array.from(event.touches).forEach((touch) => {
+				const clicker = event.currentTarget || touch.target;
+				if (!clicker) return;
+
+				const rect = clicker.getBoundingClientRect();
+				const x = touch.pageX - rect.left;
+				const y = touch.pageY - rect.top;
+
+				console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
+
+				setCurrentImage(false);
+				setCoinState(true);
+				handleShowAnimation({
+					touches: [touch],
+					target: event.target,
+					currentTarget: event.currentTarget,
+				});
+			});
+		} else {
+			const clicker = event.currentTarget || event.target;
 			if (!clicker) return;
-	  
+
 			const rect = clicker.getBoundingClientRect();
-			const x = touch.pageX - rect.left;
-			const y = touch.pageY - rect.top;
-	  
+			const x = event.pageX - rect.left;
+			const y = event.pageY - rect.top;
+
 			console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
-	  
+
 			setCurrentImage(false);
 			setCoinState(true);
-			handleShowAnimation({
-			  touches: [touch],
-			  target: event.target,
-			  currentTarget: event.currentTarget,
-			});
-		  });
-		} else {
-		  const clicker = event.currentTarget || event.target;
-		  if (!clicker) return;
-	  
-		  const rect = clicker.getBoundingClientRect();
-		  const x = event.pageX - rect.left;
-		  const y = event.pageY - rect.top;
-	  
-		  console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
-	  
-		  setCurrentImage(false);
-		  setCoinState(true);
-		  handleShowAnimation(event);
+			handleShowAnimation(event);
 		}
-	  
+
 		clearTimeout(tigerImgRef.current);
 		clearTimeout(coinRef.current);
 		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
 		coinRef.current = setTimeout(() => setCoinState(false), 4000);
-	  };
-	  
-	  
-	  const handleTouchEnd = () => {
+	};
+
+	const handleTouchEnd = () => {
 		const clickNewCoins = updateCurrCoins();
 		setCurrCoins((prevCoins) => prevCoins + clickNewCoins);
 		accumulatedCoinsRef.current += clickNewCoins;
 		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
-	  };
-	  
-	  
+	};
 
 	const clearAnimations = () => {
 		setAnimations([]);
 	};
-	
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -463,7 +458,7 @@ const MainContent = ({ user }) => {
 												position: 'absolute',
 												top: '50%',
 												left: 0,
-												zIndex: 1500,
+												zIndex: 25,
 											}}
 										>
 											<motion.div
@@ -488,7 +483,7 @@ const MainContent = ({ user }) => {
 														width: '150px',
 														height: '160px',
 														borderRadius: '150px',
-														zIndex: 1500,
+														zIndex: 25,
 														...(isMedia && {
 															scale: '80%',
 														}),
