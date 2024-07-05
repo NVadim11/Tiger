@@ -328,78 +328,97 @@ const MainContent = ({ user }) => {
 		}
 	};
 
-	const clearAnimations = () => {
-		setAnimations([]);
-	};
-
-	const coinClicker = (event) => {
-		if (!event.isTrusted) return;
-		setCurrentImage(false);
-		setCoinState(true);
-		handleShowAnimation(event);
-		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
-		clearTimeout(tigerImgRef.current);
-		clearTimeout(coinRef.current);
-		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
-		coinRef.current = setTimeout(() => setCoinState(false), 4000);
-
-		const clickNewCoins = updateCurrCoins();
-		setCurrCoins((prevCoins) => prevCoins + clickNewCoins);
-		accumulatedCoinsRef.current += clickNewCoins;
-	};
-
-	const handleTouchStart = (event) => {
-		if (event.touches && event.touches.length > 1) {
-			event.preventDefault();
-			return;
-		}
-		if (!event.isTrusted) return;
-		setCurrentImage(false);
-		setCoinState(true);
-		handleShowAnimation(event);
-		clearTimeout(tigerImgRef.current);
-		clearTimeout(coinRef.current);
-		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
-		coinRef.current = setTimeout(() => setCoinState(false), 4000);
-	};
-
-	const handleTouchEnd = (event) => {
-		if (event && event.changedTouches && event.changedTouches.length > 0) {
-			Array.from(event.changedTouches).forEach((touch) => {
-				handleShowAnimation({
-					touches: [touch],
-					target: event.target,
-					currentTarget: event.currentTarget,
-				});
-			});
-		} else {
-			handleShowAnimation(event); // Обработка для не-touch событий
-		}
-
-		const clickNewCoins = updateCurrCoins();
-		setCurrCoins((prevCoins) => prevCoins + clickNewCoins);
-		accumulatedCoinsRef.current += clickNewCoins;
-		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
-	};
-
 	const handleShowAnimation = (event) => {
 		if (!event) return;
-
-		if (event.stopPropagation) {
-			event.stopPropagation();
-		}
-
+	  
 		const touch = event.touches ? event.touches[0] : event;
 		const clicker = event.currentTarget || touch.target;
 		if (!clicker) return;
-
+	  
 		const rect = clicker.getBoundingClientRect();
-		const x = touch.clientX - rect.left;
-		const y = touch.clientY - rect.top;
+		const x = touch.pageX - rect.left;
+		const y = touch.pageY - rect.top;
 
+		console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
+
+	  
 		setAnimations((prev) => [...prev, { x, y }]);
 		setIsAnimationActive(true);
+	  };
+	  
+	  const coinClicker = (event) => {
+		if (!event.isTrusted) return;
+		setCurrentImage(false);
+		setCoinState(true);
+		handleShowAnimation(event);
+		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
+		clearTimeout(tigerImgRef.current);
+		clearTimeout(coinRef.current);
+		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
+		coinRef.current = setTimeout(() => setCoinState(false), 4000);
+	  
+		const clickNewCoins = updateCurrCoins();
+		setCurrCoins((prevCoins) => prevCoins + clickNewCoins);
+		accumulatedCoinsRef.current += clickNewCoins;
+	  };
+	  
+	  const handleTouchStart = (event) => {
+		event.preventDefault(); // Предотвращаем действие по умолчанию для мультитапа
+	  
+		if (event.touches) {
+		  Array.from(event.touches).forEach((touch) => {
+			const clicker = event.currentTarget || touch.target;
+			if (!clicker) return;
+	  
+			const rect = clicker.getBoundingClientRect();
+			const x = touch.pageX - rect.left;
+			const y = touch.pageY - rect.top;
+	  
+			console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
+	  
+			setCurrentImage(false);
+			setCoinState(true);
+			handleShowAnimation({
+			  touches: [touch],
+			  target: event.target,
+			  currentTarget: event.currentTarget,
+			});
+		  });
+		} else {
+		  const clicker = event.currentTarget || event.target;
+		  if (!clicker) return;
+	  
+		  const rect = clicker.getBoundingClientRect();
+		  const x = event.pageX - rect.left;
+		  const y = event.pageY - rect.top;
+	  
+		  console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
+	  
+		  setCurrentImage(false);
+		  setCoinState(true);
+		  handleShowAnimation(event);
+		}
+	  
+		clearTimeout(tigerImgRef.current);
+		clearTimeout(coinRef.current);
+		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
+		coinRef.current = setTimeout(() => setCoinState(false), 4000);
+	  };
+	  
+	  
+	  const handleTouchEnd = () => {
+		const clickNewCoins = updateCurrCoins();
+		setCurrCoins((prevCoins) => prevCoins + clickNewCoins);
+		accumulatedCoinsRef.current += clickNewCoins;
+		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
+	  };
+	  
+	  
+
+	const clearAnimations = () => {
+		setAnimations([]);
 	};
+	
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -528,7 +547,7 @@ const MainContent = ({ user }) => {
 									{currentImage ? (
 										<div
 											className='mainContent__clickArea'
-											onClick={isDesktop() ? coinClicker : null}
+											// onClick={isDesktop() ? coinClicker : null}
 											onTouchStart={handleTouchStart}
 											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
 										>
@@ -577,7 +596,7 @@ const MainContent = ({ user }) => {
 									) : (
 										<div
 											className='mainContent__clickArea'
-											onClick={isDesktop() ? coinClicker : null}
+											// onClick={isDesktop() ? coinClicker : null}
 											onTouchStart={handleTouchStart}
 											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
 										>

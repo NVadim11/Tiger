@@ -63,18 +63,18 @@ body::after {
   }
   &__activities {
     display: flex;
-    border: 1px solid #1c2520;
+    // border: 1px solid #1c2520;
     border-radius: 18px;
     padding: 15px 10px;
     gap: 15px;
-    background: #80c27d;
+    // background: #80c27d;
   }
   &__activitiesBtn {
     position: relative;
     button {
         border: 1px solid #000000;
         border-radius: 10px;
-        height: 44px;
+        height: 66px;
         display: flex;
         justify-content: center;
         gap: 10px;
@@ -85,7 +85,7 @@ body::after {
         line-height: 100%;
         letter-spacing: 0.03em;
         text-align: center;
-        width: 98px;
+        width: 174px;
     }
     button:disabled {
       font-weight: 700;
@@ -112,7 +112,7 @@ body::after {
     button {
         background: #2cb726;
          color: #1c2520;
-         font-size: 14px;
+         font-size: 20px;
     }
     span {
       z-index: 10;
