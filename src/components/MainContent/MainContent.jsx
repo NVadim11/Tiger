@@ -125,7 +125,7 @@ const MainContent = ({ user }) => {
 			// Call pauseGame after 3 seconds
 			pauseTimeoutId = setTimeout(() => {
 				pauseGame();
-			}, 1000);
+			}, 1500);
 		}
 
 		return () => {
@@ -300,7 +300,7 @@ const MainContent = ({ user }) => {
 
 			accumulatedCoinsRef.current = 0;
 			setUnsubmittedCoins(0);
-		}, 500);
+		}, 1000);
 	};
 
 	useEffect(() => {

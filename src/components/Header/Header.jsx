@@ -79,7 +79,7 @@ const Header = ({ user }) => {
 	const leaderBordBtn = () => {
 		const fetchData = async () => {
 			if (Object.keys(user).length) {
-				const res = await getLeaderboard(user.id).unwrap();
+				const res = await getLeaderboard(user.id_telegram).unwrap();
 				setLeaderboardData(res);
 			}
 		};
