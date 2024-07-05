@@ -552,18 +552,18 @@ const MainContent = ({ user }) => {
 														<motion.div
 															className='clickerAnimation'
 															initial={{ opacity: 1, y: 0 }}
-															animate={{ opacity: [1, 0], y: [-30, -120] }}
+															animate={{ opacity: [1, 0], y: [-30, -240] }}
 															exit={{ opacity: 0 }}
-															transition={{ duration: 2 }}
+															transition={{ duration: 1.5 }}
 															style={{
 																color: '#000',
-																fontSize: '45px',
+																fontSize: '34px',
 																left: `${anim.x}px`,
 																top: `${anim.y}px`,
 																position: 'absolute',
-																color: boostPhase ? '#FFDA17' : '#000',
+																color: boostPhase ? '#FFDA17' : '#333333',
 																zIndex: 10,
-																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)',
+																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.6)',
 															}}
 															onAnimationComplete={() => {
 																clearAnimations(index);
@@ -601,17 +601,17 @@ const MainContent = ({ user }) => {
 														<motion.div
 															className='clickerAnimation'
 															initial={{ opacity: 1, y: 0 }}
-															animate={{ opacity: [1, 0], y: [-30, -120] }}
+															animate={{ opacity: [1, 0], y: [-30, -240] }}
 															exit={{ opacity: 0 }}
-															transition={{ duration: 2 }}
+															transition={{ duration: 1.5 }}
 															style={{
-																fontSize: '45px',
+																fontSize: '34px',
 																left: `${anim.x}px`,
 																top: `${anim.y}px`,
 																position: 'absolute',
-																color: boostPhase ? '#FFDA17' : '#000',
+																color: boostPhase ? '#FFDA17' : '#333333',
 																zIndex: 10,
-																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)',
+																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.6)',
 															}}
 															onAnimationComplete={() => {
 																clearAnimations(index);
