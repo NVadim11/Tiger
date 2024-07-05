@@ -139,15 +139,13 @@ const Header = ({ user }) => {
 		if (generatedUrl) {
 			navigator.clipboard
 				.writeText(generatedUrl)
-				.then(() => {
-				})
+				.then(() => {})
 				.catch((err) => {
 					console.error('Failed to copy: ', err);
 				});
 		} else {
 		}
 	};
-
 
 	return (
 		<>

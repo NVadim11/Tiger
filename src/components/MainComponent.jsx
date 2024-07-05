@@ -127,22 +127,27 @@ const MainComponent = () => {
 				imagesRef.current = loadedImages;
 				checkAllLoaded();
 			} catch (e) {
-				console.log('problem loading images');
+				console.log('Problem loading images');
 			}
 		};
 
 		const checkAllLoaded = () => {
 			if (imagesRef.current.length === imageSources.length) {
-				setTimeout(() => {
-					setPreloaderLoaded(true);
-					AOS.init({
-						easing: 'custom',
-					});
-				}, 500);
+				if (user) {
+					setTimeout(() => {
+						setPreloaderLoaded(true);
+						AOS.init({
+							easing: 'custom',
+						});
+					}, 500);
+				} else {
+					console.log('User data is not available.');
+				}
 			}
 		};
+
 		loadImages();
-	}, []);
+	}, [user]);
 
 	useEffect(() => {
 		if (tg && userId) {
@@ -171,7 +176,7 @@ const MainComponent = () => {
 				) : (
 					<>
 						<Preloader loaded={preloaderLoaded} />
-						{!user ? (
+						{user ? (
 							<>
 								<Header user={user} />
 								<main id='main' className='main'>
