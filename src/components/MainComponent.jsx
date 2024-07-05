@@ -3,7 +3,6 @@ import moment from 'moment-timezone';
 import { useEffect, useRef, useState } from 'react';
 import { useGetUserByTgIdQuery } from '../services/phpService';
 
-import tigranCircle from '../img/tigran_circle.webp';
 import avatar from '../img/avatar.webp';
 import back1 from '../img/back1.webp';
 import back2 from '../img/back2.webp';
@@ -20,6 +19,7 @@ import tigranCash from '../img/tigranCash.gif';
 import tigranChill from '../img/tigranChill.gif';
 import tigranGold from '../img/tigranGold.gif';
 import tigranQR from '../img/tigranQR.webp';
+import tigranCircle from '../img/tigran_circle.webp';
 import twitterIcon from '../img/twitterIcon.webp';
 import websiteIcon from '../img/websiteIcon.webp';
 
@@ -179,7 +179,7 @@ const MainComponent = () => {
 				) : (
 					<>
 						<Preloader loaded={preloaderLoaded} />
-						{user ? (
+						{!user ? (
 							<>
 								<Header user={user} />
 								<main id='main' className='main'>

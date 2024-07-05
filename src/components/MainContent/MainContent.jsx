@@ -1,14 +1,16 @@
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
-import { useMediaQuery } from 'react-responsive';
 import { AnimatePresence, motion } from 'framer-motion';
 import moment from 'moment-timezone';
 import React, { useEffect, useRef, useState } from 'react';
-import tigranCircle from '../../img/tigran_circle.webp';
-import boostCoin from '../../img/tigran_circle.webp';
+import { useMediaQuery } from 'react-responsive';
 import energy from '../../img/energy.webp';
 import tigranCash from '../../img/tigranCash.gif';
 import tigranGold from '../../img/tigranGold.gif';
+import {
+	default as boostCoin,
+	default as tigranCircle,
+} from '../../img/tigran_circle.webp';
 import { useUpdateBalanceMutation } from '../../services/phpService';
 import GamePaused from './GamePaused/GamePaused';
 import './MainContent.scss';
@@ -191,7 +193,7 @@ const MainContent = ({ user }) => {
 			setHappinessVal(prevHappinessVal);
 			setClickNewCoins(prevClickNewCoins);
 			setBoostPhase(false);
-			setVisible(true);
+			setVisible(false);
 		}, 10000);
 	};
 
@@ -343,22 +345,6 @@ const MainContent = ({ user }) => {
 
 		setAnimations((prev) => [...prev, { x, y }]);
 		setIsAnimationActive(true);
-	};
-
-	const coinClicker = (event) => {
-		if (!event.isTrusted) return;
-		setCurrentImage(false);
-		setCoinState(true);
-		handleShowAnimation(event);
-		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
-		clearTimeout(tigerImgRef.current);
-		clearTimeout(coinRef.current);
-		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
-		coinRef.current = setTimeout(() => setCoinState(false), 4000);
-
-		const clickNewCoins = updateCurrCoins();
-		setCurrCoins((prevCoins) => prevCoins + clickNewCoins);
-		accumulatedCoinsRef.current += clickNewCoins;
 	};
 
 	const handleTouchStart = (event) => {
@@ -542,7 +528,6 @@ const MainContent = ({ user }) => {
 									{currentImage ? (
 										<div
 											className='mainContent__clickArea'
-											// onClick={isDesktop() ? coinClicker : null}
 											onTouchStart={handleTouchStart}
 											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
 										>
@@ -591,7 +576,6 @@ const MainContent = ({ user }) => {
 									) : (
 										<div
 											className='mainContent__clickArea'
-											// onClick={isDesktop() ? coinClicker : null}
 											onTouchStart={handleTouchStart}
 											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
 										>
