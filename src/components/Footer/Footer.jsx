@@ -614,9 +614,9 @@ const Footer = ({ user }) => {
 								</div>
 								<div className='popupTasks__task'>
 									<button onClick={twitterClick} disabled={twitterQuest === 1}>
-										<div className='popupTasks__task-img'>
+										{/* <div className='popupTasks__task-img'>
 											<img src={visitX} alt='visitX' />
-										</div>
+										</div> */}
 										Follow Twitter
 										{user?.twitter === 0 ? (
 											<p>+10000 </p>
@@ -645,9 +645,9 @@ const Footer = ({ user }) => {
 								</div>
 								<div className='popupTasks__task'>
 									<button onClick={tgClickChat} disabled={tgChatQuest === 1}>
-										<div className='popupTasks__task-img'>
+										{/* <div className='popupTasks__task-img'>
 											<img src={visitTGchat} alt='TG chat' />
-										</div>
+										</div> */}
 										Follow TG Chat
 										{user?.tg_chat === 0 ? (
 											<p>+10000 </p>
@@ -676,9 +676,9 @@ const Footer = ({ user }) => {
 								</div>
 								<div className='popupTasks__task'>
 									<button onClick={tgClickChannel} disabled={tgChannelQuest === 1}>
-										<div className='popupTasks__task-img'>
+										{/* <div className='popupTasks__task-img'>
 											<img src={visitTGchannel} alt='TG channel' />
-										</div>
+										</div> */}
 										Follow TG Channel
 										{user?.tg_channel === 0 ? (
 											<p>+10000 </p>
@@ -707,9 +707,9 @@ const Footer = ({ user }) => {
 								</div>
 								<div className='popupTasks__task'>
 									<button onClick={websiteClick} disabled={websiteQuest === 1}>
-										<div className='popupTasks__task-img'>
+										{/* <div className='popupTasks__task-img'>
 											<img src={visitWeb} alt='Website' />
-										</div>
+										</div> */}
 										Visit Website
 										{user?.website === 0 ? (
 											<p>+3000 </p>

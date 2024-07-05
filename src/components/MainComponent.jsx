@@ -11,8 +11,6 @@ import bgMob from '../img/background_mobile.webp';
 import energy from '../img/energy.webp';
 import leaderboard from '../img/leaderboard.webp';
 import referral from '../img/referral.webp';
-import telegramChannel from '../img/telegramChannel.webp';
-import telegramChat from '../img/telegramChat.webp';
 import tiger1 from '../img/tiger1.webp';
 import tiger_ava from '../img/tiger_ava.webp';
 import tigranCash from '../img/tigranCash.gif';
@@ -20,8 +18,6 @@ import tigranChill from '../img/tigranChill.gif';
 import tigranGold from '../img/tigranGold.gif';
 import tigranQR from '../img/tigranQR.webp';
 import tigranCircle from '../img/tigran_circle.webp';
-import twitterIcon from '../img/twitterIcon.webp';
-import websiteIcon from '../img/websiteIcon.webp';
 
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
@@ -114,8 +110,6 @@ const MainComponent = () => {
 			energy,
 			leaderboard,
 			referral,
-			telegramChannel,
-			telegramChat,
 			tiger_ava,
 			tiger1,
 			tigranCircle,
@@ -123,8 +117,6 @@ const MainComponent = () => {
 			tigranChill,
 			tigranGold,
 			tigranQR,
-			twitterIcon,
-			websiteIcon,
 		];
 
 		const loadImages = async () => {

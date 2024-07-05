@@ -341,8 +341,6 @@ const MainContent = ({ user }) => {
 		const x = touch.pageX - rect.left;
 		const y = touch.pageY - rect.top;
 
-		console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
-
 		setAnimations((prev) => [...prev, { x, y }]);
 		setIsAnimationActive(true);
 	};

@@ -146,6 +146,7 @@ body::after {
 
 .popupTasks {
     display: flex;
+    zoom: 0.9;
   &__wrapper {
     padding: 0 12px;
   }
@@ -245,7 +246,7 @@ body::after {
     button {
         border: 1px solid #0d9047;
         border-radius: 10px;
-        padding: 12px 24px;
+        padding: 12px;
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -327,7 +328,7 @@ body::after {
     z-index: 10;
     button {
       height: 38px;
-      width: 90px;
+      width: 100px;
       font-weight: 700;
       font-size: 14px;
       line-height: 100%;
