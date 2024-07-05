@@ -36,6 +36,7 @@ const MainContent = ({ user }) => {
 	const [animations, setAnimations] = useState([]);
 	const [totalPoints, setTotalPoints] = useState(user?.wallet_balance);
 	const accumulatedCoinsRef = useRef(0);
+	const [unsubmittedCoins, setUnsubmittedCoins] = useState(0);
 	const [isCoinsChanged, setIsCoinsChanged] = useState(false);
 	const isCoinsChangedRef = useRef(isCoinsChanged);
 	const [resetCoinsCalled, setResetCoinsCalled] = useState(false);
@@ -282,8 +283,10 @@ const MainContent = ({ user }) => {
 	};
 
 	const resetCoins = () => {
-		submitData(accumulatedCoinsRef.current);
+		const coinsToSubmit = accumulatedCoinsRef.current + unsubmittedCoins;
+		submitData(coinsToSubmit);
 		accumulatedCoinsRef.current = 0;
+		setUnsubmittedCoins(0);
 	};
 
 	const resetTimeout = () => {
@@ -292,9 +295,11 @@ const MainContent = ({ user }) => {
 			clearTimeout(timeoutRef.current);
 		}
 		timeoutRef.current = setTimeout(() => {
-			submitData(accumulatedCoinsRef.current);
+			const coinsToSubmit = accumulatedCoinsRef.current + unsubmittedCoins;
+			submitData(coinsToSubmit);
 
 			accumulatedCoinsRef.current = 0;
+			setUnsubmittedCoins(0);
 		}, 500);
 	};
 
@@ -326,7 +331,9 @@ const MainContent = ({ user }) => {
 				score: coins,
 			}).unwrap();
 		} catch (e) {
-			console.log('Error submitting coins:');
+			console.log('Error submitting coins:', e);
+			// If there's an error, add the coins back to unsubmittedCoins
+			setUnsubmittedCoins((prev) => prev + coins);
 		}
 	};
 
