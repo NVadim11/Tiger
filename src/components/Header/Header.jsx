@@ -140,15 +140,14 @@ const Header = ({ user }) => {
 			navigator.clipboard
 				.writeText(generatedUrl)
 				.then(() => {
-					alert('URL copied to clipboard!');
 				})
 				.catch((err) => {
 					console.error('Failed to copy: ', err);
 				});
 		} else {
-			alert('No URL to copy!');
 		}
 	};
+
 
 	return (
 		<>

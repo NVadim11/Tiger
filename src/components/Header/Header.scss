@@ -448,12 +448,12 @@
           }
         }
       }
-      &__tableItem:last-child {
-        border: 2px solid var(--mainColor);
-        backdrop-filter: blur(16px);
-        background: #2cb726;
-        color: var(--mainColor);
-      }
+      // &__tableItem:last-child {
+      //   border: 2px solid var(--mainColor);
+      //   backdrop-filter: blur(16px);
+      //   background: #2cb726;
+      //   color: var(--mainColor);
+      // }
       &__itemData {
         display: flex;
         position: relative;
