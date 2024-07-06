@@ -371,6 +371,8 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				setTwitterTaskStatus(1);
 				console.log('Task completed successfully:');
+				openModal('green', 'Task completed successfully.', 'Return');
+				blurPopupTasks();
 			} else {
 				console.log('Error completing task');
 				openModal('red', 'An error occurred. Please try again later.', 'Return');
@@ -394,6 +396,8 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				setChatTaskStatus(1);
 				console.log('Task completed successfully:');
+				openModal('green', 'Task completed successfully.', 'Return');
+				blurPopupTasks();
 			} else {
 				console.log('Error completing task');
 				openModal('red', 'An error occurred. Please try again later.', 'Return');
@@ -417,6 +421,8 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				setСhannelTaskStatus(1);
 				console.log('Task completed successfully:');
+				openModal('green', 'Task completed successfully.', 'Return');
+				blurPopupTasks();
 			} else {
 				console.log('Error completing task');
 				openModal('red', 'An error occurred. Please try again later.', 'Return');
