@@ -1,22 +1,18 @@
-import bcrypt from 'bcryptjs';
-import moment from 'moment-timezone';
-import React, { useEffect, useState } from 'react';
+import bcrypt from 'bcryptjs'
+import moment from 'moment-timezone'
+import React, { useEffect, useState } from 'react'
 import {
 	useChangeWalletMutation,
 	usePassDailyMutation,
 	usePassPartnersMutation,
 	usePassTaskMutation,
 	useSetWalletMutation,
-} from '../../services/phpService';
+} from '../../services/phpService'
 
-import tigerCoin from '../../img/tigran_circle.webp';
-import cross from '../../img/cross.svg';
-import visitTGchannel from '../../img/telegramChannel.webp';
-import visitTGchat from '../../img/telegramChat.webp';
-import visitX from '../../img/twitterIcon.webp';
-import visitWeb from '../../img/websiteIcon.webp';
-import Modal from '../Modal/Modal';
-import './Footer.scss';
+import cross from '../../img/cross.svg'
+import tigerCoin from '../../img/tigran_circle.webp'
+import Modal from '../Modal/Modal'
+import './Footer.scss'
 
 const Footer = ({ user }) => {
 	const tg = window.Telegram.WebApp;
@@ -50,11 +46,6 @@ const Footer = ({ user }) => {
 
 	const dailyTasksObj = user?.daily_quests;
 	const partnerTaskObj = user?.partners_quests;
-
-	// const [twitterQuest, setTwitterQuest] = useState(user?.twitter);
-	// const [tgChatQuest, setTgChatQuest] = useState(user?.tg_chat);
-	// const [tgChannelQuest, setTgChannelQuest] = useState(user?.tg_channel);
-	// const [websiteQuest, setWebsiteQuest] = useState(user?.website);
 	const [dailyQuests, setDailyQuests] = useState(dailyTasksObj);
 	const [partnerQuests, setPartnerQuests] = useState(partnerTaskObj);
 
@@ -326,40 +317,40 @@ const Footer = ({ user }) => {
 
 	const twitterClick = async () => {
 		window.open('https://x.com/tigrun_tap', '_blank');
-	
+
 		if (twitterTaskStatus === 0) {
 			setTwitterTimer(30);
 			setTwitterTaskStatus(2);
 		}
 	};
-	
+
 	const tgClickChat = async () => {
 		window.open('https://t.me/Tig_run_tap', '_blank');
-	
+
 		if (chatTaskStatus === 0) {
 			setChatTimer(30);
 			setChatTaskStatus(2);
 		}
 	};
-	
+
 	const tgClickChannel = async () => {
 		window.open('https://t.me/TigRunVerif', '_blank');
-	
+
 		if (channelTaskStatus === 0) {
 			setChannelTimer(30);
 			setСhannelTaskStatus(2);
 		}
 	};
-	
+
 	const websiteClick = async () => {
 		window.open('https://temka.pro/', '_blank');
-	
+
 		if (websiteTaskStatus === 0) {
 			setWebsiteTimer(30);
 			setWebsiteTaskStatus(2);
 		}
 	};
-	
+
 	const claimTwitter = async () => {
 		try {
 			await passTask({
@@ -370,7 +361,6 @@ const Footer = ({ user }) => {
 			const res = { success: true };
 			if (res.success) {
 				setTwitterTaskStatus(1);
-				console.log('Task completed successfully:');
 				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
 			} else {
@@ -384,7 +374,7 @@ const Footer = ({ user }) => {
 			blurPopupTasks();
 		}
 	};
-	
+
 	const claimChat = async () => {
 		try {
 			await passTask({
@@ -395,7 +385,6 @@ const Footer = ({ user }) => {
 			const res = { success: true };
 			if (res.success) {
 				setChatTaskStatus(1);
-				console.log('Task completed successfully:');
 				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
 			} else {
@@ -409,7 +398,7 @@ const Footer = ({ user }) => {
 			blurPopupTasks();
 		}
 	};
-	
+
 	const claimChannel = async () => {
 		try {
 			await passTask({
@@ -420,11 +409,9 @@ const Footer = ({ user }) => {
 			const res = { success: true };
 			if (res.success) {
 				setСhannelTaskStatus(1);
-				console.log('Task completed successfully:');
 				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
 			} else {
-				console.log('Error completing task');
 				openModal('red', 'An error occurred. Please try again later.', 'Return');
 				blurPopupTasks();
 			}
@@ -434,7 +421,7 @@ const Footer = ({ user }) => {
 			blurPopupTasks();
 		}
 	};
-	
+
 	const claimWebsite = async () => {
 		try {
 			await passTask({
@@ -445,7 +432,6 @@ const Footer = ({ user }) => {
 			const res = { success: true };
 			if (res.success) {
 				setWebsiteTaskStatus(1);
-				console.log('Task completed successfully:');
 				openModal('green', 'Task completed successfully.', 'Return');
 				blurPopupTasks();
 			} else {
@@ -459,7 +445,7 @@ const Footer = ({ user }) => {
 			blurPopupTasks();
 		}
 	};
-	
+
 	useEffect(() => {
 		let timerInterval;
 		if (timerTwitter > 0) {
@@ -471,7 +457,7 @@ const Footer = ({ user }) => {
 		}
 		return () => clearInterval(timerInterval);
 	}, [timerTwitter, twitterTaskStatus]);
-	
+
 	useEffect(() => {
 		let timerInterval;
 		if (timerChat > 0) {
@@ -483,7 +469,7 @@ const Footer = ({ user }) => {
 		}
 		return () => clearInterval(timerInterval);
 	}, [timerChat, chatTaskStatus]);
-	
+
 	useEffect(() => {
 		let timerInterval;
 		if (timerChannel > 0) {
@@ -495,7 +481,7 @@ const Footer = ({ user }) => {
 		}
 		return () => clearInterval(timerInterval);
 	}, [timerChannel, channelTaskStatus]);
-	
+
 	useEffect(() => {
 		let timerInterval;
 		if (timerWebsite > 0) {

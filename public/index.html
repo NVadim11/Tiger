@@ -26,7 +26,6 @@
   Telegram.WebApp.ready()
 
   const initData = Telegram.WebApp.initDataUnsafe
-  console.log('Init Data:', JSON.stringify(initData, null, 2))
 
   if (initData.user) {
     fetch('/save_user_info', {
@@ -48,7 +47,7 @@
   document.body.style.paddingBottom = `${overflow}px`
   window.scrollTo(0, overflow)
 
-  const scrollableEl = document.querySelector('.scrollable');
+  const scrollableEl = document.querySelector('.scrollable')
   let ts
   const onTouchStart = (e) => {
     ts = e.touches[0].clientY

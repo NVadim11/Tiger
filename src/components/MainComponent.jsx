@@ -77,7 +77,6 @@ const MainComponent = () => {
 				}
 
 				const data = await response.json();
-				console.log('Success:', data);
 			} catch (error) {
 				console.error('Error:', error);
 			}
@@ -85,7 +84,6 @@ const MainComponent = () => {
 
 		if (!user) {
 			registerUser();
-			console.log('Init Data:', JSON.stringify(initData, null, 2));
 		} else {
 			console.log('No user data available');
 		}

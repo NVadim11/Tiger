@@ -364,8 +364,6 @@ const MainContent = ({ user }) => {
 				const x = touch.pageX - rect.left;
 				const y = touch.pageY - rect.top;
 
-				console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
-
 				setCurrentImage(false);
 				setCoinState(true);
 				handleShowAnimation({
@@ -381,8 +379,6 @@ const MainContent = ({ user }) => {
 			const rect = clicker.getBoundingClientRect();
 			const x = event.pageX - rect.left;
 			const y = event.pageY - rect.top;
-
-			console.log('Координаты тапа:', x, y); // Выводим координаты тапа в консоль
 
 			setCurrentImage(false);
 			setCoinState(true);
