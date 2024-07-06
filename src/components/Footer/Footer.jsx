@@ -51,10 +51,10 @@ const Footer = ({ user }) => {
 	const dailyTasksObj = user?.daily_quests;
 	const partnerTaskObj = user?.partners_quests;
 
-	const [twitterQuest, setTwitterQuest] = useState(user?.twitter);
-	const [tgChatQuest, setTgChatQuest] = useState(user?.tg_chat);
-	const [tgChannelQuest, setTgChannelQuest] = useState(user?.tg_channel);
-	const [websiteQuest, setWebsiteQuest] = useState(user?.website);
+	// const [twitterQuest, setTwitterQuest] = useState(user?.twitter);
+	// const [tgChatQuest, setTgChatQuest] = useState(user?.tg_chat);
+	// const [tgChannelQuest, setTgChannelQuest] = useState(user?.tg_channel);
+	// const [websiteQuest, setWebsiteQuest] = useState(user?.website);
 	const [dailyQuests, setDailyQuests] = useState(dailyTasksObj);
 	const [partnerQuests, setPartnerQuests] = useState(partnerTaskObj);
 
@@ -63,6 +63,16 @@ const Footer = ({ user }) => {
 	const [modalText, setModalText] = useState('');
 	const [modalType, setModalType] = useState('green'); // Default modal type
 	const [buttonText, setButtonText] = useState('');
+
+	// Fake timer
+	const [twitterTaskStatus, setTwitterTaskStatus] = useState(user?.twitter || 0);
+	const [chatTaskStatus, setChatTaskStatus] = useState(user?.tg_chat || 0);
+	const [channelTaskStatus, setСhannelTaskStatus] = useState(user?.tg_channel || 0);
+	const [websiteTaskStatus, setWebsiteTaskStatus] = useState(user?.website || 0);
+	const [timerTwitter, setTwitterTimer] = useState(0);
+	const [timerChat, setChatTimer] = useState(0);
+	const [timerChannel, setChannelTimer] = useState(0);
+	const [timerWebsite, setWebsiteTimer] = useState(0);
 
 	const openModal = (type, text, btnText) => {
 		setModalType(type);
@@ -81,12 +91,14 @@ const Footer = ({ user }) => {
 	const secretKey = process.env.REACT_APP_SECRET_KEY;
 
 	useEffect(() => {
-		setTwitterQuest(user?.twitter);
-		setTgChatQuest(user?.tg_chat);
-		setTgChannelQuest(user?.tg_channel);
-		setWebsiteQuest(user?.website);
-		setPartnerQuests(partnerTaskObj);
-		setDailyQuests(dailyTasksObj);
+		if (user) {
+			setTwitterTaskStatus(user.twitter || 0);
+			setChatTaskStatus(user.tg_chat || 0);
+			setСhannelTaskStatus(user.tg_channel || 0);
+			setWebsiteTaskStatus(user.website || 0);
+			setPartnerQuests(partnerTaskObj);
+			setDailyQuests(dailyTasksObj);
+		}
 	}, [user]);
 
 	const popupTasksTgl = tasksOpen ? 'popupTasks_show' : null;
@@ -188,102 +200,6 @@ const Footer = ({ user }) => {
 			submitWallet();
 		} else {
 			resetWallet();
-		}
-	};
-
-	const twitterClick = async () => {
-		// tg.openLink('#');
-		try {
-			await passTask({
-				token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
-				id_telegram: user?.id_telegram,
-				task: 'twitter',
-			}).unwrap();
-			const res = { success: true };
-			if (res.success) {
-				// Update quest status to completed (status: 1)
-				setTwitterQuest(1);
-				openModal('green', 'Task completed successfully.', 'Return');
-				blurPopupTasks();
-			} else {
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
-				blurPopupTasks();
-			}
-		} catch (e) {
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
-			blurPopupTasks();
-		}
-	};
-
-	const tgClickChat = async () => {
-		// tg.openLink('#');
-		try {
-			await passTask({
-				token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
-				id_telegram: user?.id_telegram,
-				task: 'tg_chat',
-			}).unwrap();
-			const res = { success: true };
-			if (res.success) {
-				// Update quest status to completed (status: 1)
-				setTgChatQuest(1);
-				openModal('green', 'Task completed successfully.', 'Return');
-				blurPopupTasks();
-			} else {
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
-				blurPopupTasks();
-			}
-		} catch (e) {
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
-			blurPopupTasks();
-		}
-	};
-
-	const tgClickChannel = async () => {
-		// tg.openLink('#');
-		try {
-			await passTask({
-				token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
-				id_telegram: user?.id_telegram,
-				task: 'tg_channel',
-			}).unwrap();
-			const res = { success: true };
-			if (res.success) {
-				// Update quest status to completed (status: 1)
-				setTgChannelQuest(1);
-				openModal('green', 'Task completed successfully.', 'Return');
-				blurPopupTasks();
-			} else {
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
-				blurPopupTasks();
-			}
-		} catch (e) {
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
-			blurPopupTasks();
-		}
-	};
-
-	const websiteClick = async () => {
-		// tg.openLink('#');
-		try {
-			await passTask({
-				token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
-				id_telegram: user?.id_telegram,
-				task: 'website',
-			}).unwrap();
-			const res = { success: true };
-			if (res.success) {
-				// Update quest status to completed (status: 1)
-				setWebsiteQuest(1);
-				openModal('green', 'Task completed successfully.', 'Return');
-				blurPopupTasks();
-			} else {
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
-				blurPopupTasks();
-			}
-		} catch (e) {
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
-			blurPopupTasks();
 		}
 	};
 
@@ -407,6 +323,184 @@ const Footer = ({ user }) => {
 			)
 		);
 	};
+
+	const twitterClick = async () => {
+		window.open('https://x.com/tigrun_tap', '_blank');
+	
+		if (twitterTaskStatus === 0) {
+			setTwitterTimer(30);
+			setTwitterTaskStatus(2);
+		}
+	};
+	
+	const tgClickChat = async () => {
+		window.open('https://t.me/Tig_run_tap', '_blank');
+	
+		if (chatTaskStatus === 0) {
+			setChatTimer(30);
+			setChatTaskStatus(2);
+		}
+	};
+	
+	const tgClickChannel = async () => {
+		window.open('https://t.me/TigRunVerif', '_blank');
+	
+		if (channelTaskStatus === 0) {
+			setChannelTimer(30);
+			setСhannelTaskStatus(2);
+		}
+	};
+	
+	const websiteClick = async () => {
+		window.open('https://temka.pro/', '_blank');
+	
+		if (websiteTaskStatus === 0) {
+			setWebsiteTimer(30);
+			setWebsiteTaskStatus(2);
+		}
+	};
+	
+	const claimTwitter = async () => {
+		try {
+			await passTask({
+				token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
+				id_telegram: user?.id_telegram,
+				task: 'twitter',
+			}).unwrap();
+			const res = { success: true };
+			if (res.success) {
+				setTwitterTaskStatus(1);
+				console.log('Task completed successfully:');
+			} else {
+				console.log('Error completing task');
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				blurPopupTasks();
+			}
+		} catch (e) {
+			console.log(e);
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			blurPopupTasks();
+		}
+	};
+	
+	const claimChat = async () => {
+		try {
+			await passTask({
+				token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
+				id_telegram: user?.id_telegram,
+				task: 'tg_chat',
+			}).unwrap();
+			const res = { success: true };
+			if (res.success) {
+				setChatTaskStatus(1);
+				console.log('Task completed successfully:');
+			} else {
+				console.log('Error completing task');
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				blurPopupTasks();
+			}
+		} catch (e) {
+			console.log(e);
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			blurPopupTasks();
+		}
+	};
+	
+	const claimChannel = async () => {
+		try {
+			await passTask({
+				token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
+				id_telegram: user?.id_telegram,
+				task: 'tg_channel',
+			}).unwrap();
+			const res = { success: true };
+			if (res.success) {
+				setСhannelTaskStatus(1);
+				console.log('Task completed successfully:');
+			} else {
+				console.log('Error completing task');
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				blurPopupTasks();
+			}
+		} catch (e) {
+			console.log(e);
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			blurPopupTasks();
+		}
+	};
+	
+	const claimWebsite = async () => {
+		try {
+			await passTask({
+				token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
+				id_telegram: user?.id_telegram,
+				task: 'website',
+			}).unwrap();
+			const res = { success: true };
+			if (res.success) {
+				setWebsiteTaskStatus(1);
+				console.log('Task completed successfully:');
+				openModal('green', 'Task completed successfully.', 'Return');
+				blurPopupTasks();
+			} else {
+				console.log('Error completing task');
+				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				blurPopupTasks();
+			}
+		} catch (e) {
+			console.log(e);
+			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			blurPopupTasks();
+		}
+	};
+	
+	useEffect(() => {
+		let timerInterval;
+		if (timerTwitter > 0) {
+			timerInterval = setInterval(() => {
+				setTwitterTimer((prev) => prev - 1);
+			}, 1000);
+		} else if (timerTwitter === 0 && twitterTaskStatus === 2) {
+			setTwitterTaskStatus(3);
+		}
+		return () => clearInterval(timerInterval);
+	}, [timerTwitter, twitterTaskStatus]);
+	
+	useEffect(() => {
+		let timerInterval;
+		if (timerChat > 0) {
+			timerInterval = setInterval(() => {
+				setChatTimer((prev) => prev - 1);
+			}, 1000);
+		} else if (timerChat === 0 && chatTaskStatus === 2) {
+			setChatTaskStatus(3);
+		}
+		return () => clearInterval(timerInterval);
+	}, [timerChat, chatTaskStatus]);
+	
+	useEffect(() => {
+		let timerInterval;
+		if (timerChannel > 0) {
+			timerInterval = setInterval(() => {
+				setChannelTimer((prev) => prev - 1);
+			}, 1000);
+		} else if (timerChannel === 0 && channelTaskStatus === 2) {
+			setСhannelTaskStatus(3);
+		}
+		return () => clearInterval(timerInterval);
+	}, [timerChannel, channelTaskStatus]);
+	
+	useEffect(() => {
+		let timerInterval;
+		if (timerWebsite > 0) {
+			timerInterval = setInterval(() => {
+				setWebsiteTimer((prev) => prev - 1);
+			}, 1000);
+		} else if (timerWebsite === 0 && websiteTaskStatus === 2) {
+			setWebsiteTaskStatus(3);
+		}
+		return () => clearInterval(timerInterval);
+	}, [timerWebsite, websiteTaskStatus]);
 
 	return (
 		<>
@@ -613,128 +707,80 @@ const Footer = ({ user }) => {
 									</div>
 								</div>
 								<div className='popupTasks__task'>
-									<button onClick={twitterClick} disabled={twitterQuest === 1}>
-										{/* <div className='popupTasks__task-img'>
-											<img src={visitX} alt='visitX' />
-										</div> */}
-										Follow Twitter
-										{user?.twitter === 0 ? (
-											<p>+10000 </p>
-										) : (
-											<svg
-												width='24'
-												height='24'
-												viewBox='0 0 24 24'
-												fill='none'
-												xmlns='http://www.w3.org/2000/svg'
-											>
-												<g clip-path='url(#clip0_438_3053)'>
-													<path
-														d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-														fill='#2CB726'
-													/>
-												</g>
-												<defs>
-													<clipPath id='clip0_438_3053'>
-														<rect width='24' height='24' fill='white' />
-													</clipPath>
-												</defs>
-											</svg>
-										)}
+									<button onClick={twitterClick} disabled={twitterTaskStatus === 1}>
+										<span>
+											{twitterTaskStatus === 0
+												? 'Follow Twitter'
+												: twitterTaskStatus === 2 || twitterTaskStatus === 3
+												? 'Activity not confirmed. Are you certain you complete this task?'
+												: 'Follow Twitter'}
+										</span>
+										{twitterTaskStatus === 0 && <p>10000</p>}
+										{twitterTaskStatus === 2 && <p>{timerTwitter} seconds</p>}
+										{twitterTaskStatus === 1 && <p>Done!</p>}
 									</button>
+									{twitterTaskStatus === 3 && (
+										<div onClick={claimTwitter} className='claim-button'>
+											Claim
+										</div>
+									)}
 								</div>
 								<div className='popupTasks__task'>
-									<button onClick={tgClickChat} disabled={tgChatQuest === 1}>
-										{/* <div className='popupTasks__task-img'>
-											<img src={visitTGchat} alt='TG chat' />
-										</div> */}
-										Follow TG Chat
-										{user?.tg_chat === 0 ? (
-											<p>+10000 </p>
-										) : (
-											<svg
-												width='24'
-												height='24'
-												viewBox='0 0 24 24'
-												fill='none'
-												xmlns='http://www.w3.org/2000/svg'
-											>
-												<g clip-path='url(#clip0_438_3053)'>
-													<path
-														d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-														fill='#2CB726'
-													/>
-												</g>
-												<defs>
-													<clipPath id='clip0_438_3053'>
-														<rect width='24' height='24' fill='white' />
-													</clipPath>
-												</defs>
-											</svg>
-										)}
+									<button onClick={tgClickChat} disabled={chatTaskStatus === 1}>
+										<span>
+											{chatTaskStatus === 0
+												? 'Follow TG Chat'
+												: chatTaskStatus === 2 || chatTaskStatus === 3
+												? 'Activity not confirmed. Are you certain you complete this task?'
+												: 'Follow TG Chat'}
+										</span>
+										{chatTaskStatus === 0 && <p>10000</p>}
+										{chatTaskStatus === 2 && <p>{timerChat} seconds</p>}
+										{chatTaskStatus === 1 && <p>Done!</p>}
 									</button>
+									{chatTaskStatus === 3 && (
+										<div onClick={claimChat} className='claim-button'>
+											Claim
+										</div>
+									)}
 								</div>
 								<div className='popupTasks__task'>
-									<button onClick={tgClickChannel} disabled={tgChannelQuest === 1}>
-										{/* <div className='popupTasks__task-img'>
-											<img src={visitTGchannel} alt='TG channel' />
-										</div> */}
-										Follow TG Channel
-										{user?.tg_channel === 0 ? (
-											<p>+10000 </p>
-										) : (
-											<svg
-												width='24'
-												height='24'
-												viewBox='0 0 24 24'
-												fill='none'
-												xmlns='http://www.w3.org/2000/svg'
-											>
-												<g clip-path='url(#clip0_438_3053)'>
-													<path
-														d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-														fill='#2CB726'
-													/>
-												</g>
-												<defs>
-													<clipPath id='clip0_438_3053'>
-														<rect width='24' height='24' fill='white' />
-													</clipPath>
-												</defs>
-											</svg>
-										)}
+									<button onClick={tgClickChannel} disabled={channelTaskStatus === 1}>
+										<span>
+											{channelTaskStatus === 0
+												? 'Follow TG Channel'
+												: channelTaskStatus === 2 || channelTaskStatus === 3
+												? 'Activity not confirmed. Are you certain you complete this task?'
+												: 'Follow TG Channel'}
+										</span>
+										{channelTaskStatus === 0 && <p>10000</p>}
+										{channelTaskStatus === 2 && <p>{timerChannel} seconds</p>}
+										{channelTaskStatus === 1 && <p>Done!</p>}
 									</button>
+									{channelTaskStatus === 3 && (
+										<div onClick={claimChannel} className='claim-button'>
+											Claim
+										</div>
+									)}
 								</div>
 								<div className='popupTasks__task'>
-									<button onClick={websiteClick} disabled={websiteQuest === 1}>
-										{/* <div className='popupTasks__task-img'>
-											<img src={visitWeb} alt='Website' />
-										</div> */}
-										Visit Website
-										{user?.website === 0 ? (
-											<p>+3000 </p>
-										) : (
-											<svg
-												width='24'
-												height='24'
-												viewBox='0 0 24 24'
-												fill='none'
-												xmlns='http://www.w3.org/2000/svg'
-											>
-												<g clip-path='url(#clip0_438_3053)'>
-													<path
-														d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-														fill='#2CB726'
-													/>
-												</g>
-												<defs>
-													<clipPath id='clip0_438_3053'>
-														<rect width='24' height='24' fill='white' />
-													</clipPath>
-												</defs>
-											</svg>
-										)}
+									<button onClick={websiteClick} disabled={websiteTaskStatus === 1}>
+										<span>
+											{websiteTaskStatus === 0
+												? 'Visit Website'
+												: websiteTaskStatus === 2 || websiteTaskStatus === 3
+												? 'Activity not confirmed. Are you certain you complete this task?'
+												: 'Visit Website'}
+										</span>
+										{websiteTaskStatus === 0 && <p>10000</p>}
+										{websiteTaskStatus === 2 && <p>{timerWebsite} seconds</p>}
+										{websiteTaskStatus === 1 && <p>Done!</p>}
 									</button>
+									{websiteTaskStatus === 3 && (
+										<div onClick={claimWebsite} className='claim-button'>
+											Claim
+										</div>
+									)}
 								</div>
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 1 ? 'active' : ''}`}>

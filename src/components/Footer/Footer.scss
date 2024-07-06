@@ -151,7 +151,7 @@ body::after {
     padding: 0 12px;
   }
   &__content {
-    margin-top: 64px;
+    margin-top: 72px;
     position: relative;
     border: 1px solid #0d9047;
     border-radius: 20px;
@@ -243,6 +243,19 @@ body::after {
     text-align: center;
     align-items: center;
     margin-bottom: 5px;
+    .claim-button {
+      align-items: center;
+      background: #2cb726;
+    border: 1px solid #0d9047;
+    color: #fff;
+    border-radius: 31px;
+    display: flex;
+    justify-content: center;
+    padding: 6px 12px;
+    width: 30%;
+    position: absolute;
+    right: 12px;
+    }
     button {
         border: 1px solid #0d9047;
         border-radius: 10px;
@@ -257,9 +270,17 @@ body::after {
         line-height: 100%;
         letter-spacing: 0.02em;
     }
+    button:disabled {
+      background: #292f4f;
+      color: #ffffff;
+      p {
+        border: none;
+        background: transparent;
+      }
+    }
     span {
       text-align: start;
-      width: 75%;
+      width: 65%;
       margin-right: 10px;
     }
     svg {
@@ -269,11 +290,12 @@ body::after {
     p {
       display: flex;
       align-items: center;
-      background: linear-gradient(270deg, #1cafee 0%, #35cf6e 71.63%, #3fdb3c 100%);
-      border: 1px solid #fff;
+      background: #2cb726;
+      border: 1px solid #0d9047;
+      color: #fff;
       border-radius: 31px;
       padding: 6px 12px;
-      width: 25%;
+      width: 30%;
       justify-content: center;
       position: absolute;
       right: 12px;
