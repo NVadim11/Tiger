@@ -416,7 +416,7 @@ const MainContent = ({ user }) => {
 		<div className='mainContent'>
 			<div className='mainContent__gameContent'>
 				<div className='mainContent__gameContentBox'>
-					{gamePaused ? (
+					{!gamePaused ? (
 						<GamePaused user={user} remainingTime={timeRemaining} />
 					) : (
 						<>
