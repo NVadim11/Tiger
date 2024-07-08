@@ -176,33 +176,6 @@
     width: 76px;
     height: 0px;
   }
-  .circleElement {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-  }
-  .outerCircle { 
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    border-radius: 100%;
-    padding: 20px;
-    border: solid 3px var(--altBG);
-    height: 260px;
-    width: 260px; 
-    fill: var(--altBG);
-    stroke-width: 2.27px;
-    stroke: var(--mainColor);
-}
-  .innerCircle {
-    border-radius: 100%;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    background-color: var(--altBG);
-}
   /* body::-webkit-scrollbar {
     width: 0.3125rem;
   }

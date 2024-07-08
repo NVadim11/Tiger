@@ -36,13 +36,7 @@ const GamePaused = ({ user, remainingTime }) => {
 				<h4 style={{ marginBottom: '-15px', marginTop: '15px' }}>Calculating...</h4>
 			)}
 			<div className='mainContent__imageContainer'>
-				<div className='circleElement'>
-					<div className='outerCircle'>
-						<div className='innerCircle'>
-							<img src={tigranChill} draggable='false' alt='Tigran Chill' />
-						</div>
-					</div>
-				</div>
+				<img src={tigranChill} draggable='false' alt='Tigran Chill' />
 			</div>
 			<p style={{ marginTop: '-15px' }}>Tigran is tired, come back when timer is over.</p>
 		</div>
