@@ -1,80 +1,117 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import './App.css'
-import AppRouter from './components/Router'
+import React from 'react';
+import { Provider } from 'react-redux';
+import './App.css';
+import AppRouter from './components/Router';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
-import { store } from './store'
+import { store } from './store';
 
 function App() {
   return (
-    <>
-    	<Provider store={store}>
-        <TonConnectUIProvider manifestUrl="https://tg.temka.pro/tonconnect-manifest.json"
-         walletsListConfiguration={{
+    <Provider store={store}>
+      <TonConnectUIProvider 
+        manifestUrl="https://tg.temka.pro/tonconnect-manifest.json"
+        walletsListConfiguration={{
           includeWallets: [
             {
               appName: "telegram-wallet",
               name: "Wallet",
               imageUrl: "https://wallet.tg/images/logo-288.png",
               aboutUrl: "https://wallet.tg/",
-              universalLink: "https://t.me/wallet/start",
-              bridgeUrl: "https://bridge.tonapi.io/bridge",
+              universalLink: "https://t.me/wallet?attach=wallet",
+              bridgeUrl: "https://bridge.ton.space/bridge",
               platforms: ["ios", "android", "macos", "windows", "linux"]
-          },
-            {
-              appName: "tonwallet",
-              name: "TON Wallet",
-              imageUrl: "https://wallet.ton.org/assets/ui/qr-logo.png",
-              aboutUrl: "https://chrome.google.com/webstore/detail/ton-wallet/nphplpgoakhhjchkkhmiggakijnkhfnd",
-              universalLink: "https://wallet.ton.org/ton-connect",
-              jsBridgeKey: "tonwallet",
-              bridgeUrl: "https://bridge.tonapi.io/bridge",
-              platforms: ["chrome", "android"]
-            },
-            {
-              appName: "nicegramWallet",
-              name: "Nicegram Wallet",
-              imageUrl: "https://static.nicegram.app/icon.png",
-              aboutUrl: "https://nicegram.app",
-              universalLink: "https://nicegram.app/tc",
-              deepLink: "nicegram-tc://",
-              jsBridgeKey: "nicegramWallet",
-              bridgeUrl: "https://bridge.tonapi.io/bridge",
-              platforms: ["ios", "android"]
-            },
-            {
-              appName: "binanceTonWeb3Wallet",
-              name: "Binance Web3 Wallet",
-              imageUrl: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMEIwRTExIi8+CjxwYXRoIGQ9Ik01IDE1TDcuMjU4MDYgMTIuNzQxOUw5LjUxNjEzIDE1TDcuMjU4MDYgMTcuMjU4MUw1IDE1WiIgZmlsbD0iI0YwQjkwQiIvPgo8cGF0aCBkPSJNOC44NzA5NyAxMS4xMjlMMTUgNUwyMS4xMjkgMTEuMTI5TDE4Ljg3MSAxMy4zODcxTDE1IDkuNTE2MTNMMTEuMTI5IDEzLjM4NzFMOC44NzA5NyAxMS4xMjlaIiBmaWxsPSIjRjBCOTBCIi8+CjxwYXRoIGQ9Ik0xMi43NDE5IDE1TDE1IDEyLjc0MTlMMTcuMjU4MSAxNUwxNSAxNy4yNTgxTDEyLjc0MTkgMTVaIiBmaWxsPSIjRjBCOTBCIi8+CjxwYXRoIGQ9Ik0xMS4xMjkgMTYuNjEyOUw4Ljg3MDk3IDE4Ljg3MUwxNSAyNUwyMS4xMjkgMTguODcxTDE4Ljg3MSAxNi42MTI5TDE1IDIwLjQ4MzlMMTEuMTI5IDE2LjYxMjlaIiBmaWxsPSIjRjBCOTBCIi8+CjxwYXRoIGQ9Ik0yMC40ODM5IDE1TDIyLjc0MTkgMTIuNzQxOUwyNSAxNUwyMi43NDE5IDE3LjI1ODFMMjAuNDgzOSAxNVoiIGZpbGw9IiNGMEI5MEIiLz4KPC9zdmc+Cg==",
-              aboutUrl: "https://www.binance.com/en/web3wallet",
-              deepLink: "bnc://app.binance.com/cedefi/ton-connect",
-              bridgeUrl: "https://bridge.tonapi.io/bridge",
-              platforms: ["chrome", "safari", "ios", "android"],
-              universalLink: "https://app.binance.com/cedefi/ton-connect"
-            },
-            {
-              appName: "tonkeeper",
-              name: "Tonkeeper",
-              imageUrl: "https://tonkeeper.com/assets/tonconnect-icon.png",
-              aboutUrl: "https://tonkeeper.com",
-              universalLink: "https://app.tonkeeper.com/ton-connect",
-              jsBridgeKey: "tonkeeper",
-              bridgeUrl: [
-                { type: "sse", url: "https://bridge.tonapi.io/bridge" },
-                { type: "js", key: "tonkeeper" }
-              ],
-              platforms: ["ios", "android", "chrome", "firefox", "safari", "windows", "macos", "linux"]
             }
+            // {
+            //   appName: "tonkeeper",
+            //   name: "Tonkeeper",
+            //   imageUrl: "https://tonkeeper.com/assets/tonconnect-icon.png",
+            //   tondns: "tonkeeper.ton",
+            //   aboutUrl: "https://tonkeeper.com",
+            //   universalLink: "https://app.tonkeeper.com/ton-connect",
+            //   deepLink: "tonkeeper-tc://",
+            //   bridgeUrl: ["https://bridge.tonapi.io/bridge", "tonkeeper"],
+            //   platforms: ["ios", "android", "chrome", "firefox", "macos"]
+            // },
+            // {
+            //   appName: "mytonwallet",
+            //   name: "MyTonWallet",
+            //   imageUrl: "https://mytonwallet.io/icon-256.png",
+            //   aboutUrl: "https://mytonwallet.io",
+            //   universalLink: "https://connect.mytonwallet.org",
+            //   bridgeUrl: ["mytonwallet", "https://tonconnectbridge.mytonwallet.org/bridge/"],
+            //   platforms: ["chrome", "windows", "macos", "linux", "ios", "android", "firefox"]
+            // },
+            // {
+            //   appName: "openmask",
+            //   name: "OpenMask",
+            //   imageUrl: "https://raw.githubusercontent.com/OpenProduct/openmask-extension/main/public/openmask-logo-288.png",
+            //   aboutUrl: "https://www.openmask.app/",
+            //   bridgeUrl: "openmask",
+            //   platforms: ["chrome"]
+            // },
+            // {
+            //   appName: "tonhub",
+            //   name: "Tonhub",
+            //   imageUrl: "https://tonhub.com/tonconnect_logo.png",
+            //   aboutUrl: "https://tonhub.com",
+            //   universalLink: "https://tonhub.com/ton-connect",
+            //   bridgeUrl: ["tonhub", "https://connect.tonhubapi.com/tonconnect"],
+            //   platforms: ["ios", "android"]
+            // },
+            // {
+            //   appName: "dewallet",
+            //   name: "DeWallet",
+            //   imageUrl: "https://raw.githubusercontent.com/delab-team/manifests-images/main/WalletAvatar.png",
+            //   aboutUrl: "https://delabwallet.com",
+            //   universalLink: "https://t.me/dewallet?attach=wallet",
+            //   bridgeUrl: "https://sse-bridge.delab.team/bridge",
+            //   platforms: ["ios", "android"]
+            // },
+            // {
+            //   appName: "xtonwallet",
+            //   name: "XTONWallet",
+            //   imageUrl: "https://xtonwallet.com/assets/img/icon-256-back.png",
+            //   aboutUrl: "https://xtonwallet.com",
+            //   bridgeUrl: "xtonwallet",
+            //   platforms: ["chrome", "firefox"]
+            // },
+            // {
+            //   appName: "tonwallet",
+            //   name: "TON Wallet",
+            //   imageUrl: "https://wallet.ton.org/assets/ui/qr-logo.png",
+            //   aboutUrl: "https://chrome.google.com/webstore/detail/ton-wallet/nphplpgoakhhjchkkhmiggakijnkhfnd",
+            //   bridgeUrl: "tonwallet",
+            //   platforms: ["chrome"]
+            // },
+            // {
+            //   appName: "bitgetTonWallet",
+            //   name: "Bitget Wallet",
+            //   imageUrl: "https://raw.githubusercontent.com/bitkeepwallet/download/main/logo/png/bitget_wallet_logo_0_gas_fee.png",
+            //   aboutUrl: "https://web3.bitget.com",
+            //   deepLink: "bitkeep://",
+            //   bridgeUrl: ["bitgetTonWallet", "https://bridge.tonapi.io/bridge"],
+            //   platforms: ["ios", "android", "chrome"],
+            //   universalLink: "https://bkcode.vip/ton-connect"
+            // },
+            // {
+            //   appName: "safepalwallet",
+            //   name: "SafePal",
+            //   imageUrl: "https://s.pvcliping.com/web/public_image/SafePal_x288.png",
+            //   aboutUrl: "https://www.safepal.com",
+            //   universalLink: "https://link.safepal.io/ton-connect",
+            //   deepLink: "safepal-tc://",
+            //   bridgeUrl: ["https://ton-bridge.safepal.com/tonbridge/v1/bridge", "safepalwallet"],
+            //   platforms: ["ios", "android", "chrome", "firefox"]
+            // }
           ]
         }}
         actionsConfiguration={{
           twaReturnUrl: 'https://t.me/WebAppWalletBot/tigr_run_bot'
-      }}
+        }}
       >
-          <AppRouter />
-        </TonConnectUIProvider>
-      </Provider>
-    </>
+        <AppRouter />
+      </TonConnectUIProvider>
+    </Provider>
   );
 }
 
