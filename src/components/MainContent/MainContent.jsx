@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import energy from '../../img/energy.webp';
 import boostCoin from '../../img/tigranBoost.webp';
 import tigranCash from '../../img/tigranCash.gif';
+import tigranIdle from '../../img/tigranIdle.gif';
 import tigranGold from '../../img/tigranGold.gif';
 import { default as tigranCircle } from '../../img/tigran_circle.webp';
 import { useUpdateBalanceMutation } from '../../services/phpService';
@@ -18,7 +19,7 @@ const MainContent = ({ user }) => {
 	const [coinState, setCoinState] = useState(false);
 	const [currCoins, setCurrCoins] = useState(0);
 	const [currEnergy, setCurrEnergy] = useState(0); //user?.energy
-	const [tigerIdle, setTigerIdle] = useState(tigranCash);
+	const [tigerIdle, setTigerIdle] = useState(tigranIdle);
 	const [tigerActive, setTigerActive] = useState(tigranCash);
 	const coinRef = useRef(null);
 	const [updateBalance] = useUpdateBalanceMutation();
@@ -250,7 +251,7 @@ const MainContent = ({ user }) => {
 			} else {
 				hideBoostTimeout = setTimeout(() => {
 					setVisible(false);
-				}, 8300);
+				}, 7000);
 			}
 		}
 
@@ -272,7 +273,7 @@ const MainContent = ({ user }) => {
 			resetCoins(); // Call resetCoins only once
 		}
 
-		setTigerIdle(tigranCash);
+		setTigerIdle(tigranIdle);
 		setTigerActive(tigranCash);
 		setIsCoinsChanged(true);
 		resetTimeout();
@@ -467,7 +468,6 @@ const MainContent = ({ user }) => {
 														cursor: 'pointer',
 														width: '150px',
 														height: '180px',
-														borderRadius: '150px',
 														zIndex: 25,
 														...(isMedia && {
 															scale: '80%',
@@ -482,6 +482,7 @@ const MainContent = ({ user }) => {
 															width: '100%',
 															height: '100%',
 															userSelect: 'none',
+															scale: '100%',
 														}}
 														initial={{ opacity: 0, rotate: 0 }}
 														animate={{ opacity: 1, rotate: 360 }}
@@ -560,7 +561,7 @@ const MainContent = ({ user }) => {
 											))}
 											<div className='mainContent__imageContainer'>
 												<img
-													src={boostPhase ? tigranGold : tigranCash}
+													src={boostPhase ? tigranGold : tigranIdle}
 													draggable='false'
 													alt='Tigran idle'
 												/>

@@ -1,18 +1,18 @@
-import bcrypt from 'bcryptjs'
-import moment from 'moment-timezone'
-import React, { useEffect, useState } from 'react'
+import bcrypt from 'bcryptjs';
+import moment from 'moment-timezone';
+import React, { useEffect, useState } from 'react';
 import {
 	useChangeWalletMutation,
 	usePassDailyMutation,
 	usePassPartnersMutation,
 	usePassTaskMutation,
 	useSetWalletMutation,
-} from '../../services/phpService'
+} from '../../services/phpService';
 
-import cross from '../../img/cross.svg'
-import tigerCoin from '../../img/tigran_circle.webp'
-import Modal from '../Modal/Modal'
-import './Footer.scss'
+import cross from '../../img/cross.svg';
+import tigerCoin from '../../img/tigran_circle.webp';
+import Modal from '../Modal/Modal';
+import './Footer.scss';
 
 const Footer = ({ user }) => {
 	const tg = window.Telegram.WebApp;
@@ -601,8 +601,7 @@ const Footer = ({ user }) => {
 											  }
 									}
 								>
-									<button>Partnership</button>
-									{/* <div className='footerMain__activitiesHint'>Coming Soon</div> */}
+									<button>Partners</button>
 								</div>
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
