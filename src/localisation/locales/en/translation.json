@@ -1,0 +1,6 @@
+{
+  "timeRemaining": "Time remaining: {{time}} minutes",
+  "calculating": "Calculating...",
+  "tigranTired": "Tigran is tired, come back when timer is over.",
+  "totalCoins": "Total Coins: {{coins}}"
+}

@@ -5,6 +5,9 @@ import AppRouter from './components/Router';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { store } from './store';
 
+// import i18n (needs to be bundled ;)) 
+import './localisation/i18n';
+
 function App() {
   return (
     <Provider store={store}>

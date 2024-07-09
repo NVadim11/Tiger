@@ -29,18 +29,16 @@ const GamePaused = ({ user, remainingTime }) => {
 				</div>
 			</div>
 			{timeRemaining ? (
-				<h4 style={{ marginBottom: '-60px', marginTop: '20px' }}>
+				<h4 style={{ marginBottom: '10px', marginTop: '20px' }}>
 					Time remaining: {formatTime(timeRemaining)} minutes
 				</h4>
 			) : (
-				<h4 style={{ marginBottom: '-60px', marginTop: '20px' }}>Calculating...</h4>
+				<h4 style={{ marginBottom: '10px', marginTop: '20px' }}>Calculating...</h4>
 			)}
 			<div className='mainContent__imageContainer'>
 				<img src={tigranChill} draggable='false' alt='Tigran Chill' />
 			</div>
-			<p style={{ marginTop: '-100px' }}>
-				Tigran is tired, come back when timer is over.
-			</p>
+			<p style={{ marginTop: '20px' }}>Tigran is tired, come back when timer is over.</p>
 		</div>
 	);
 };
