@@ -342,10 +342,8 @@ const MainContent = ({ user }) => {
 		const touch = event.touches ? event.touches[0] : event;
 		const clicker = event.currentTarget || touch.target;
 		if (!clicker) return;
-
-		const rect = clicker.getBoundingClientRect();
-		const x = touch.pageX - rect.left;
-		const y = touch.pageY - rect.top;
+		const x = touch.pageX;
+		const y = touch.pageY;
 
 		setAnimations((prev) => [...prev, { x, y }]);
 		setIsAnimationActive(true);
@@ -358,10 +356,8 @@ const MainContent = ({ user }) => {
 			Array.from(event.touches).forEach((touch) => {
 				const clicker = event.currentTarget || touch.target;
 				if (!clicker) return;
-
-				const rect = clicker.getBoundingClientRect();
-				const x = touch.pageX - rect.left;
-				const y = touch.pageY - rect.top;
+				const x = touch.pageX;
+				const y = touch.pageY;
 
 				setCurrentImage(false);
 				setCoinState(true);
@@ -374,10 +370,8 @@ const MainContent = ({ user }) => {
 		} else {
 			const clicker = event.currentTarget || event.target;
 			if (!clicker) return;
-
-			const rect = clicker.getBoundingClientRect();
-			const x = event.pageX - rect.left;
-			const y = event.pageY - rect.top;
+			const x = event.pageX;
+			const y = event.pageY;
 
 			setCurrentImage(false);
 			setCoinState(true);
@@ -537,7 +531,7 @@ const MainContent = ({ user }) => {
 														<motion.div
 															className='clickerAnimation'
 															initial={{ opacity: 1, y: 0 }}
-															animate={{ opacity: [1, 0], y: [-30, -240] }}
+															animate={{ opacity: [1, 0], y: [-90, -240] }}
 															exit={{ opacity: 0 }}
 															transition={{ duration: 1.5 }}
 															style={{
@@ -579,7 +573,7 @@ const MainContent = ({ user }) => {
 														<motion.div
 															className='clickerAnimation'
 															initial={{ opacity: 1, y: 0 }}
-															animate={{ opacity: [1, 0], y: [-30, -240] }}
+															animate={{ opacity: [1, 0], y: [-90, -240] }}
 															exit={{ opacity: 0 }}
 															transition={{ duration: 1.5 }}
 															style={{
