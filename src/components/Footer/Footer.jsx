@@ -614,7 +614,7 @@ const Footer = ({ user }) => {
 											<div className='popupTasks__walletTask-input'>
 												<input
 													type='text'
-													placeholder='Enter Solana Wallet Address'
+													placeholder='Enter Wallet Address'
 													value={walletVaL}
 													onChange={(e) => setWalletVal(e.target.value)}
 													disabled={walletInputDisabled === true}

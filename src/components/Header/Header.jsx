@@ -6,7 +6,7 @@ import crown from '../../img/crown.svg';
 import lead_icon from '../../img/leaderboard.webp';
 import ref_icon from '../../img/referral.webp';
 import { useGetLeaderboardMutation } from '../../services/phpService';
-import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
+import { TonConnectButton } from '@tonconnect/ui-react';
 import './Header.scss';
 
 const Header = ({ user }) => {
@@ -29,12 +29,7 @@ const Header = ({ user }) => {
 	const menuRef = useRef(null);
 
 	const tg = window.Telegram.WebApp;
-
-	const wallet = useTonWallet();
-	if (wallet) {
-        console.log('Wallet address:', wallet);
-    }
-
+	
 	const openLink = (url) => {
 		tg.openLink(url);
 	};
@@ -157,6 +152,7 @@ const Header = ({ user }) => {
 				{/* <div className='header__logo'>
 					<img src={face} alt='Tigran-logo' />
 				</div> */}
+				
 				<TonConnectButton />
 				<div className='header__btn-group'>
 					<div className='header__social-links'>
