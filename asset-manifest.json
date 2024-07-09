@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/Tiger/static/css/main.1eefec25.css",
+    "main.js": "/Tiger/static/js/main.f092d071.js",
+    "static/media/tigranChill.gif": "/Tiger/static/media/tigranChill.a82aa83fdbdf616b8f7e.gif",
+    "static/media/BakbakOne-Regular.ttf": "/Tiger/static/media/BakbakOne-Regular.7dea4ba30d3041673c71.ttf",
+    "static/media/tigranCash.gif": "/Tiger/static/media/tigranCash.a71eaf47ef01c71ced16.gif",
+    "static/media/tigranBoost.webp": "/Tiger/static/media/tigranBoost.46a262fe4b6900787e0b.webp",
+    "static/media/back2.webp": "/Tiger/static/media/back2.855ecb7c2242bb730ab6.webp",
+    "static/media/tiger1.webp": "/Tiger/static/media/tiger1.989219c1f61df51625e8.webp",
+    "static/media/back3.webp": "/Tiger/static/media/back3.ca9e1b772a39592691b9.webp",
+    "static/media/back1.webp": "/Tiger/static/media/back1.e7e2953f963f1fb6c85f.webp",
+    "static/media/tigranGold.gif": "/Tiger/static/media/tigranGold.4c0359d79bd8f4e677be.gif",
+    "static/media/background_mobile.webp": "/Tiger/static/media/background_mobile.137a7feca612b0e8baf3.webp",
+    "static/media/tigran_circle.webp": "/Tiger/static/media/tigran_circle.ee3d2591d118441c741d.webp",
+    "static/media/tiger_ava.webp": "/Tiger/static/media/tiger_ava.8cfcdea6efe0dea065e1.webp",
+    "static/media/Acme-Regular.ttf": "/Tiger/static/media/Acme-Regular.f6db4c5c3282b4e95e85.ttf",
+    "static/media/avatar.webp": "/Tiger/static/media/avatar.fcc3110bf436960302b6.webp",
+    "static/media/cross.svg": "/Tiger/static/media/cross.260a72c6590d5fcabef11c6262079a46.svg",
+    "index.html": "/Tiger/index.html",
+    "static/media/copy.svg": "/Tiger/static/media/copy.7f86c828162b5b60758a61c526137384.svg",
+    "static/media/crown.svg": "/Tiger/static/media/crown.5492c5339f62795806dd62d7a14caeb5.svg",
+    "static/media/tigranQR.webp": "/Tiger/static/media/tigranQR.0e680ac65cada9d010eb.webp",
+    "static/media/energy.webp": "/Tiger/static/media/energy.5ec489e1ba36cbabe7b3.webp",
+    "static/media/referral.webp": "/Tiger/static/media/referral.d9cd870f4cbce06b0aff.webp",
+    "static/media/leaderboard.webp": "/Tiger/static/media/leaderboard.f2c281332e4c6337e8e2.webp",
+    "main.1eefec25.css.map": "/Tiger/static/css/main.1eefec25.css.map",
+    "main.f092d071.js.map": "/Tiger/static/js/main.f092d071.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1eefec25.css",
+    "static/js/main.f092d071.js"
+  ]
+}
