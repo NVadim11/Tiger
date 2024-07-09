@@ -6,6 +6,7 @@ import crown from '../../img/crown.svg';
 import lead_icon from '../../img/leaderboard.webp';
 import ref_icon from '../../img/referral.webp';
 import { useGetLeaderboardMutation } from '../../services/phpService';
+import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
 import './Header.scss';
 
 const Header = ({ user }) => {
@@ -28,6 +29,11 @@ const Header = ({ user }) => {
 	const menuRef = useRef(null);
 
 	const tg = window.Telegram.WebApp;
+
+	const wallet = useTonWallet();
+	if (wallet) {
+        console.log('Wallet address:', wallet);
+    }
 
 	const openLink = (url) => {
 		tg.openLink(url);
@@ -102,14 +108,12 @@ const Header = ({ user }) => {
 
 	const fadeShow = () => {
 		const htmlTag = document.getElementById('html');
-		if (htmlTag) htmlTag.classList.add('popupLeaderboard-show');
 		const headerTag = document.getElementById('header');
 		const mainTag = document.getElementById('main');
-		const bgTag = document.getElementById('bgImage');
 		const footerTag = document.getElementById('footer');
+		if (htmlTag) htmlTag.classList.add('popupLeaderboard-show');
 		if (headerTag) headerTag.classList.add('show-blur');
 		if (mainTag) mainTag.classList.add('show-blur');
-		if (bgTag) bgTag.classList.add('h100');
 		if (footerTag) footerTag.classList.add('show-blur');
 	};
 
@@ -149,11 +153,11 @@ const Header = ({ user }) => {
 
 	return (
 		<>
-			<header className='header'>
-				<div className='header__logo'>
+			<header id="header" className='header'>
+				{/* <div className='header__logo'>
 					<img src={face} alt='Tigran-logo' />
-				</div>
-
+				</div> */}
+				<TonConnectButton />
 				<div className='header__btn-group'>
 					<div className='header__social-links'>
 						<a
