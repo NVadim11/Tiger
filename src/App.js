@@ -9,7 +9,7 @@ function App() {
   return (
     <>
     	<Provider store={store}>
-      <TonConnectUIProvider manifestUrl="https://nvadim11.github.io/Tiger/">
+      <TonConnectUIProvider manifestUrl="https://nvadim11.github.io/Tiger/tonconnect-manifest.json">
           <AppRouter />
         </TonConnectUIProvider>
       </Provider>
