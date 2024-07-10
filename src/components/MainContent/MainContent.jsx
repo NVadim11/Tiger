@@ -611,7 +611,7 @@ const MainContent = ({ user }) => {
 													<img src={tigranCircle} draggable='false' />
 												</div>
 												<div className='mainContent__sessionCoins-text'>
-													<span>For Session</span>
+													<span>{t('mainSessionCoins')}</span>
 													<div className='blackLine'></div>
 													<div className='mainContent__sessionCoins-coins'>
 														{currCoins}
@@ -621,10 +621,7 @@ const MainContent = ({ user }) => {
 										)}
 										{!gamePaused && (
 											<div className='mainContent__energyHint'>
-												<p>
-													The happier the Tigran — the more you get  Make it rain and
-													enjoy rewards
-												</p>
+												<p>{t('mainEnergyHint')}</p>
 											</div>
 										)}
 									</div>

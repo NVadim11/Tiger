@@ -18,5 +18,30 @@
 	"gamePauseTitle": "Time remaining:",
 	"gamePauseMinutes": "minutes",
 	"gamePauseCalc": "Calculating...",
-	"gamePauseDescr": "Tigran is tired, come back when timer is over."
+	"gamePauseDescr": "Tigran is tired, come back when timer is over.",
+
+	"mainSessionCoins": "For Session",
+	"mainEnergyHint": "The happier the Tigran — the more you get  Make it rain and enjoy rewards",
+
+	"modalSuccess": "Task completed successfully.",
+	"modalAttention": "Submit your wallet first.",
+	"modalError": "An error occurred. Please try again later.",
+	"modalWalletSucc": "Wallet changed successfully.",
+	"modalWalletBusy": "This wallet is already in use.",
+	"modalReturn": "Return",
+
+	"tasksTabTitle": "Tasks",
+	"tasksTitle": "Complete tasks and get rewarded!",
+	"tasksTabSocial": "Social",
+	"tasksTabDaily": "Daily",
+	"tasksTabPartners": "Partners",
+	"walletTaskTitle": "Current wallet",
+	"walletTaskHint": "*it can be done once every 3 days",
+
+	"taskTimer": "seconds",
+	"followTwitter": "Follow Twitter",
+	"followTGChat": "Follow TG Chat",
+	"followTGChannel": "Follow TG Channel",
+	"visitWebsite": "Visit Website",
+	"activityCheck": "Activity not confirmed. Are you certain you complete this task?"
 }

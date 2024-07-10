@@ -12,6 +12,7 @@ import {
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigran_circle.webp';
 import Modal from '../Modal/Modal';
+import { useTranslation } from 'react-i18next';
 import './Footer.scss';
 
 const Footer = ({ user }) => {
@@ -33,6 +34,8 @@ const Footer = ({ user }) => {
 
 	const [inputFirst, setInputFirst] = useState(true);
 	const [inputSecond, setInputSecond] = useState(false);
+
+	const { t } = useTranslation();
 
 	const toggleFirst = () => {
 		setInputFirst(true);
@@ -211,11 +214,11 @@ const Footer = ({ user }) => {
 				}).unwrap();
 				setResetBtnDisabled(true);
 				setWalletInputDisabled(true);
-				openModal('green', 'Wallet submitted successfully.', 'Return');
+				openModal('green', 'Wallet submitted successfully.', `${t('modalReturn')}`);
 				blurPopupTasks();
 				toggleSecond();
 			} catch (e) {
-				openModal('red', 'This wallet is already in use.', 'Return');
+				openModal('red', 'This wallet is already in use.', `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		}
@@ -231,11 +234,11 @@ const Footer = ({ user }) => {
 				}).unwrap();
 				setResetBtnDisabled(true);
 				setWalletInputDisabled(true);
-				openModal('green', 'Wallet changed successfully.', 'Return');
+				openModal('green', `${t('modalWalletSucc')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 				toggleSecond();
 			} catch (e) {
-				openModal('red', 'This wallet is already in use.', 'Return');
+				openModal('red', `${t('modalWalletBusy')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		}
@@ -257,14 +260,14 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				// Update quest status to completed (status: 1)
 				updateDailyQStatus(taskId, 1);
-				openModal('green', 'Task completed successfully.', 'Return');
+				openModal('green', `${t('modalSuccess')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			} else {
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		} catch (e) {
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 			blurPopupTasks();
 		}
 	};
@@ -294,14 +297,14 @@ const Footer = ({ user }) => {
 			if (res.success) {
 				// Update quest status to completed (status: 1)
 				updatePartnerQStatus(taskId, 1);
-				openModal('green', 'Task completed successfully.', 'Return');
+				openModal('green', `${t('modalSuccess')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			} else {
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		} catch (e) {
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 			blurPopupTasks();
 		}
 	};
@@ -361,16 +364,16 @@ const Footer = ({ user }) => {
 			const res = { success: true };
 			if (res.success) {
 				setTwitterTaskStatus(1);
-				openModal('green', 'Task completed successfully.', 'Return');
+				openModal('green', `${t('modalSuccess')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			} else {
 				console.log('Error completing task');
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		} catch (e) {
 			console.log(e);
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 			blurPopupTasks();
 		}
 	};
@@ -385,16 +388,16 @@ const Footer = ({ user }) => {
 			const res = { success: true };
 			if (res.success) {
 				setChatTaskStatus(1);
-				openModal('green', 'Task completed successfully.', 'Return');
+				openModal('green', `${t('modalSuccess')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			} else {
 				console.log('Error completing task');
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		} catch (e) {
 			console.log(e);
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 			blurPopupTasks();
 		}
 	};
@@ -409,15 +412,15 @@ const Footer = ({ user }) => {
 			const res = { success: true };
 			if (res.success) {
 				setСhannelTaskStatus(1);
-				openModal('green', 'Task completed successfully.', 'Return');
+				openModal('green', `${t('modalSuccess')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			} else {
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		} catch (e) {
 			console.log(e);
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 			blurPopupTasks();
 		}
 	};
@@ -432,16 +435,16 @@ const Footer = ({ user }) => {
 			const res = { success: true };
 			if (res.success) {
 				setWebsiteTaskStatus(1);
-				openModal('green', 'Task completed successfully.', 'Return');
+				openModal('green', `${t('modalSuccess')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			} else {
 				console.log('Error completing task');
-				openModal('red', 'An error occurred. Please try again later.', 'Return');
+				openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		} catch (e) {
 			console.log(e);
-			openModal('red', 'An error occurred. Please try again later.', 'Return');
+			openModal('red', `${t('modalError')}`, `${t('modalReturn')}`);
 			blurPopupTasks();
 		}
 	};
@@ -525,7 +528,7 @@ const Footer = ({ user }) => {
 										</clipPath>
 									</defs>
 								</svg>
-								<span>Tasks</span>
+								<span>{t('tasksTabTitle')}</span>
 							</button>
 						</div>
 						{/* <div className='footerMain__activitiesBtn'>
@@ -553,7 +556,7 @@ const Footer = ({ user }) => {
 								<img src={cross} />
 							</button>
 							<div className='popupTasks__title'>
-								<h4>Complete tasks and get rewarded!</h4>
+								<h4>{t('tasksTitle')}</h4>
 							</div>
 							<div className='popupTasks__coins'>
 								<div className='popupTasks__coinBox'>
@@ -574,7 +577,7 @@ const Footer = ({ user }) => {
 									className={`popupTasks__tabs-btn ${activeTab === 0 ? 'active' : ''}`}
 									onClick={() => handleTabClick(0)}
 								>
-									<button>Social</button>
+									<button>{t('tasksTabSocial')}</button>
 								</div>
 								<div
 									className={`popupTasks__tabs-btn ${activeTab === 1 ? 'active' : ''}`}
@@ -582,12 +585,16 @@ const Footer = ({ user }) => {
 										user?.wallet_address
 											? () => handleTabClick(1)
 											: () => {
-													openModal('yellow', 'Submit your wallet first.', 'Return');
+													openModal(
+														'yellow',
+														`${t('modalAttention')}`,
+														`${t('modalReturn')}`
+													);
 													blurPopupTasks();
 											  }
 									}
 								>
-									<button>Daily</button>
+									<button>{t('tasksTabDaily')}</button>
 									{/* <div className='footerMain__activitiesHint'>Coming Soon</div> */}
 								</div>
 								<div
@@ -596,12 +603,16 @@ const Footer = ({ user }) => {
 										user?.wallet_address
 											? () => handleTabClick(2)
 											: () => {
-													openModal('yellow', 'Submit your wallet first.', 'Return');
+													openModal(
+														'yellow',
+														`${t('modalAttention')}`,
+														`${t('modalReturn')}`
+													);
 													blurPopupTasks();
 											  }
 									}
 								>
-									<button>Partners</button>
+									<button>{t('tasksTabPartners')}</button>
 								</div>
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
@@ -609,7 +620,7 @@ const Footer = ({ user }) => {
 									{inputFirst && (
 										<>
 											<div className='popupTasks__walletTask-title'>
-												<span>Current wallet</span>
+												<span>{t('walletTaskTitle')}</span>
 											</div>
 											<div className='popupTasks__walletTask-input'>
 												<input
@@ -650,7 +661,7 @@ const Footer = ({ user }) => {
 									{inputSecond && (
 										<>
 											<div className='popupTasks__walletTask-title'>
-												<span>Current wallet</span>
+												<span>{t('walletTaskTitle')}</span>
 											</div>
 											<div className='popupTasks__walletTask-input'>
 												<input type='text' value={walletVaL} disabled />
@@ -685,7 +696,7 @@ const Footer = ({ user }) => {
 									<div className='popupTasks__walletTask-box'>
 										<div className='popupTasks__walletTask-right'>
 											<div className='popupTasks__walletTask-rightHint'>
-												<span>*it can be done once every 3 days</span>
+												<span>{t('walletTaskHint')}</span>
 											</div>
 										</div>
 										{!user?.wallet_address ? (
@@ -701,13 +712,17 @@ const Footer = ({ user }) => {
 									<button onClick={twitterClick} disabled={twitterTaskStatus === 1}>
 										<span>
 											{twitterTaskStatus === 0
-												? 'Follow Twitter'
+												? `${t('followTwitter')}`
 												: twitterTaskStatus === 2 || twitterTaskStatus === 3
-												? 'Activity not confirmed. Are you certain you complete this task?'
-												: 'Follow Twitter'}
+												? `${t('activityCheck')}`
+												: `${t('followTwitter')}`}
 										</span>
 										{twitterTaskStatus === 0 && <p>10000</p>}
-										{twitterTaskStatus === 2 && <p>{timerTwitter} seconds</p>}
+										{twitterTaskStatus === 2 && (
+											<p>
+												{timerTwitter} {t('taskTimer')}
+											</p>
+										)}
 										{twitterTaskStatus === 1 && <p>Done!</p>}
 									</button>
 									{twitterTaskStatus === 3 && (
@@ -720,13 +735,17 @@ const Footer = ({ user }) => {
 									<button onClick={tgClickChat} disabled={chatTaskStatus === 1}>
 										<span>
 											{chatTaskStatus === 0
-												? 'Follow TG Chat'
+												? `${t('followTGChat')}`
 												: chatTaskStatus === 2 || chatTaskStatus === 3
-												? 'Activity not confirmed. Are you certain you complete this task?'
-												: 'Follow TG Chat'}
+												? `${t('activityCheck')}`
+												: `${t('followTGChat')}`}
 										</span>
 										{chatTaskStatus === 0 && <p>10000</p>}
-										{chatTaskStatus === 2 && <p>{timerChat} seconds</p>}
+										{chatTaskStatus === 2 && (
+											<p>
+												{timerChat} {t('taskTimer')}
+											</p>
+										)}
 										{chatTaskStatus === 1 && <p>Done!</p>}
 									</button>
 									{chatTaskStatus === 3 && (
@@ -739,13 +758,17 @@ const Footer = ({ user }) => {
 									<button onClick={tgClickChannel} disabled={channelTaskStatus === 1}>
 										<span>
 											{channelTaskStatus === 0
-												? 'Follow TG Channel'
+												? `${t('followTGChannel')}`
 												: channelTaskStatus === 2 || channelTaskStatus === 3
-												? 'Activity not confirmed. Are you certain you complete this task?'
-												: 'Follow TG Channel'}
+												? `${t('activityCheck')}`
+												: `${t('followTGChannel')}`}
 										</span>
 										{channelTaskStatus === 0 && <p>10000</p>}
-										{channelTaskStatus === 2 && <p>{timerChannel} seconds</p>}
+										{channelTaskStatus === 2 && (
+											<p>
+												{timerChannel} {t('taskTimer')}
+											</p>
+										)}
 										{channelTaskStatus === 1 && <p>Done!</p>}
 									</button>
 									{channelTaskStatus === 3 && (
@@ -758,13 +781,17 @@ const Footer = ({ user }) => {
 									<button onClick={websiteClick} disabled={websiteTaskStatus === 1}>
 										<span>
 											{websiteTaskStatus === 0
-												? 'Visit Website'
+												? `${t('visitWebsite')}`
 												: websiteTaskStatus === 2 || websiteTaskStatus === 3
-												? 'Activity not confirmed. Are you certain you complete this task?'
-												: 'Visit Website'}
+												? `${t('activityCheck')}`
+												: `${t('visitWebsite')}`}
 										</span>
 										{websiteTaskStatus === 0 && <p>10000</p>}
-										{websiteTaskStatus === 2 && <p>{timerWebsite} seconds</p>}
+										{websiteTaskStatus === 2 && (
+											<p>
+												{timerWebsite} {t('taskTimer')}
+											</p>
+										)}
 										{websiteTaskStatus === 1 && <p>Done!</p>}
 									</button>
 									{websiteTaskStatus === 3 && (
