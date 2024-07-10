@@ -343,7 +343,7 @@ const Footer = ({ user }) => {
 	};
 
 	const websiteClick = async () => {
-		window.open('https://temka.pro/', '_blank');
+		window.open('https://tema.cash/', '_blank');
 
 		if (websiteTaskStatus === 0) {
 			setWebsiteTimer(30);
