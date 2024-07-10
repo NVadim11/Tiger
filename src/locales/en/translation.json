@@ -1,0 +1,16 @@
+{
+  "menuBtn": "Menu",
+  "menuLeaderboard": "Leaderboard",
+	"leaderboardTitle": "Leaderboard",
+	"menuReferral": "Referral",
+	"referralTitle": "Invite friends. Get rewards together.",
+	"refInfo": "Bonus:",
+	"refHowTo": "How it Works",
+	"refInvite": "Invite",
+	"refInviteDescr": "Friends via the referral link",
+	"refRewards": "Get rewards",
+	"refRewardsDescr": "Receive 10% of your friends’ staking",
+	"refLink": "Your link:",
+	"refLinkDescr": "Tap 'Generate' to get your referral link",
+	"refLinkBtn": "Generate"
+}

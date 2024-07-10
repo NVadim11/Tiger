@@ -1,0 +1,16 @@
+{
+  "menuBtn": "Меню",
+  "menuLeaderboard": "Лидерборд",
+	"leaderboardTitle": "Лидерборд",
+	"menuReferral": "Реферал",
+	"referralTitle": "Приглашай друзей. Получайте награды вместе.",
+	"refInfo": "Бонус:",
+	"refHowTo": "Как это работает",
+	"refInvite": "Инвайт",
+	"refInviteDescr": "Friends via the referral link",
+	"refRewards": "Get rewards",
+	"refRewardsDescr": "Receive 10% of your friends’ staking",
+	"refLink": "Your link:",
+	"refLinkDescr": "Tap 'Generate' to get your referral link",
+	"refLinkBtn": "Generate"
+}

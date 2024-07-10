@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import tigranChill from '../../../img/tigranChill.gif';
 import tigranCircle from '../../../img/tigran_circle.webp';
+import { useTranslation } from 'react-i18next';
 
 const GamePaused = ({ user, remainingTime }) => {
 	const [timeRemaining, setTimeRemaining] = useState(remainingTime);
+	const { t, i18n } = useTranslation();
+
+	const changeLanguage = (language) => {
+		i18n.changeLanguage(language);
+	};
 
 	useEffect(() => {
 		setTimeRemaining(remainingTime);
