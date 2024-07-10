@@ -2,15 +2,15 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import './App.css';
 import AppRouter from './components/Router';
-import { TonConnectUIProvider } from '@tonconnect/ui-react';
+// import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { store } from './store';
 
 function App() {
   return (
     <Provider store={store}>
-      <TonConnectUIProvider 
+      {/* <TonConnectUIProvider 
         manifestUrl="https://tg.tema.cash/tonconnect-manifest.json"
-        walletsListConfiguration={{
+         walletsListConfiguration={{
           includeWallets: [
             {
               appName: "telegram-wallet",
@@ -108,9 +108,9 @@ function App() {
         actionsConfiguration={{
           twaReturnUrl: 'https://t.me/WebAppWalletBot/tigr_run_bot'
         }}
-      >
+      > */}
         <AppRouter />
-      </TonConnectUIProvider>
+      {/* </TonConnectUIProvider> */}
     </Provider>
   );
 }
