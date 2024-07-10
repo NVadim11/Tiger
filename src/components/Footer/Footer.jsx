@@ -723,11 +723,11 @@ const Footer = ({ user }) => {
 												{timerTwitter} {t('taskTimer')}
 											</p>
 										)}
-										{twitterTaskStatus === 1 && <p>Done!</p>}
+										{twitterTaskStatus === 1 && <p>{t('activityDone')}</p>}
 									</button>
 									{twitterTaskStatus === 3 && (
 										<div onClick={claimTwitter} className='claim-button'>
-											Claim
+											{t('activityClaim')}
 										</div>
 									)}
 								</div>
@@ -746,11 +746,11 @@ const Footer = ({ user }) => {
 												{timerChat} {t('taskTimer')}
 											</p>
 										)}
-										{chatTaskStatus === 1 && <p>Done!</p>}
+										{chatTaskStatus === 1 && <p>{t('activityDone')}</p>}
 									</button>
 									{chatTaskStatus === 3 && (
 										<div onClick={claimChat} className='claim-button'>
-											Claim
+											{t('activityClaim')}
 										</div>
 									)}
 								</div>
@@ -769,11 +769,11 @@ const Footer = ({ user }) => {
 												{timerChannel} {t('taskTimer')}
 											</p>
 										)}
-										{channelTaskStatus === 1 && <p>Done!</p>}
+										{channelTaskStatus === 1 && <p>{t('activityDone')}</p>}
 									</button>
 									{channelTaskStatus === 3 && (
 										<div onClick={claimChannel} className='claim-button'>
-											Claim
+											{t('activityClaim')}
 										</div>
 									)}
 								</div>
@@ -792,11 +792,11 @@ const Footer = ({ user }) => {
 												{timerWebsite} {t('taskTimer')}
 											</p>
 										)}
-										{websiteTaskStatus === 1 && <p>Done!</p>}
+										{websiteTaskStatus === 1 && <p>{t('activityDone')}</p>}
 									</button>
 									{websiteTaskStatus === 3 && (
 										<div onClick={claimWebsite} className='claim-button'>
-											Claim
+											{t('activityClaim')}
 										</div>
 									)}
 								</div>

@@ -43,5 +43,7 @@
 	"followTGChat": "Follow TG Chat",
 	"followTGChannel": "Follow TG Channel",
 	"visitWebsite": "Visit Website",
-	"activityCheck": "Activity not confirmed. Are you certain you complete this task?"
+	"activityCheck": "Activity not confirmed. Are you certain you complete this task?",
+	"activityClaim": "Claim",
+	"activityDone": "Done!"
 }
