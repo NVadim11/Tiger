@@ -9,7 +9,7 @@ function App() {
   return (
     <Provider store={store}>
       <TonConnectUIProvider 
-        manifestUrl="https://tg.temka.cash/tonconnect-manifest.json"
+        manifestUrl="https://tg.tema.cash/tonconnect-manifest.json"
         //  walletsListConfiguration={{
         //   includeWallets: [
         //     {
@@ -106,7 +106,7 @@ function App() {
         //   ]
         // }}
         actionsConfiguration={{
-          twaReturnUrl: 'https://t.me/WebAppWalletBot/tigr_run_bot'
+          twaReturnUrl: 'https://t.me/tigr_run_bot'
         }}
       >
         <AppRouter />
