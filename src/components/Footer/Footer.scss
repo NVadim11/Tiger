@@ -81,7 +81,7 @@ body::after {
         align-items: center;
         background: transparent;
         font-weight: 400;
-        font-size: 10px;
+        font-size: 12px;
         line-height: 100%;
         letter-spacing: 0.03em;
         text-align: center;
@@ -89,7 +89,7 @@ body::after {
     }
     button:disabled {
       font-weight: 700;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 100%;
       letter-spacing: 0.02em;
       display: flex;
@@ -97,7 +97,7 @@ body::after {
       span {
         position: absolute;
         font-weight: 500;
-        font-size: 10px;
+        font-size: 12px;
         line-height: 100%;
         letter-spacing: 0.03em;
         text-align: center;
@@ -112,7 +112,7 @@ body::after {
     button {
         background: #2cb726;
          color: #1c2520;
-         font-size: 20px;
+         font-size: 22px;
     }
     span {
       z-index: 10;
@@ -135,7 +135,7 @@ body::after {
     background: linear-gradient(180deg, #0b1f46 0%, #000 100%);
     transform: rotate(8deg);
     font-weight: 400;
-    font-size: 0.625rem;
+    font-size: 12px;
     color: #fff;
     padding: 0 0.5625rem;
     top: -0.9375rem;
@@ -168,7 +168,7 @@ body::after {
       position: relative;
       h4 {
         font-weight: 400;
-        font-size: 24px;
+        font-size: 26px;
         line-height: 100%;
         color: #1c2520;
       }
@@ -200,7 +200,7 @@ body::after {
     justify-content: center;
     span {
         font-weight: 400;
-        font-size: 24px;
+        font-size: 26px;
         line-height: 100%;
         letter-spacing: 0.01em;
         color: #1c2520;
@@ -224,7 +224,7 @@ body::after {
       border: 1px solid rgba(255, 255, 255, 0.2);
       width: 100%;
       padding: 10px;
-      font-size: 14px;
+      font-size: 16px;
     }
   }
   &__tasks {
@@ -266,7 +266,7 @@ body::after {
         align-items: center;
         background: rgba(8, 18, 41, 0.2);
         font-weight: 400;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 100%;
         letter-spacing: 0.02em;
     }
@@ -352,7 +352,7 @@ body::after {
       height: 38px;
       width: 100px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 100%;
       letter-spacing: 0.02em;
       color: var(--mainColor);
@@ -390,7 +390,7 @@ body::after {
     }
     input::placeholder {
         font-weight: 400;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 140%;
         letter-spacing: 0.02em;
         color: var(--mainColor);
@@ -436,7 +436,7 @@ body::after {
     display: flex;
     span {
         font-weight: 400;
-        font-size: 10px;
+        font-size: 12px;
         line-height: 100%;
         letter-spacing: 0.03em;
     }
@@ -451,7 +451,7 @@ body::after {
       width: 100%;
       height: 100%;
       font-weight: 400;
-      font-size: 13px;
+      font-size: 15px;
       line-height: 100%;
       color: #fff;
       display: flex;
@@ -480,7 +480,7 @@ body::after {
     justify-content: center;
     p {
         font-weight: 400;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 100%;
         letter-spacing: 0.03em;
     }
@@ -509,7 +509,7 @@ body::after {
     width: 100%;
     span {
         font-weight: 400;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 100%;
         letter-spacing: 0.03em;
     }

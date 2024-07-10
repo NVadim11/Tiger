@@ -6,8 +6,8 @@ import crown from '../../img/crown.svg';
 import lead_icon from '../../img/leaderboard.webp';
 import ref_icon from '../../img/referral.webp';
 import { useGetLeaderboardMutation } from '../../services/phpService';
-// import { TonConnectButton } from '@tonconnect/ui-react';
-import TonConnectUI from '@tonconnect/ui';
+import { TonConnectButton } from '@tonconnect/ui-react';
+// import TonConnectUI from '@tonconnect/ui';
 import './Header.scss';
 
 const Header = ({ user }) => {
@@ -147,32 +147,32 @@ const Header = ({ user }) => {
 		}
 	};
 
-	useEffect(() => {
-		// Динамическая загрузка скрипта
-		const loadScript = (src) => {
-		  return new Promise((resolve, reject) => {
-			const script = document.createElement('script');
-			script.src = src;
-			script.onload = resolve;
-			script.onerror = reject;
-			document.body.appendChild(script);
-		  });
-		};
+	// useEffect(() => {
+	// 	// Динамическая загрузка скрипта
+	// 	const loadScript = (src) => {
+	// 	  return new Promise((resolve, reject) => {
+	// 		const script = document.createElement('script');
+	// 		script.src = src;
+	// 		script.onload = resolve;
+	// 		script.onerror = reject;
+	// 		document.body.appendChild(script);
+	// 	  });
+	// 	};
 	
-		loadScript('https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js')
-		  .then(() => {
-			if (window.TON_CONNECT_UI) {
-			  const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
-				manifestUrl: 'https://tg.tema.cash/tonconnect-manifest.json',
-				buttonRootId: 'ton-connect'
-			  });
-			  // Дополнительная логика работы с tonConnectUI
-			}
-		  })
-		  .catch((error) => {
-			console.error('Ошибка загрузки скрипта:', error);
-		  });
-	  }, []);
+	// 	loadScript('https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js')
+	// 	  .then(() => {
+	// 		if (window.TON_CONNECT_UI) {
+	// 		  const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+	// 			manifestUrl: 'https://tg.tema.cash/tonconnect-manifest.json',
+	// 			buttonRootId: 'ton-connect'
+	// 		  });
+	// 		  // Дополнительная логика работы с tonConnectUI
+	// 		}
+	// 	  })
+	// 	  .catch((error) => {
+	// 		console.error('Ошибка загрузки скрипта:', error);
+	// 	  });
+	//   }, []);
 
 	return (
 		<>
@@ -180,8 +180,8 @@ const Header = ({ user }) => {
 				{/* <div className='header__logo'>
 					<img src={face} alt='Tigran-logo' />
 				</div> */}
-<div id="ton-connect"></div>
-				{/* <TonConnectButton /> */}
+{/* <div id="ton-connect"></div> */}
+				<TonConnectButton />
 				<div className='header__btn-group'>
 					<div className='header__social-links'>
 						<a
