@@ -19,11 +19,31 @@
   "gamePauseMinutes": "минуты",
   "gamePauseCalc": "Расчет...",
   "gamePauseDescr": "Тигран устал, вернитесь, когда таймер закончится.",
-	
-	"mainSessionCoins": "За сессию",
-	"mainEnergyHint": "Чем счастливее Тигран — тем больше вы получаете. Дайте дождю и наслаждайтесь наградами",
 
-	"modalSuccess": "Задача успешно выполнена.",
-	"modalError": "Произошла ошибка. Пожалуйста, попробуйте позже.",
-	"modalReturn": "Вернуться"
+  "mainSessionCoins": "За сессию",
+  "mainEnergyHint": "Чем счастливее Тигран — тем больше вы получаете. Дайте дождю и наслаждайтесь наградами",
+
+  "modalSuccess": "Задача успешно выполнена.",
+  "modalAttention": "Сначала отправьте ваш кошелек.",
+  "modalError": "Произошла ошибка. Пожалуйста, попробуйте позже.",
+  "modalWalletSucc": "Кошелек успешно изменен.",
+  "modalWalletBusy": "Этот кошелек уже используется.",
+  "modalReturn": "Вернуться",
+
+  "tasksTabTitle": "Задачи",
+  "tasksTitle": "Выполняйте задачи и получайте награды!",
+  "tasksTabSocial": "Социальные",
+  "tasksTabDaily": "Ежедневные",
+  "tasksTabPartners": "Партнеры",
+  "walletTaskTitle": "Текущий кошелек",
+  "walletTaskHint": "*можно делать раз в 3 дня",
+
+  "taskTimer": "секунды",
+  "followTwitter": "Подписаться на Twitter",
+  "followTGChat": "Подписаться на TG Chat",
+  "followTGChannel": "Подписаться на TG Channel",
+  "visitWebsite": "Посетить вебсайт",
+  "activityCheck": "Активность не подтверждена. Вы уверены, что выполнили эту задачу?",
+  "activityClaim": "Заявить",
+  "activityDone": "Готово!"
 }
