@@ -13,7 +13,7 @@ i18n
     resources: {
       en: {
         translation: en
-      },
+      },  
       ru: {
         translation: ru
       }

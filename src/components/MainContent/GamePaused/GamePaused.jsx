@@ -5,11 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const GamePaused = ({ user, remainingTime }) => {
 	const [timeRemaining, setTimeRemaining] = useState(remainingTime);
-	const { t, i18n } = useTranslation();
-
-	const changeLanguage = (language) => {
-		i18n.changeLanguage(language);
-	};
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		setTimeRemaining(remainingTime);
@@ -36,15 +32,15 @@ const GamePaused = ({ user, remainingTime }) => {
 			</div>
 			{timeRemaining ? (
 				<h4 style={{ marginBottom: '10px', marginTop: '20px' }}>
-					Time remaining: {formatTime(timeRemaining)} minutes
+					{t('gamePauseTitle')} {formatTime(timeRemaining)} {t('gamePauseMinutes')}
 				</h4>
 			) : (
-				<h4 style={{ marginBottom: '10px', marginTop: '20px' }}>Calculating...</h4>
+				<h4 style={{ marginBottom: '10px', marginTop: '20px' }}>{t('gamePauseCalc')}</h4>
 			)}
 			<div className='mainContent__imageContainer'>
 				<img src={tigranChill} draggable='false' alt='Tigran Chill' />
 			</div>
-			<p style={{ marginTop: '20px' }}>Tigran is tired, come back when timer is over.</p>
+			<p style={{ marginTop: '20px' }}>{t('gamePauseDescr')}</p>
 		</div>
 	);
 };

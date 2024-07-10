@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import moment from 'moment-timezone';
 import React, { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useTranslation } from 'react-i18next';
 import energy from '../../img/energy.webp';
 import boostCoin from '../../img/tigranBoost.webp';
 import tigranCash from '../../img/tigranCash.gif';
@@ -46,6 +47,8 @@ const MainContent = ({ user }) => {
 
 	const tg = window.Telegram.WebApp;
 	const userId = tg.initDataUnsafe?.user?.id;
+
+	const { t } = useTranslation();
 
 	// aws
 	const secretKey = process.env.REACT_APP_SECRET_KEY;

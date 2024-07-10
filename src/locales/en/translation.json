@@ -13,5 +13,10 @@
 	"refRewardsDescr": "Receive 10% of your friends’ staking",
 	"refLink": "Your link:",
 	"refLinkDescr": "Tap 'Generate' to get your referral link",
-	"refLinkBtn": "Generate"
+	"refLinkBtn": "Generate",
+	
+	"gamePauseTitle": "Time remaining:",
+	"gamePauseMinutes": "minutes",
+	"gamePauseCalc": "Calculating...",
+	"gamePauseDescr": "Tigran is tired, come back when timer is over."
 }
