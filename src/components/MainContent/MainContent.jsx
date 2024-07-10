@@ -350,8 +350,6 @@ const MainContent = ({ user }) => {
 	};
 
 	const handleTouchStart = (event) => {
-		event.preventDefault(); // Предотвращаем действие по умолчанию для мультитапа
-
 		if (event.touches) {
 			Array.from(event.touches).forEach((touch) => {
 				const clicker = event.currentTarget || touch.target;

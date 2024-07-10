@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import face from '../../img/avatar.webp';
+import { useTranslation } from 'react-i18next';
 import copy from '../../img/copy.svg';
 import cross from '../../img/cross.svg';
 import crown from '../../img/crown.svg';
@@ -29,6 +30,18 @@ const Header = ({ user }) => {
 	const containerRef = useRef(null);
 	const menuRef = useRef(null);
 
+	// Localisation
+	const { t, i18n } = useTranslation();
+	const [language, setLanguage] = useState('en'); // (user.language_code || 'en');
+	const changeLanguage = (language) => {
+		i18n.changeLanguage(language);
+	};
+	const toggleLanguage = () => {
+		const newLanguage = language === 'en' ? 'ru' : 'en';
+		setLanguage(newLanguage);
+		changeLanguage(newLanguage);
+	};
+
 	const tg = window.Telegram.WebApp;
 
 	const openLink = (url) => {
@@ -38,6 +51,11 @@ const Header = ({ user }) => {
 	const toggleMenu = () => {
 		setIsShown((prev) => !prev);
 	};
+
+	useEffect(() => {
+		// Update i18n language when user.language_code changes
+		changeLanguage(language);
+	}, [language]);
 
 	useEffect(() => {
 		const observer = new MutationObserver((mutationsList) => {
@@ -158,7 +176,7 @@ const Header = ({ user }) => {
 	// 		document.body.appendChild(script);
 	// 	  });
 	// 	};
-	
+
 	// 	loadScript('https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js')
 	// 	  .then(() => {
 	// 		if (window.TON_CONNECT_UI) {
@@ -180,7 +198,7 @@ const Header = ({ user }) => {
 				{/* <div className='header__logo'>
 					<img src={face} alt='Tigran-logo' />
 				</div> */}
-{/* <div id="ton-connect"></div> */}
+				{/* <div id="ton-connect"></div> */}
 				<TonConnectButton />
 				<div className='header__btn-group'>
 					<div className='header__social-links'>
@@ -230,7 +248,7 @@ const Header = ({ user }) => {
 						</a>
 					</div>
 					<button className='header__menuBtn' ref={containerRef} onClick={toggleMenu}>
-						Menu
+						{t('menuBtn')}
 						<svg
 							width='24'
 							height='24'
@@ -249,7 +267,7 @@ const Header = ({ user }) => {
 					{isShown && (
 						<div className='header__menu' ref={menuRef}>
 							<a className='header__menu-links' onClick={leaderBordBtn}>
-								Leadboard
+								{t('menuLeaderboard')}
 								<img src={lead_icon} alt='Leaderboard Icon' />
 							</a>
 							<a
@@ -257,9 +275,14 @@ const Header = ({ user }) => {
 								onClick={inviteFriendsBtn}
 								rel='noopener noreferrer'
 							>
-								Referral
+								{t('menuReferral')}
 								<img src={ref_icon} alt='Referral Icon' />
 							</a>
+							<div className='header__menu-toggle'>
+								<button onClick={toggleLanguage}>
+									{language === 'en' ? 'Switch to Russian' : 'Переключить на английский'}
+								</button>
+							</div>
 						</div>
 					)}
 				</div>
@@ -272,11 +295,11 @@ const Header = ({ user }) => {
 								<img src={cross} />
 							</button>
 							<div className='popupInvite__title'>
-								<h4>Invite friends. Get rewards together.</h4>
+								<h4>{t('referralTitle')}</h4>
 							</div>
 							<div className='popupInvite__refInfo'>
 								<div className='popupInvite__refInfo-box'>
-									<p>Bonus:</p>
+									<p>{t('refBonus')}</p>
 									<div className='popupInvite__refInfo-item'>
 										<span>% 10</span>
 									</div>
@@ -297,7 +320,7 @@ const Header = ({ user }) => {
 								</div>
 								{totalReferrals >= 0 && (
 									<div className='popupInvite__refInfo-box'>
-										<p>Referrals:</p>
+										<p> {t('refCount')}</p>
 										<div className='popupInvite__refInfo-item'>
 											{/* <span>24</span> */}
 											<span>{totalReferrals}</span>
@@ -306,7 +329,7 @@ const Header = ({ user }) => {
 								)}
 							</div>
 							<div className='popupInvite__header'>
-								<h6>How it Works</h6>
+								<h6> {t('refHowTo')}</h6>
 							</div>
 							<div className='popupInvite__grid'>
 								<ul className='popupInvite__grid-list'>
@@ -324,8 +347,8 @@ const Header = ({ user }) => {
 											/>
 										</svg>
 										<div className='popupInvite__list-itemDescr'>
-											<h5>Invite</h5>
-											<p>Friends via the referral link</p>
+											<h5>{t('refInvite')}</h5>
+											<p> {t('refInviteDescr')}</p>
 										</div>
 									</li>
 									<li className='popupInvite__list-item'>
@@ -370,19 +393,17 @@ const Header = ({ user }) => {
 											/>
 										</svg>
 										<div className='popupInvite__list-itemDescr'>
-											<h5>Get rewards</h5>
-											<p>Receive 10% of your friends’ staking</p>
+											<h5>{t('refRewards')}</h5>
+											<p>{t('refRewardsDescr')}</p>
 										</div>
 									</li>
 								</ul>
 							</div>
 							<div className='popupInvite__item-box'>
 								<div className='popupInvite__item-group'>
-									<p>Your link:</p>
+									<p>{t('refLink')}</p>
 									<p className='popupInvite__input'>
-										{generatedUrl.length
-											? `${generatedUrl}`
-											: 'Tap "Generate" to get your referral link'}
+										{generatedUrl.length ? `${generatedUrl}` : `${t('refLinkDescr')}`}
 										<button onClick={copyToClipboard} className='popupInvite__input-btn'>
 											<img src={copy} alt='' />
 										</button>
@@ -393,7 +414,7 @@ const Header = ({ user }) => {
 										className='popupInvite__submit'
 										onClick={() => generateUrl(user)}
 									>
-										Generate
+										{t('refLinkBtn')}
 									</button>
 								</div>
 							</div>
@@ -410,7 +431,7 @@ const Header = ({ user }) => {
 							</button>
 							<div className='popupLeaderboard__title'>
 								<img src={crown} alt='crown' />
-								<h4>Leaderboard</h4>
+								<h4> {t('leaderboardTitle')}</h4>
 							</div>
 							<div className='popupLeaderboard__playerList'>
 								<ul className='popupLeaderboard__table'>
