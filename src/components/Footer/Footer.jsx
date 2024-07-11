@@ -11,7 +11,7 @@ import {
 
 import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
-import tigerCoin from '../../img/tigran_circle.webp';
+import tigerCoin from '../../img/tigranBoost.webp';
 import Modal from '../Modal/Modal';
 import './Footer.scss';
 

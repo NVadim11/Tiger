@@ -1,6 +1,7 @@
 import { TonConnectButton } from '@tonconnect/ui-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import face from '../../img/tigran_circle.webp';
 import copy from '../../img/copy.svg';
 import cross from '../../img/cross.svg';
 import crown from '../../img/crown.svg';
@@ -198,12 +199,12 @@ const Header = ({ user }) => {
 	return (
 		<>
 			<header id='header' className='header'>
-				{/* <div className='header__logo'>
+				<div className='header__logo'>
 					<img src={face} alt='Tigran-logo' />
-				</div> */}
+				</div>
 				{/* <div id="ton-connect"></div> */}
 				{/* <div> */}
-			{/* <button onClick={open}>Open modal</button>
+				{/* <button onClick={open}>Open modal</button>
 			<button onClick={close}>Close modal</button>
 		</div>
 		{wallet && (
@@ -212,7 +213,7 @@ const Header = ({ user }) => {
                 <span>Device: {wallet.device.appName}</span>
             </div>
         )} */}
-		{/* <TonConnectButton /> */}
+				{/* <TonConnectButton /> */}
 				<div className='header__btn-group'>
 					<div className='header__social-links'>
 						<a
