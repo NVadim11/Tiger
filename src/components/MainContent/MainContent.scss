@@ -81,7 +81,7 @@
   flex-direction: column;
   font-weight: 600;
   font-size: 22px;
-  color: var(--altText);
+  font-family: var(--altText);
   margin-top: 15px;
   align-items: center;
   font-size: 18px;
@@ -148,7 +148,7 @@
     align-items: center;
     justify-content: center;
 		background: var(--altBG);
-    font-family: var(--altText);
+    font-family: var(--text);
     position: relative;
     border: 1px solid var(--mainColor);
     border-radius: 12px;

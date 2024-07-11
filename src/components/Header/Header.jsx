@@ -1,5 +1,5 @@
+import { TonConnectButton } from '@tonconnect/ui-react';
 import React, { useEffect, useRef, useState } from 'react';
-import face from '../../img/avatar.webp';
 import { useTranslation } from 'react-i18next';
 import copy from '../../img/copy.svg';
 import cross from '../../img/cross.svg';
@@ -7,7 +7,6 @@ import crown from '../../img/crown.svg';
 import lead_icon from '../../img/leaderboard.webp';
 import ref_icon from '../../img/referral.webp';
 import { useGetLeaderboardMutation } from '../../services/phpService';
-import { TonConnectButton } from '@tonconnect/ui-react';
 // import TonConnectUI from '@tonconnect/ui';
 import './Header.scss';
 
@@ -279,9 +278,9 @@ const Header = ({ user }) => {
 								<img src={ref_icon} alt='Referral Icon' />
 							</a>
 							<div className='header__menu-toggle'>
-								<button onClick={toggleLanguage}>
+								<a className='header__menu-links' onClick={toggleLanguage}>
 									{language === 'en' ? 'Switch to Russian' : 'Переключить на английский'}
-								</button>
+								</a>
 							</div>
 						</div>
 					)}

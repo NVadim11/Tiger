@@ -1,6 +1,5 @@
 :root {
-  --text: "BakBak";
-  --altText: "Acme";
+  --text: "Bebas";
   --mainColor: #1c2520;
   --altColor: #fff;
   --minWidth: 390px;
@@ -57,23 +56,13 @@
   
   
   @font-face {
-    font-family: "BakBak";
+    font-family: "Bebas";
     font-display: swap;
-    src: local("BakBak"),
-      url("./fonts/BakbakOne-Regular.ttf") format("truetype");
+    src: local("Bebas"),
+      url("./fonts/bebasneuecyrillic.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
   }
-
-  @font-face {
-    font-family: "Acme";
-    font-display: swap;
-    src: local("Acme"),
-      url("./fonts/Acme-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-  }
-
   
   * {
     padding: 0px;
