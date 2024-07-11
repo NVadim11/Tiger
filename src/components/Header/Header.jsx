@@ -36,10 +36,20 @@ const Header = ({ user }) => {
 
 	// Localisation
 	const { t, i18n } = useTranslation();
-	const [language, setLanguage] = user.language_code || 'en'; // (user.language_code || 'en');
+
+	// Retrieve the initial language from localStorage or default to 'en'
+	const initialLanguage = localStorage.getItem('language') || 'en';
+	const [language, setLanguage] = useState(initialLanguage);
+
+	useEffect(() => {
+		i18n.changeLanguage(language);
+	}, [language, i18n]);
+
 	const changeLanguage = (language) => {
 		i18n.changeLanguage(language);
+		localStorage.setItem('language', language); // Save to localStorage
 	};
+
 	const toggleLanguage = () => {
 		const newLanguage = language === 'en' ? 'ru' : 'en';
 		setLanguage(newLanguage);
