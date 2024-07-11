@@ -7,7 +7,9 @@ import crown from '../../img/crown.svg';
 import lead_icon from '../../img/leaderboard.webp';
 import ref_icon from '../../img/referral.webp';
 import { useGetLeaderboardMutation } from '../../services/phpService';
+// import { TonConnectButton, useTonConnectModal, useTonWallet } from '@tonconnect/ui-react';
 // import TonConnectUI from '@tonconnect/ui';
+import { connector } from 'src/connector';
 import './Header.scss';
 
 const Header = ({ user }) => {
@@ -28,6 +30,9 @@ const Header = ({ user }) => {
 
 	const containerRef = useRef(null);
 	const menuRef = useRef(null);
+
+	// const { state, open, close } = useTonConnectModal();
+	// const wallet = useTonWallet();
 
 	// Localisation
 	const { t, i18n } = useTranslation();
@@ -191,6 +196,10 @@ const Header = ({ user }) => {
 	// 	  });
 	//   }, []);
 
+	useEffect(() => {
+		connector.restoreConnection();
+	}, []);
+
 	return (
 		<>
 			<header id='header' className='header'>
@@ -198,7 +207,17 @@ const Header = ({ user }) => {
 					<img src={face} alt='Tigran-logo' />
 				</div> */}
 				{/* <div id="ton-connect"></div> */}
-				<TonConnectButton />
+				{/* <div> */}
+			{/* <button onClick={open}>Open modal</button>
+			<button onClick={close}>Close modal</button>
+		</div>
+		{wallet && (
+            <div>
+                <span>Connected wallet: {wallet.name}</span>
+                <span>Device: {wallet.device.appName}</span>
+            </div>
+        )} */}
+		{/* <TonConnectButton /> */}
 				<div className='header__btn-group'>
 					<div className='header__social-links'>
 						<a
