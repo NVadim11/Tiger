@@ -7,29 +7,29 @@ import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
 import energy from '../../img/energy.webp';
 import boostCoin from '../../img/tigranBoost.webp';
-import tigranCash from '../../img/tigranCash.gif';
-import tigranIdle from '../../img/tigranIdle.gif';
 import tigranGold from '../../img/tigranGold.gif';
-import { default as tigranCircle } from '../../img/tigran_circle.webp';
+import tigranCash from '../../img/tigranCash.gif';
+import tigranChill from '../../img/tigranChill.gif';
+import tigranIdle from '../../img/tigranIdle.gif';
+import tigranMachine from '../../img/tigranMachine.gif';
+import tigranTalk from '../../img/tigranTalk.gif';
 import { useUpdateBalanceMutation } from '../../services/phpService';
 import GamePaused from './GamePaused/GamePaused';
 import './MainContent.scss';
 
 const MainContent = ({ user }) => {
-	const [currentImage, setCurrentImage] = useState(true);
-	const [coinState, setCoinState] = useState(false);
 	const [currCoins, setCurrCoins] = useState(0);
 	const [currEnergy, setCurrEnergy] = useState(0); //user?.energy
-	const [tigerIdle, setTigerIdle] = useState(tigranIdle);
-	const [tigerActive, setTigerActive] = useState(tigranCash);
+	const [heroState, setHeroState] = useState(tigranIdle);
+	const [heroAnimation, setHeroAnimation] = useState(heroState);
 	const coinRef = useRef(null);
 	const [updateBalance] = useUpdateBalanceMutation();
 	const [position, setPosition] = useState({ x: '0', y: '0' });
 	const [boostPhase, setBoostPhase] = useState(false);
 	const [visible, setVisible] = useState(false);
 	const [tigerVisible, setTigerVisible] = useState(true);
-	let [happinessVal, setHappinessVal] = useState(1);
-	let [clickNewCoins, setClickNewCoins] = useState(1);
+	let [energyVal, setEnergyVal] = useState(10);
+	let [clickNewCoins, setClickNewCoins] = useState(10);
 	const [gamePaused, setGamePaused] = useState(false);
 	const [timeRemaining, setTimeRemaining] = useState('');
 	const [isAnimationActive, setIsAnimationActive] = useState(false);
@@ -184,16 +184,16 @@ const MainContent = ({ user }) => {
 	};
 
 	const handleBoostClick = () => {
-		const prevHappinessVal = happinessVal;
+		const prevEnergyVal = energyVal;
 		const prevClickNewCoins = clickNewCoins;
 
 		setBoostPhase(true);
 		setVisible(false);
-		setHappinessVal(4);
+		setEnergyVal(4);
 		setClickNewCoins(4);
 
 		setTimeout(() => {
-			setHappinessVal(prevHappinessVal);
+			setEnergyVal(prevEnergyVal);
 			setClickNewCoins(prevClickNewCoins);
 			setBoostPhase(false);
 			setVisible(false);
@@ -229,13 +229,11 @@ const MainContent = ({ user }) => {
 
 	useEffect(() => {
 		if (gamePaused) {
-			setCoinState(false);
 			setBoostPhase(false);
 			setVisible(false);
-			setCurrentImage(false);
 			setBoostPhase(false);
 			clearAnimations();
-			setHappinessVal(1);
+			setEnergyVal(1);
 			setClickNewCoins(1);
 		}
 	}, [gamePaused]);
@@ -271,13 +269,20 @@ const MainContent = ({ user }) => {
 	}, [currEnergy]);
 
 	const updateCurrCoins = () => {
-		if (currEnergy >= 301 && currEnergy <= 550 && !resetCoinsCalled) {
+		if (currEnergy >= 0 && currEnergy <= 150) {
+			setHeroState(tigranIdle);
+		} else if (currEnergy >= 151 && currEnergy <= 300) {
+			setHeroState(tigranTalk);
+		} else if (currEnergy >= 301 && currEnergy <= 550 && !resetCoinsCalled) {
 			setResetCoinsCalled(true); // Set the state to true
 			resetCoins(); // Call resetCoins only once
+			setHeroState(tigranCash);
+		} else if (currEnergy >= 551 && currEnergy <= 800) {
+			setHeroState(tigranChill);
+		} else if (currEnergy >= 801 && currEnergy <= 1000) {
+			setHeroState(tigranMachine);
 		}
-
-		setTigerIdle(tigranIdle);
-		setTigerActive(tigranCash);
+		setHeroAnimation(heroState);
 		setIsCoinsChanged(true);
 		resetTimeout();
 
@@ -359,9 +364,6 @@ const MainContent = ({ user }) => {
 				if (!clicker) return;
 				const x = touch.pageX;
 				const y = touch.pageY;
-
-				setCurrentImage(false);
-				setCoinState(true);
 				handleShowAnimation({
 					touches: [touch],
 					target: event.target,
@@ -373,23 +375,15 @@ const MainContent = ({ user }) => {
 			if (!clicker) return;
 			const x = event.pageX;
 			const y = event.pageY;
-
-			setCurrentImage(false);
-			setCoinState(true);
 			handleShowAnimation(event);
 		}
-
-		clearTimeout(tigerImgRef.current);
-		clearTimeout(coinRef.current);
-		tigerImgRef.current = setTimeout(() => setCurrentImage(true), 1100);
-		coinRef.current = setTimeout(() => setCoinState(false), 4000);
 	};
 
 	const handleTouchEnd = () => {
 		const clickNewCoins = updateCurrCoins();
 		setCurrCoins((prevCoins) => prevCoins + clickNewCoins);
 		accumulatedCoinsRef.current += clickNewCoins;
-		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + happinessVal, 1000));
+		setCurrEnergy((prevEnergy) => Math.min(prevEnergy + energyVal, 1000));
 	};
 
 	const clearAnimations = () => {
@@ -496,7 +490,7 @@ const MainContent = ({ user }) => {
 										<div className='mainContent__totalCoins'>
 											<div className='mainContent__totalCoinsBox'>
 												<div className='mainContent__totalCoinsImg' draggable='false'>
-													<img src={tigranCircle} draggable='false' />
+													<img src={boostCoin} draggable='false' />
 												</div>
 												{user && totalPoints !== null && (
 													<div className='mainContent__totalCoinsAmount'>
@@ -507,8 +501,8 @@ const MainContent = ({ user }) => {
 										</div>
 										{!gamePaused && (
 											<div className='mainContent__energyContainer'>
-												<img src={energy} alt='' />
 												<div className='mainContent__energyValue'>
+													<img src={energy} alt='' />
 													<p className='energyCount' id='energyCount'>
 														{currEnergy}
 													</p>
@@ -517,98 +511,63 @@ const MainContent = ({ user }) => {
 														{maxEnergy}
 													</p>
 												</div>
+												<div className='mainContent__energyBar'>
+													<progress
+														className='filledBar'
+														id='filledBar'
+														max='1000'
+														value={currEnergy}
+													></progress>
+												</div>
 											</div>
 										)}
 									</div>
-									{currentImage ? (
-										<div
-											className='mainContent__clickArea'
-											onTouchStart={handleTouchStart}
-											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
-										>
-											{animations.map((anim, index) => (
-												<AnimatePresence key={index}>
-													{isAnimationActive && (
-														<motion.div
-															className='clickerAnimation'
-															initial={{ opacity: 1, y: 0 }}
-															animate={{ opacity: [1, 0], y: [-90, -240] }}
-															exit={{ opacity: 0 }}
-															transition={{ duration: 1.5 }}
-															style={{
-																color: '#000',
-																fontSize: '34px',
-																left: `${anim.x}px`,
-																top: `${anim.y}px`,
-																position: 'absolute',
-																color: boostPhase ? '#FFDA17' : '#333333',
-																zIndex: 10,
-																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.6)',
-															}}
-															onAnimationComplete={() => {
-																clearAnimations(index);
-															}}
-														>
-															+{clickNewCoins}
-														</motion.div>
-													)}
-												</AnimatePresence>
-											))}
-											<div className='mainContent__imageContainer'>
-												<img
-													src={boostPhase ? tigranGold : tigranIdle}
-													draggable='false'
-													alt='Tigran idle'
-												/>
-											</div>
+									<div
+										className='mainContent__clickArea'
+										onTouchStart={handleTouchStart}
+										onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
+									>
+										{animations.map((anim, index) => (
+											<AnimatePresence key={index}>
+												{isAnimationActive && (
+													<motion.div
+														className='clickerAnimation'
+														initial={{ opacity: 1, y: 0 }}
+														animate={{ opacity: [1, 0], y: [-90, -240] }}
+														exit={{ opacity: 0 }}
+														transition={{ duration: 1.5 }}
+														style={{
+															color: '#000',
+															fontSize: '34px',
+															left: `${anim.x}px`,
+															top: `${anim.y}px`,
+															position: 'absolute',
+															color: boostPhase ? '#FFDA17' : '#333333',
+															zIndex: 10,
+															textShadow: '0px 4px 6px rgba(0, 0, 0, 0.6)',
+														}}
+														onAnimationComplete={() => {
+															clearAnimations(index);
+														}}
+													>
+														+{clickNewCoins}
+													</motion.div>
+												)}
+											</AnimatePresence>
+										))}
+										<div className='mainContent__imageContainer'>
+											<img
+												src={boostPhase ? tigranGold : heroAnimation}
+												draggable='false'
+												alt='Tigran idle'
+											/>
 										</div>
-									) : (
-										<div
-											className='mainContent__clickArea'
-											onTouchStart={handleTouchStart}
-											onTouchEnd={(e) => handleTouchEnd(e.touches[0], e)}
-										>
-											{animations.map((anim, index) => (
-												<AnimatePresence key={index}>
-													{isAnimationActive && (
-														<motion.div
-															className='clickerAnimation'
-															initial={{ opacity: 1, y: 0 }}
-															animate={{ opacity: [1, 0], y: [-90, -240] }}
-															exit={{ opacity: 0 }}
-															transition={{ duration: 1.5 }}
-															style={{
-																fontSize: '34px',
-																left: `${anim.x}px`,
-																top: `${anim.y}px`,
-																position: 'absolute',
-																color: boostPhase ? '#FFDA17' : '#333333',
-																zIndex: 10,
-																textShadow: '0px 4px 6px rgba(0, 0, 0, 0.6)',
-															}}
-															onAnimationComplete={() => {
-																clearAnimations(index);
-															}}
-														>
-															+{clickNewCoins}
-														</motion.div>
-													)}
-												</AnimatePresence>
-											))}
-											<div className='mainContent__imageContainer'>
-												<img
-													src={boostPhase ? tigranGold : tigranCash}
-													draggable='false'
-													alt='Tigran active'
-												/>
-											</div>
-										</div>
-									)}
+									</div>
 									<div className='mainContent__footer'>
 										{!gamePaused && (
 											<div className='mainContent__sessionCoins'>
 												<div className='mainContent__sessionCoins-img' draggable='false'>
-													<img src={tigranCircle} draggable='false' />
+													<img src={boostCoin} draggable='false' />
 												</div>
 												<div className='mainContent__sessionCoins-text'>
 													<span>{t('mainSessionCoins')}</span>
