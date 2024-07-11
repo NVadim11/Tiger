@@ -9,7 +9,6 @@ import ref_icon from '../../img/referral.webp';
 import { useGetLeaderboardMutation } from '../../services/phpService';
 // import { TonConnectButton, useTonConnectModal, useTonWallet } from '@tonconnect/ui-react';
 // import TonConnectUI from '@tonconnect/ui';
-import { connector } from 'src/connector';
 import './Header.scss';
 
 const Header = ({ user }) => {
@@ -195,10 +194,6 @@ const Header = ({ user }) => {
 	// 		console.error('Ошибка загрузки скрипта:', error);
 	// 	  });
 	//   }, []);
-
-	useEffect(() => {
-		connector.restoreConnection();
-	}, []);
 
 	return (
 		<>
