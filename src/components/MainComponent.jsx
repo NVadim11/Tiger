@@ -13,10 +13,14 @@ import leaderboard from '../img/leaderboard.webp';
 import referral from '../img/referral.webp';
 import tiger1 from '../img/tiger1.webp';
 import tiger_ava from '../img/tiger_ava.webp';
+import boostCoin from '../img/tigranBoost.webp';
 import tigranCash from '../img/tigranCash.gif';
 import tigranChill from '../img/tigranChill.gif';
 import tigranGold from '../img/tigranGold.gif';
+import tigranIdle from '../img/tigranIdle.gif';
+import tigranMachine from '../img/tigranMachine.gif';
 import tigranQR from '../img/tigranQR.webp';
+import tigranTalk from '../img/tigranTalk.gif';
 import tigranCircle from '../img/tigran_circle.webp';
 
 import Footer from './Footer/Footer';
@@ -115,6 +119,10 @@ const MainComponent = () => {
 			tigranChill,
 			tigranGold,
 			tigranQR,
+			boostCoin,
+			tigranIdle,
+			tigranMachine,
+			tigranTalk,
 		];
 
 		const loadImages = async () => {
