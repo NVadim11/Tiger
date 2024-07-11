@@ -181,7 +181,7 @@ const MainComponent = () => {
 					<TelegramLinking />
 				) : (
 					<>
-						{/* <Preloader loaded={preloaderLoaded} /> */}
+						<Preloader loaded={!preloaderLoaded} />
 						{!user ? (
 							<>
 								<Header user={user} />
