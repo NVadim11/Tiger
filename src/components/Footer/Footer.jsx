@@ -9,10 +9,10 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
+import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigran_circle.webp';
 import Modal from '../Modal/Modal';
-import { useTranslation } from 'react-i18next';
 import './Footer.scss';
 
 const Footer = ({ user }) => {
