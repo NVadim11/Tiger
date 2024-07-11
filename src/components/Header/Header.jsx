@@ -36,7 +36,7 @@ const Header = ({ user }) => {
 
 	// Localisation
 	const { t, i18n } = useTranslation();
-	const [language, setLanguage] = useState('en'); // (user.language_code || 'en');
+	const [language, setLanguage] = user.language_code || 'en'; // (user.language_code || 'en');
 	const changeLanguage = (language) => {
 		i18n.changeLanguage(language);
 	};

@@ -304,8 +304,6 @@ body::after {
       width: 24px;
       height: 24px;
       background: var(--altBG);
-      border: 2px solid var(--mainColor);
-      border-radius: 62px;
       img {
         width: 100%;
         height: 100%;
@@ -467,7 +465,8 @@ body::after {
   &__walletTask-left {
     border: 1px solid #0d9047;
     border-radius: 31px;
-    padding: 2px 12px;
+    padding: 4px 12px;
+    color: var(--altColor);
     width: 67px;
     height: 16px;
     background: #2cb726;
@@ -475,7 +474,8 @@ body::after {
     align-items: center;
     justify-content: center;
     p {
-        font-weight: 400;
+        padding: 4px 0 0 0;
+        font-weight: 400; 
         font-size: 14px;
         line-height: 100%;
         letter-spacing: 0.03em;

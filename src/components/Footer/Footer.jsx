@@ -701,7 +701,7 @@ const Footer = ({ user }) => {
 										</div>
 										{!user?.wallet_address ? (
 											<div className='popupTasks__walletTask-left'>
-												<p>+20000</p>
+												<p>20000</p>
 											</div>
 										) : (
 											''
@@ -818,7 +818,7 @@ const Footer = ({ user }) => {
 														<span>{quest.daily_quest.name}</span>
 														{quest.status === 0 ? (
 															<p className='popupTasks__task-rew'>
-																+{quest.reward}{' '}
+																{quest.reward}{' '}
 																<div className='rewardCoin'>
 																	<img src={tigerCoin} alt='Tigran coin' />
 																</div>
@@ -857,7 +857,7 @@ const Footer = ({ user }) => {
 														<span>{quest.daily_quest.name}</span>
 														{quest.status === 0 ? (
 															<p className='popupTasks__task-rew'>
-																+{quest.reward}{' '}
+																{quest.reward}{' '}
 																<div className='rewardCoin'>
 																	<img src={tigerCoin} alt='Tigran coin' />
 																</div>
@@ -915,7 +915,7 @@ const Footer = ({ user }) => {
 														<span>{quest.partners_quest.name}</span>
 														{quest.status === 0 ? (
 															<p className='popupTasks__task-rew'>
-																+{quest.reward}{' '}
+																{quest.reward}{' '}
 																<div className='rewardCoin'>
 																	<img src={tigerCoin} alt='Tigran coin' />
 																</div>
