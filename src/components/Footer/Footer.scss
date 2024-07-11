@@ -301,12 +301,13 @@ body::after {
       margin-top: 0px;
       right: 0;
       position: relative;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
       width: 24px;
-      height: 24px;
-      background: var(--altBG);
+      background: transparent;
       img {
         width: 100%;
-        height: 100%;
       }
     }
   }
