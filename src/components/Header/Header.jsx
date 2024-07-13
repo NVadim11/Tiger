@@ -1,12 +1,11 @@
-import { TonConnectButton } from '@tonconnect/ui-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import face from '../../img/tigran_circle.webp';
 import copy from '../../img/copy.svg';
 import cross from '../../img/cross.svg';
 import crown from '../../img/crown.svg';
 import lead_icon from '../../img/leaderboard.webp';
 import ref_icon from '../../img/referral.webp';
+import face from '../../img/tigran_circle.webp';
 import { useGetLeaderboardMutation } from '../../services/phpService';
 // import { TonConnectButton, useTonConnectModal, useTonWallet } from '@tonconnect/ui-react';
 // import TonConnectUI from '@tonconnect/ui';
@@ -210,7 +209,7 @@ const Header = ({ user }) => {
 		<>
 			<header id='header' className='header'>
 				<div className='header__logo'>
-					<img src={face} alt='Tigran-logo' />
+					<img src={face} alt='Tiger-logo' />
 				</div>
 				{/* <div id="ton-connect"></div> */}
 				{/* <div> */}

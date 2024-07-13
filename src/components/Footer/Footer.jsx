@@ -563,7 +563,7 @@ const Footer = ({ user }) => {
 									{user?.wallet_balance && (
 										<>
 											<div className='popupTasks__coinImg' draggable='false'>
-												<img src={tigerCoin} alt='Tigran coin' />
+												<img src={tigerCoin} alt='Tiger coin' />
 											</div>
 											<div className='popupTasks__coinAmount'>
 												<span id='coinAmount'>{user?.wallet_balance}</span>
@@ -635,7 +635,7 @@ const Footer = ({ user }) => {
 													onClick={walletSubmitHandler}
 													// disabled={walletInputDisabled === true}
 												>
-												<svg
+													<svg
 														width='24'
 														height='24'
 														viewBox='0 0 24 24'
@@ -813,7 +813,7 @@ const Footer = ({ user }) => {
 															<p className='popupTasks__task-rew'>
 																{quest.reward}{' '}
 																<div className='rewardCoin'>
-																	<img src={tigerCoin} alt='Tigran coin' />
+																	<img src={tigerCoin} alt='Tiger coin' />
 																</div>
 															</p>
 														) : (
@@ -852,7 +852,7 @@ const Footer = ({ user }) => {
 															<p className='popupTasks__task-rew'>
 																{quest.reward}{' '}
 																<div className='rewardCoin'>
-																	<img src={tigerCoin} alt='Tigran coin' />
+																	<img src={tigerCoin} alt='Tiger coin' />
 																</div>
 															</p>
 														) : (
@@ -910,7 +910,7 @@ const Footer = ({ user }) => {
 															<p className='popupTasks__task-rew'>
 																{quest.reward}{' '}
 																<div className='rewardCoin'>
-																	<img src={tigerCoin} alt='Tigran coin' />
+																	<img src={tigerCoin} alt='Tiger coin' />
 																</div>
 															</p>
 														) : (

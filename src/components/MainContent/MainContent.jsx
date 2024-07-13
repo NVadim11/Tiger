@@ -559,7 +559,7 @@ const MainContent = ({ user }) => {
 											<img
 												src={boostPhase ? tigranGold : heroAnimation}
 												draggable='false'
-												alt='Tigran idle'
+												alt='Tiger idle'
 											/>
 										</div>
 									</div>

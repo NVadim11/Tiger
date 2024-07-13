@@ -1,5 +1,5 @@
 :root {
-  --text: "Bebas";
+  --text: "Oswald";
   --mainColor: #1c2520;
   --altColor: #fff;
   --minWidth: 390px;
@@ -56,10 +56,10 @@
   
   
   @font-face {
-    font-family: "Bebas";
+    font-family: "Oswald";
     font-display: swap;
-    src: local("Bebas"),
-      url("./fonts/bebasneuecyrillic.ttf") format("truetype");
+    src: local("Oswald"),
+      url("./fonts/Oswald-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
   }

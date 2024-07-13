@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import tigranChill from '../../../img/tigranChill.gif';
 import tigranCircle from '../../../img/tigran_circle.webp';
-import { useTranslation } from 'react-i18next';
 
 const GamePaused = ({ user, remainingTime }) => {
 	const [timeRemaining, setTimeRemaining] = useState(remainingTime);
@@ -38,7 +38,7 @@ const GamePaused = ({ user, remainingTime }) => {
 				<h4 style={{ marginBottom: '10px', marginTop: '20px' }}>{t('gamePauseCalc')}</h4>
 			)}
 			<div className='mainContent__imageContainer'>
-				<img src={tigranChill} draggable='false' alt='Tigran Chill' />
+				<img src={tigranChill} draggable='false' alt='Tiger Chill' />
 			</div>
 			<p style={{ marginTop: '20px' }}>{t('gamePauseDescr')}</p>
 		</div>
