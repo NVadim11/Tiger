@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigranBoost.webp';
 import Modal from '../Modal/Modal';
+import { useTonConnectUI, TonConnectButton } from '@tonconnect/ui-react';
 import './Footer.scss';
 
 const Footer = ({ user }) => {
@@ -497,6 +498,30 @@ const Footer = ({ user }) => {
 		return () => clearInterval(timerInterval);
 	}, [timerWebsite, websiteTaskStatus]);
 
+	const { wallet, connected, connect, disconnect } = useTonConnectUI();
+	const [status, setStatus] = useState('');
+
+	useEffect(() => {
+		if (connected) {
+			setStatus(`Connected Address: ${wallet?.account.address}`);
+			console.log('Connected Address:', wallet?.account.address); // Выводим адрес в консоль
+		} else {
+			setStatus('');
+		}
+	}, [connected, wallet]);
+
+	const handleConnect = () => {
+		connect()
+			.then(() => {
+				if (wallet && wallet.account && wallet.account.address) {
+					console.log('Wallet Address:', wallet.account.address); // Выводим адрес в консоль при подключении
+				}
+			})
+			.catch((error) => {
+				console.error('Connection Error:', error);
+			});
+	};
+
 	return (
 		<>
 			<footer id='footer' className='footerMain'>
@@ -617,6 +642,14 @@ const Footer = ({ user }) => {
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
+									<div>
+										{status && <p>{status}</p>}
+										{connected ? (
+											<button onClick={disconnect}>Disconnect</button>
+										) : (
+											<TonConnectButton onClick={handleConnect} />
+										)}
+									</div>
 									{inputFirst && (
 										<>
 											<div className='popupTasks__walletTask-title'>
