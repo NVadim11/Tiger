@@ -18,11 +18,7 @@ import './Footer.scss';
 
 const Footer = ({ user }) => {
 	const tg = window.Telegram.WebApp;
-	const userId = tg.initDataUnsafe?.user?.id;
-	const [isVisible, setIsVisible] = useState(false);
 	const [tasksOpen, setTasksOpen] = useState(false);
-	const [tasksDaily, setTasksDaily] = useState(false);
-	const [tasksPartn, setTasksPartn] = useState(false);
 	const [passTask] = usePassTaskMutation();
 	const [setWallet] = useSetWalletMutation();
 	const [changeWallet] = useChangeWalletMutation();
@@ -323,7 +319,7 @@ const Footer = ({ user }) => {
 		tg.openLink('https://x.com/tigrun_tap');
 
 		if (twitterTaskStatus === 0) {
-			setTwitterTimer(30);
+			setTwitterTimer(15);
 			setTwitterTaskStatus(2);
 		}
 	};
@@ -332,7 +328,7 @@ const Footer = ({ user }) => {
 		tg.openLink('https://t.me/Tig_run_tap');
 
 		if (chatTaskStatus === 0) {
-			setChatTimer(30);
+			setChatTimer(15);
 			setChatTaskStatus(2);
 		}
 	};
@@ -341,7 +337,7 @@ const Footer = ({ user }) => {
 		tg.openLink('https://t.me/TigRunVerif');
 
 		if (channelTaskStatus === 0) {
-			setChannelTimer(30);
+			setChannelTimer(15);
 			setСhannelTaskStatus(2);
 		}
 	};
@@ -350,7 +346,7 @@ const Footer = ({ user }) => {
 		tg.openLink('https://tema.cash/');
 
 		if (websiteTaskStatus === 0) {
-			setWebsiteTimer(30);
+			setWebsiteTimer(15);
 			setWebsiteTaskStatus(2);
 		}
 	};
