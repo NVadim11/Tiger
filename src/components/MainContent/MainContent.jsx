@@ -544,7 +544,7 @@ const MainContent = ({ user }) => {
 															position: 'absolute',
 															color: boostPhase ? '#FFDA17' : '#333333',
 															zIndex: 10,
-															fontFamily: "Bakbak",
+															fontFamily: 'Bebas',
 															textShadow: '0px 4px 6px rgba(0, 0, 0, 0.6)',
 														}}
 														onAnimationComplete={() => {
