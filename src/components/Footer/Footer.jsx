@@ -9,11 +9,11 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
+import { TonConnectButton, useTonConnectUI } from '@tonconnect/ui-react';
 import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigranBoost.webp';
 import Modal from '../Modal/Modal';
-import { useTonConnectUI, TonConnectButton } from '@tonconnect/ui-react';
 import './Footer.scss';
 
 const Footer = ({ user }) => {
@@ -215,11 +215,11 @@ const Footer = ({ user }) => {
 				}).unwrap();
 				setResetBtnDisabled(true);
 				setWalletInputDisabled(true);
-				openModal('green', 'Wallet submitted successfully.', `${t('modalReturn')}`);
+				openModal('green', `${t('modalWalletSubmitSucc')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 				toggleSecond();
 			} catch (e) {
-				openModal('red', 'This wallet is already in use.', `${t('modalReturn')}`);
+				openModal('red', `${t('modalWalletSubmitBusy')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		}
@@ -235,11 +235,11 @@ const Footer = ({ user }) => {
 				}).unwrap();
 				setResetBtnDisabled(true);
 				setWalletInputDisabled(true);
-				openModal('green', `${t('modalWalletSucc')}`, `${t('modalReturn')}`);
+				openModal('green', `${t('modalWalletChangeSucc')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 				toggleSecond();
 			} catch (e) {
-				openModal('red', `${t('modalWalletBusy')}`, `${t('modalReturn')}`);
+				openModal('red', `${t('modalWalletChangeBusy')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		}
@@ -320,7 +320,7 @@ const Footer = ({ user }) => {
 	};
 
 	const twitterClick = async () => {
-		window.open('https://x.com/tigrun_tap', '_blank');
+		tg.openLink('https://x.com/tigrun_tap');
 
 		if (twitterTaskStatus === 0) {
 			setTwitterTimer(30);
@@ -329,7 +329,7 @@ const Footer = ({ user }) => {
 	};
 
 	const tgClickChat = async () => {
-		window.open('https://t.me/Tig_run_tap', '_blank');
+		tg.openLink('https://t.me/Tig_run_tap');
 
 		if (chatTaskStatus === 0) {
 			setChatTimer(30);
@@ -338,7 +338,7 @@ const Footer = ({ user }) => {
 	};
 
 	const tgClickChannel = async () => {
-		window.open('https://t.me/TigRunVerif', '_blank');
+		tg.openLink('https://t.me/TigRunVerif');
 
 		if (channelTaskStatus === 0) {
 			setChannelTimer(30);
@@ -347,7 +347,7 @@ const Footer = ({ user }) => {
 	};
 
 	const websiteClick = async () => {
-		window.open('https://tema.cash/', '_blank');
+		tg.openLink('https://tema.cash/');
 
 		if (websiteTaskStatus === 0) {
 			setWebsiteTimer(30);

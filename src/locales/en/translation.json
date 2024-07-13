@@ -16,7 +16,7 @@
 	"refLinkBtn": "Generate",
 	
 	"gamePauseTitle": "Time remaining:",
-	"gamePauseMinutes": "minutes",
+	"gamePauseMinutes": "min",
 	"gamePauseCalc": "Calculating...",
 	"gamePauseDescr": "Tiger is tired, come back when timer is over.",
 
@@ -26,8 +26,10 @@
 	"modalSuccess": "Task completed successfully.",
 	"modalAttention": "Submit your wallet first.",
 	"modalError": "An error occurred. Please try again later.",
-	"modalWalletSucc": "Wallet changed successfully.",
-	"modalWalletBusy": "This wallet is already in use.",
+	"modalWalletSubmitSucc": "Wallet submitted successfully.",
+	"modalWalletSubmitBusy": "This wallet is already in use.",
+	"modalWalletChangeSucc": "Wallet changed successfully.",
+	"modalWalletChangeBusy": "This wallet is already in use.",
 	"modalReturn": "Return",
 
 	"tasksTabTitle": "Tasks",
@@ -38,7 +40,7 @@
 	"walletTaskTitle": "Current wallet",
 	"walletTaskHint": "*it can be done once every 3 days",
 
-	"taskTimer": "seconds",
+	"taskTimer": "s",
 	"followTwitter": "Follow Twitter",
 	"followTGChat": "Follow TG Chat",
 	"followTGChannel": "Follow TG Channel",

@@ -16,7 +16,7 @@
   "refLinkBtn": "Сгенерировать",
 	
   "gamePauseTitle": "Осталось времени:",
-  "gamePauseMinutes": "минуты",
+  "gamePauseMinutes": "мин",
   "gamePauseCalc": "Расчет...",
   "gamePauseDescr": "Тигр устал, вернитесь, когда таймер закончится.",
 
@@ -24,10 +24,12 @@
   "mainEnergyHint": "Чем счастливее Тигр — тем больше вы получаете. Дайте дождю и наслаждайтесь наградами",
 
   "modalSuccess": "Задача успешно выполнена.",
-  "modalAttention": "Сначала отправьте ваш кошелек.",
+  "modalAttention": "Сначала подключите ваш кошелек.",
   "modalError": "Произошла ошибка. Пожалуйста, попробуйте позже.",
-  "modalWalletSucc": "Кошелек успешно изменен.",
-  "modalWalletBusy": "Этот кошелек уже используется.",
+  "modalWalletSubmitSucc": "Кошелек подключен успешно.",
+	"modalWalletSubmitBusy": "Этот кошелек уже используется.",
+  "modalWalletChangeSucc": "Кошелек успешно изменен.",
+  "modalWalletChangeBusy": "Этот кошелек уже используется.",
   "modalReturn": "Вернуться",
 
   "tasksTabTitle": "Задачи",
@@ -38,7 +40,7 @@
   "walletTaskTitle": "Текущий кошелек",
   "walletTaskHint": "*доступно раз в 3 дня",
 
-  "taskTimer": "секунды",
+  "taskTimer": "с",
   "followTwitter": "Подписаться на Twitter",
   "followTGChat": "Подписаться на ТГ Чат",
   "followTGChannel": "Подписаться на ТГ Канал",
