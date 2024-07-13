@@ -63,6 +63,14 @@
     font-weight: 400;
     font-style: normal;
   }
+  @font-face {
+    font-family: "Bakbak";
+    font-display: swap;
+    src: local("Bakbak"),
+      url("./fonts/BakbakOne-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
   
   * {
     padding: 0px;
