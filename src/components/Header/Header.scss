@@ -302,6 +302,20 @@
 		color: var(--altColor);
 	}
 }
+.copied-message {
+  display: inline-block;
+  margin-left: 10px;
+  color: green;
+  font-weight: bold;
+  animation: fadeInOut 2s forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
 
 .popupLeaderboard {
 	padding: 0 12px;

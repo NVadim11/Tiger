@@ -176,26 +176,28 @@ const MainComponent = () => {
 
 	return (
 		<>
-			<>
-				{!isMobileDevice ? (
-					<TelegramLinking />
-				) : (
-					<>
-						<Preloader loaded={preloaderLoaded} />
-						{user ? (
-							<>
-								<Header user={user} />
-								<main id='main' className='main'>
-									<MainContent user={user} />
-								</main>
-								<Footer user={user} />
-							</>
-						) : (
-							<DynamicScreen variant={variant} />
-						)}
-					</>
-				)}
-			</>
+			<Preloader loaded={preloaderLoaded} />
+			{preloaderLoaded && (
+				<>
+					{!isMobileDevice ? (
+						<TelegramLinking />
+					) : (
+						<>
+							{user ? (
+								<>
+									<Header user={user} />
+									<main id='main' className='main'>
+										<MainContent user={user} />
+									</main>
+									<Footer user={user} />
+								</>
+							) : (
+								<DynamicScreen variant={variant} />
+							)}
+						</>
+					)}
+				</>
+			)}
 		</>
 	);
 };
