@@ -18,6 +18,7 @@ const Header = ({ user }) => {
 	const [isElementPresent, setIsElementPresent] = useState(false);
 	const [getLeaderboard] = useGetLeaderboardMutation();
 	const [generatedUrl, setGeneratedUrl] = useState('');
+	const [copied, setCopied] = useState(false);
 
 	const popupClsTgl = isLeaderboardOpen ? 'popupLeaderboard_show' : null;
 	const popupClasses = `popupLeaderboard ${popupClsTgl}`;
@@ -165,7 +166,12 @@ const Header = ({ user }) => {
 		if (generatedUrl) {
 			navigator.clipboard
 				.writeText(generatedUrl)
-				.then(() => {})
+				.then(() => {
+					setCopied(true);
+					setTimeout(() => {
+						setCopied(false);
+					}, 2000);
+				})
 				.catch((err) => {
 					console.error('Failed to copy: ', err);
 				});
@@ -386,6 +392,7 @@ const Header = ({ user }) => {
 										<button onClick={copyToClipboard} className='popupInvite__input-btn'>
 											<img src={copy} alt='' />
 										</button>
+										{copied && <span className='copied-message'>Copied!</span>}
 									</p>
 								</div>
 								<div className='popupInvite__item-group'>
