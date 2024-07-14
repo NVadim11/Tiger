@@ -392,7 +392,7 @@ const Header = ({ user }) => {
 										<button onClick={copyToClipboard} className='popupInvite__input-btn'>
 											<img src={copy} alt='' />
 										</button>
-										{copied && <span className='copied-message'>Copied!</span>}
+										{copied && <span className='copied-message'>{t('refLinkCopy')}</span>}
 									</p>
 								</div>
 								<div className='popupInvite__item-group'>
