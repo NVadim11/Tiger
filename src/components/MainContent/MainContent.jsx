@@ -456,7 +456,7 @@ const MainContent = ({ user }) => {
 														top: `${position.y}px`,
 														cursor: 'pointer',
 														width: '150px',
-														height: '180px',
+														height: '150px',
 														zIndex: 25,
 														...(isMedia && {
 															scale: '80%',

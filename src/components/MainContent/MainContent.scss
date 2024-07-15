@@ -52,14 +52,14 @@
    width: fit-content;
    align-self: center;
    justify-content: center;
-   padding: 10px 14px;
+   padding: 12px 24px;
   }
   &__totalCoinsImg {
    display: flex;
    align-items: center;
    margin-right: 10px;
-   width: 28px;
-   height: 28px;
+   height: 36px;
+   width: 30px;
    background: var(--altBG);
    img {
     width: 100%;
@@ -93,27 +93,29 @@
 &__energyValue {
   display: flex;
   flex-direction: row;
+  font-size: 22px;
  }
  &__energyBar {
-  margin-top: 10px;
+  margin-top: 15px;
   justify-content: flex-start;
+  overflow: hidden;
   align-items: center;
   position: relative;
   display: flex;
   width: 300px;
   height: 15px;
-  border-radius: 20px;
+  border-radius: 37px;
   progress {
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 37px;
   }
   progress::-webkit-progress-bar {
-    border-radius: 20px;
+    border-radius: 37px;
   }
   progress::-webkit-progress-value {
-    border-radius: 20px;
-    background: linear-gradient(146deg, #6cb77f 0%, #478154 100%);
+    border-radius: 37px;
+    background: #559767
   }
 }
   &__imageContainer {
@@ -123,7 +125,7 @@
     align-items: center;  
     justify-content: center;
     img {        
-    width: 325px;
+      width: 338px;
     } 
     @media (max-height: 730px) {
       margin: 0;
