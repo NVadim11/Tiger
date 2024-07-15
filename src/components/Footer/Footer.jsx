@@ -498,7 +498,6 @@ const Footer = ({ user }) => {
 		return () => clearInterval(timerInterval);
 	}, [timerWebsite, websiteTaskStatus]);
 
-
 	return (
 		<>
 			<footer id='footer' className='footerMain'>
@@ -553,12 +552,12 @@ const Footer = ({ user }) => {
 							<div className='popupTasks__title'>
 								<h4>{t('tasksTitle')}</h4>
 								<button
-								onClick={tasksCloseToggler}
-								type='button'
-								className='popupTasks__close'
-							>
-								<img src={cross} />
-							</button>
+									onClick={tasksCloseToggler}
+									type='button'
+									className='popupTasks__close'
+								>
+									<img src={cross} />
+								</button>
 							</div>
 							<div className='popupTasks__coins'>
 								<div className='popupTasks__coinBox'>
@@ -619,7 +618,7 @@ const Footer = ({ user }) => {
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
-									<TonConnectButton className="tonconnect-btn" />
+									<TonConnectButton className='tonconnect-btn' />
 									{!user?.wallet_address ? (
 										<div className='popupTasks__walletTask-right'>
 											<p>20000</p>

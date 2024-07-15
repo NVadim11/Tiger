@@ -239,8 +239,8 @@ body::after {
     text-align: center;
     align-items: center;
     .claim-button {
-      align-items: center;
-      background: #2cb726;
+    background: #2cb726;
+    align-items: center;
     border: 1px solid #0d9047;
     color: #fff;
     border-radius: 31px;
@@ -311,7 +311,7 @@ body::after {
     }
   }
   &__task-img {
-    width:44px;
+    width: 44px;
     height: 44px;
     margin-right: 12px;position: relative;
     img {

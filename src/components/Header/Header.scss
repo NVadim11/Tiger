@@ -328,8 +328,9 @@
 .copied-message {
   display: inline-block;
 	position: absolute;
-	top: -23px;
-	right: 10px;
+	top: -20px;
+	right: 0px;
+	font-size: 18px;
   color: var(--altColor);
   font-weight: bold;
   animation: fadeInOut 2s forwards;
