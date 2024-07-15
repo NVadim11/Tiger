@@ -48,5 +48,11 @@
 	"visitWebsite": "Visit Website",
 	"activityCheck": "Activity not confirmed. Are you certain you complete this task?",
 	"activityClaim": "Claim",
-	"activityDone": "Done!"
+	"activityDone": "Done!",
+			
+	"error404" : "Something went wrong",
+	"repairUpdate" : "Repairs and upgrades are underway",
+	"comingSoon" : "Coming Soon",
+
+	"QRcode": "Leave the desktop. <br /> Mobile gaming rocks!"
 }

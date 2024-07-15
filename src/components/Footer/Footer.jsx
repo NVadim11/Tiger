@@ -9,7 +9,7 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
-import { useTonWallet, useTonConnectModal } from '@tonconnect/ui-react';
+import { useTonWallet, useTonConnectModal, useTonAddress } from '@tonconnect/ui-react';
 import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigranBoost.webp';
@@ -68,16 +68,17 @@ const Footer = ({ user }) => {
 	// tonconnect
 	const { state, open, close } = useTonConnectModal();
 	const wallet = useTonWallet();
+	const wallet_address = useTonAddress(true);
 
 	useEffect(() => {
 		console.log('Modal State:', state);
 		console.log('Wallet:', wallet);
 		if (wallet) {
-		  console.log('Wallet Name:', wallet.name);
-		  console.log('Device App Name:', wallet.device.appName);
-		  console.log('Wallet Address:', wallet.account.address);
+			console.log('Wallet Name:', wallet.name);
+			console.log('Device App Name:', wallet.device.appName);
+			console.log('Wallet Address:', wallet_address);
 		}
-	  }, [state, wallet]);
+	}, [state, wallet]);
 
 	const openModal = (type, text, btnText) => {
 		setModalType(type);
@@ -508,7 +509,6 @@ const Footer = ({ user }) => {
 		return () => clearInterval(timerInterval);
 	}, [timerWebsite, websiteTaskStatus]);
 
-
 	return (
 		<>
 			<footer id='footer' className='footerMain'>
@@ -630,17 +630,17 @@ const Footer = ({ user }) => {
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
 									<div>
-									<div>
-										{/* <div>Modal state: {state?.status}</div> */}
-										<button onClick={open}>Connect Ton Wallet</button>
-										{/* <button onClick={close}>Close modal</button> */}
-									</div>
-									{wallet && (
 										<div>
-											<span>Connected wallet: {wallet.name}</span>
-											<span>Device: {wallet.device.appName}</span>
+											{/* <div>Modal state: {state?.status}</div> */}
+											<button onClick={open}>Connect Ton Wallet</button>
+											{/* <button onClick={close}>Close modal</button> */}
 										</div>
-									)}
+										{wallet && (
+											<div>
+												<span>Connected wallet: {wallet.name}</span>
+												<span>Device: {wallet.device.appName}</span>
+											</div>
+										)}
 									</div>
 									{/* {inputFirst && (
 										<>
