@@ -550,15 +550,15 @@ const Footer = ({ user }) => {
 				<div id='popupTasks' aria-hidden='true' className={popupTasks}>
 					<div className='popupTasks__wrapper'>
 						<div className='popupTasks__content'>
-							<button
+							<div className='popupTasks__title'>
+								<h4>{t('tasksTitle')}</h4>
+								<button
 								onClick={tasksCloseToggler}
 								type='button'
 								className='popupTasks__close'
 							>
 								<img src={cross} />
 							</button>
-							<div className='popupTasks__title'>
-								<h4>{t('tasksTitle')}</h4>
 							</div>
 							<div className='popupTasks__coins'>
 								<div className='popupTasks__coinBox'>

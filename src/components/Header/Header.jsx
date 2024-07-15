@@ -7,6 +7,7 @@ import lead_icon from '../../img/leaderboard.webp';
 import ref_icon from '../../img/referral.webp';
 import face from '../../img/tigran_circle.webp';
 import { useGetLeaderboardMutation } from '../../services/phpService';
+import { Switch, FormControlLabel } from '@mui/material';
 import './Header.scss';
 
 const Header = ({ user }) => {
@@ -179,6 +180,12 @@ const Header = ({ user }) => {
 		}
 	};
 
+	const [checked, setChecked] = useState(false);
+
+	const handleChange = (event) => {
+		setChecked(event.target.checked);
+	};
+
 	return (
 		<>
 			<header id='header' className='header'>
@@ -264,9 +271,39 @@ const Header = ({ user }) => {
 								<img src={ref_icon} alt='Referral Icon' />
 							</a>
 							<div className='header__menu-toggle'>
-								<a className='header__menu-links' onClick={toggleLanguage}>
-									{language === 'en' ? 'Switch to Russian' : 'Переключить на английский'}
-								</a>
+								<FormControlLabel
+									  label={<span style={{ fontSize: '24px', fontWeight: '400', fontFamily: 'Oswald' }}>{language === 'en' ? 'Switch to Russian' : 'Переключить на английский'}</span>}
+									labelPlacement='start'
+									sx={{
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'space-between',
+										width: '100%',
+										border: '1px solid #172610',
+										borderRadius: '10px',
+    									padding: '16px 16px 16px 24px',
+   										height: '56px',
+										fontWeight: '400',
+										lineHeight: '100%',
+										letterSpacing: '0.02em',
+										color: 'var(--mainColor)',
+										margin: '0',
+									  }}
+									control={
+										<Switch
+											checked={language === 'ru'}
+											onChange={toggleLanguage}
+											sx={{
+												'& .MuiSwitch-switchBase.Mui-checked': {
+													color: 'green',
+												},
+												'& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+													backgroundColor: 'green',
+												},
+											}}
+										/>
+									}
+								/>
 							</div>
 						</div>
 					)}
