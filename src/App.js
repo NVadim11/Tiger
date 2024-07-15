@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import './App.css';
 import AppRouter from './components/Router';
@@ -6,12 +6,6 @@ import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { store } from './store';
 
 function App() {
-  // useEffect(() => {
-  //   fetch("https://tg.tema.cash/tonconnect/tonconnect-manifest.json")
-  //     .then(response => response.json())
-  //     .then(data => console.log("Manifest data:", data))
-  //     .catch(error => console.error("Error fetching manifest:", error));
-  // }, []);
   return (
     <Provider store={store}>
       <TonConnectUIProvider 
