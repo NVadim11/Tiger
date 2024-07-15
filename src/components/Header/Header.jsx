@@ -34,7 +34,7 @@ const Header = ({ user }) => {
 	const { t, i18n } = useTranslation();
 
 	// Retrieve the initial language from localStorage or default to 'en'
-	const initialLanguage = localStorage.getItem('language') || 'en';
+	const initialLanguage = localStorage.getItem('language') || 'ru';
 	const [language, setLanguage] = useState(initialLanguage);
 
 	useEffect(() => {
@@ -47,7 +47,7 @@ const Header = ({ user }) => {
 	};
 
 	const toggleLanguage = () => {
-		const newLanguage = language === 'en' ? 'ru' : 'en';
+		const newLanguage = language === 'ru' ? 'en' : 'ru';
 		setLanguage(newLanguage);
 		changeLanguage(newLanguage);
 	};
@@ -280,7 +280,7 @@ const Header = ({ user }) => {
 												fontFamily: 'Oswald',
 											}}
 										>
-											{language === 'ru' ? 'Switch to Russian' : 'Врубить английский'}
+											{language === 'ru' ? 'Switch to English' : 'Врубить Русский'}
 										</span>
 									}
 									labelPlacement='start'
@@ -301,7 +301,7 @@ const Header = ({ user }) => {
 									}}
 									control={
 										<Switch
-											checked={language === 'ru'}
+											checked={language !== 'ru'}
 											onChange={toggleLanguage}
 											sx={{
 												'& .MuiSwitch-switchBase.Mui-checked': {
@@ -448,9 +448,13 @@ const Header = ({ user }) => {
 							<div className='popupLeaderboard__title'>
 								<img src={crown} alt='crown' />
 								<h4> {t('leaderboardTitle')}</h4>
-								<button onClick={сloseToggler} type='button' className='popupInvite__close'>
-								<img src={cross} />
-							</button>
+								<button
+									onClick={сloseToggler}
+									type='button'
+									className='popupInvite__close'
+								>
+									<img src={cross} />
+								</button>
 							</div>
 							<div className='popupLeaderboard__playerList'>
 								<ul className='popupLeaderboard__table'>
