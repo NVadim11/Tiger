@@ -9,7 +9,7 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
-import { useTonAddress, TonConnectButton } from '@tonconnect/ui-react';
+import { useTonAddress, TonConnectButton, TonConnectUI } from '@tonconnect/ui-react';
 import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigranBoost.webp';
@@ -23,27 +23,11 @@ const Footer = ({ user }) => {
 	const [passTask] = usePassTaskMutation();
 	const [setWallet] = useSetWalletMutation();
 	const [changeWallet] = useChangeWalletMutation();
-	const [walletVaL, setWalletVal] = useState('');
-	const [walletInputDisabled, setWalletInputDisabled] = useState(false);
-	const [resetBtnDisabled, setResetBtnDisabled] = useState(false); // false?
 	const [activeTab, setActiveTab] = useState(0);
 	const [passDaily] = usePassDailyMutation();
 	const [passPartners] = usePassPartnersMutation();
 
-	const [inputFirst, setInputFirst] = useState(true);
-	const [inputSecond, setInputSecond] = useState(false);
-
 	const { t } = useTranslation();
-
-	const toggleFirst = () => {
-		setInputFirst(true);
-		setInputSecond(false);
-	};
-
-	const toggleSecond = () => {
-		setInputFirst(false);
-		setInputSecond(true);
-	};
 
 	const dailyTasksObj = user?.daily_quests;
 	const partnerTaskObj = user?.partners_quests;
@@ -66,8 +50,7 @@ const Footer = ({ user }) => {
 	const [timerChannel, setChannelTimer] = useState(0);
 	const [timerWebsite, setWebsiteTimer] = useState(0);
 
-	const wallet_address = useTonAddress(true);
-	console.log('Wallet Address:', wallet_address);
+	const ton_address = useTonAddress(true);
 
 	const openModal = (type, text, btnText) => {
 		setModalType(type);
@@ -115,32 +98,6 @@ const Footer = ({ user }) => {
 	const now = new Date();
 	const dateStringWithTime = now.toLocaleString('en-GB', options);
 
-	useEffect(() => {
-		if (user) {
-			const updateGameStatus = () => {
-				// Get the current time in Frankfurt time zone ('Etc/GMT-3')
-				const currentTimeStamp = moment.tz('UTC').unix();
-				const remainingTime = user?.update_wallet_at - currentTimeStamp;
-				if (remainingTime >= 1) {
-					if (remainingTime <= 0 || user.update_wallet_at === null) {
-						setResetBtnDisabled(false);
-					} else {
-						setResetBtnDisabled(true);
-						setWalletInputDisabled(true);
-					}
-				}
-			};
-
-			const timer = setInterval(() => {
-				updateGameStatus();
-			}, 1000);
-
-			return () => {
-				clearInterval(timer);
-			};
-		}
-	}, [user]);
-
 	const tasksBtn = () => {
 		fadeShow();
 		setTimeout(() => {
@@ -175,22 +132,19 @@ const Footer = ({ user }) => {
 		if (bgTag) bgTag.classList.remove('h100');
 	};
 
-	const walletSubmitHandler = () => {
-		console.log('user:', user); // Логируем весь объект пользователя
-		console.log('user?.wallet_address:', user?.wallet_address);
-		if (!user?.wallet_address) {
+	useEffect(() => {
+		if (ton_address ) {
 			submitWallet();
-		} else {
-			resetWallet();
+			console.log('123');
 		}
-	};
+	}, [ton_address]);
 
 	const submitWallet = async () => {
-		if (wallet_address) {
+		if (ton_address) {
 			try {
 				const res = await setWallet({
 					token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
-					wallet_address: wallet_address,
+					wallet_address: ton_address,
 					id_telegram: user?.id_telegram,
 				}).unwrap();
 				openModal('green', `${t('modalWalletSubmitSucc')}`, `${t('modalReturn')}`);
@@ -202,24 +156,7 @@ const Footer = ({ user }) => {
 		}
 	};
 
-	const resetWallet = async () => {
-		if (wallet_address) {
-			try {
-				const res = await changeWallet({
-					token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
-					wallet_address: wallet_address,
-					user_id: user?.id,
-				}).unwrap();
-				openModal('green', `${t('modalWalletChangeSucc')}`, `${t('modalReturn')}`);
-				blurPopupTasks();
-			} catch (e) {
-				openModal('red', `${t('modalWalletChangeBusy')}`, `${t('modalReturn')}`);
-				blurPopupTasks();
-			}
-		}
-	};
 
-	console.log('user?.wallet_address:', user?.wallet_address);
 
 	const blurPopupTasks = () => {
 		const popupTasks = document.getElementById('popupTasks');
@@ -601,7 +538,7 @@ const Footer = ({ user }) => {
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
-									<TonConnectButton onclick={walletSubmitHandler} className='tonconnect-btn' />
+									<TonConnectButton onclick={submitWallet} className='tonconnect-btn' />
 									{!user?.wallet_address ? (
 										<div className='popupTasks__walletTask-right'>
 											<p>20000</p>
