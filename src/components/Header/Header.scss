@@ -167,6 +167,9 @@
 			text-align: center;
 			color: #1c2520;
 		}
+		@media (max-height: 730px) {
+			display: none;
+		  }
 	}
 	&__refInfo {
 		display: flex;

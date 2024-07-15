@@ -116,15 +116,6 @@ const Footer = ({ user }) => {
 	const dateStringWithTime = now.toLocaleString('en-GB', options);
 
 	useEffect(() => {
-		if (!user?.wallet_address) {
-			toggleFirst();
-		} else {
-			toggleSecond();
-			setWalletVal(user?.wallet_address);
-		}
-	}, [user]);
-
-	useEffect(() => {
 		if (user) {
 			const updateGameStatus = () => {
 				// Get the current time in Frankfurt time zone ('Etc/GMT-3')
@@ -149,12 +140,6 @@ const Footer = ({ user }) => {
 			};
 		}
 	}, [user]);
-
-	const resetWalletEnabler = () => {
-		setWalletInputDisabled(false);
-		setWalletVal('');
-		toggleFirst();
-	};
 
 	const tasksBtn = () => {
 		fadeShow();
@@ -191,6 +176,8 @@ const Footer = ({ user }) => {
 	};
 
 	const walletSubmitHandler = () => {
+		console.log('user:', user); // Логируем весь объект пользователя
+		console.log('user?.wallet_address:', user?.wallet_address);
 		if (!user?.wallet_address) {
 			submitWallet();
 		} else {
@@ -198,26 +185,16 @@ const Footer = ({ user }) => {
 		}
 	};
 
-	const blurPopupTasks = () => {
-		const popupTasks = document.getElementById('popupTasks');
-		if (popupTasks) popupTasks.classList.add('show-blur');
-		const footerTag = document.getElementById('footer');
-		if (footerTag) footerTag.classList.add('show-blur');
-	};
-
 	const submitWallet = async () => {
-		if (walletVaL) {
+		if (wallet_address) {
 			try {
 				const res = await setWallet({
 					token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
-					wallet_address: walletVaL,
+					wallet_address: wallet_address,
 					id_telegram: user?.id_telegram,
 				}).unwrap();
-				setResetBtnDisabled(true);
-				setWalletInputDisabled(true);
 				openModal('green', `${t('modalWalletSubmitSucc')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
-				toggleSecond();
 			} catch (e) {
 				openModal('red', `${t('modalWalletSubmitBusy')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
@@ -226,23 +203,29 @@ const Footer = ({ user }) => {
 	};
 
 	const resetWallet = async () => {
-		if (walletVaL) {
+		if (wallet_address) {
 			try {
 				const res = await changeWallet({
 					token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
-					wallet_address: walletVaL,
+					wallet_address: wallet_address,
 					user_id: user?.id,
 				}).unwrap();
-				setResetBtnDisabled(true);
-				setWalletInputDisabled(true);
 				openModal('green', `${t('modalWalletChangeSucc')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
-				toggleSecond();
 			} catch (e) {
 				openModal('red', `${t('modalWalletChangeBusy')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			}
 		}
+	};
+
+	console.log('user?.wallet_address:', user?.wallet_address);
+
+	const blurPopupTasks = () => {
+		const popupTasks = document.getElementById('popupTasks');
+		if (popupTasks) popupTasks.classList.add('show-blur');
+		const footerTag = document.getElementById('footer');
+		if (footerTag) footerTag.classList.add('show-blur');
 	};
 
 	const passDailyHandler = async (taskId, link) => {
@@ -618,13 +601,13 @@ const Footer = ({ user }) => {
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
-									<TonConnectButton className='tonconnect-btn' />
+									<TonConnectButton onclick={walletSubmitHandler} className='tonconnect-btn' />
 									{!user?.wallet_address ? (
 										<div className='popupTasks__walletTask-right'>
 											<p>20000</p>
 										</div>
 									) : (
-										''
+										'Done!'
 									)}
 								</div>
 								<div className='popupTasks__task'>

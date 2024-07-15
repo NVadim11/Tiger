@@ -48,9 +48,9 @@ function App() {
         // actionsConfiguration={{
         //     twaReturnUrl: 'https://t.me/tigr_run_bot'
         // }}
-        // actionsConfiguration={{
-        //   twaReturnUrl: 'https://t.me/Tema_cash_bot'
-        // }}
+        actionsConfiguration={{
+          twaReturnUrl: 'https://t.me/Tema_cash_bot'
+        }}
       >
         <AppRouter />
       </TonConnectUIProvider>
