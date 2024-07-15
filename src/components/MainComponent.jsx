@@ -176,7 +176,7 @@ const MainComponent = () => {
 
 	return (
 		<>
-			<Preloader loaded={!preloaderLoaded} />
+			<Preloader loaded={preloaderLoaded} />
 			{preloaderLoaded && (
 				<>
 					{!isMobileDevice ? (

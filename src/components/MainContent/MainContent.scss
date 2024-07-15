@@ -125,13 +125,14 @@
     align-items: center;  
     justify-content: center;
     img {        
-      width: 338px;
+      width: 100%;
     } 
     @media (max-height: 730px) {
       margin: 0;
     }
   }
   &__clickArea {
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
