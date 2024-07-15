@@ -435,12 +435,12 @@ const Header = ({ user }) => {
 				<div id='leaderboard' aria-hidden='true' className={popupClasses}>
 					<div className='popupLeaderboard__wrapper'>
 						<div className='popupLeaderboard__content'>
-							<button onClick={сloseToggler} type='button' className='popupInvite__close'>
-								<img src={cross} />
-							</button>
 							<div className='popupLeaderboard__title'>
 								<img src={crown} alt='crown' />
 								<h4> {t('leaderboardTitle')}</h4>
+								<button onClick={сloseToggler} type='button' className='popupInvite__close'>
+								<img src={cross} />
+							</button>
 							</div>
 							<div className='popupLeaderboard__playerList'>
 								<ul className='popupLeaderboard__table'>
