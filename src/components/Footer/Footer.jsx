@@ -9,7 +9,7 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
-import { TonConnectButton, useTonConnectUI } from '@tonconnect/ui-react';
+import { useTonWallet, useTonConnectModal } from '@tonconnect/ui-react';
 import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigranBoost.webp';
@@ -64,6 +64,20 @@ const Footer = ({ user }) => {
 	const [timerChat, setChatTimer] = useState(0);
 	const [timerChannel, setChannelTimer] = useState(0);
 	const [timerWebsite, setWebsiteTimer] = useState(0);
+
+	// tonconnect
+	const { state, open, close } = useTonConnectModal();
+	const wallet = useTonWallet();
+
+	useEffect(() => {
+		console.log('Modal State:', state);
+		console.log('Wallet:', wallet);
+		if (wallet) {
+		  console.log('Wallet Name:', wallet.name);
+		  console.log('Device App Name:', wallet.device.appName);
+		  console.log('Wallet Address:', wallet.account.address);
+		}
+	  }, [state, wallet]);
 
 	const openModal = (type, text, btnText) => {
 		setModalType(type);
@@ -494,29 +508,6 @@ const Footer = ({ user }) => {
 		return () => clearInterval(timerInterval);
 	}, [timerWebsite, websiteTaskStatus]);
 
-	const { wallet, connected, connect, disconnect } = useTonConnectUI();
-	const [status, setStatus] = useState('');
-
-	useEffect(() => {
-		if (connected) {
-			setStatus(`Connected Address: ${wallet?.account.address}`);
-			console.log('Connected Address:', wallet?.account.address); // Выводим адрес в консоль
-		} else {
-			setStatus('');
-		}
-	}, [connected, wallet]);
-
-	const handleConnect = () => {
-		connect()
-			.then(() => {
-				if (wallet && wallet.account && wallet.account.address) {
-					console.log('Wallet Address:', wallet.account.address); // Выводим адрес в консоль при подключении
-				}
-			})
-			.catch((error) => {
-				console.error('Connection Error:', error);
-			});
-	};
 
 	return (
 		<>
@@ -639,14 +630,19 @@ const Footer = ({ user }) => {
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
 									<div>
-										{status && <p>{status}</p>}
-										{connected ? (
-											<button onClick={disconnect}>Disconnect</button>
-										) : (
-											<TonConnectButton onClick={handleConnect} />
-										)}
+									<div>
+										{/* <div>Modal state: {state?.status}</div> */}
+										<button onClick={open}>Connect Ton Wallet</button>
+										{/* <button onClick={close}>Close modal</button> */}
 									</div>
-									{inputFirst && (
+									{wallet && (
+										<div>
+											<span>Connected wallet: {wallet.name}</span>
+											<span>Device: {wallet.device.appName}</span>
+										</div>
+									)}
+									</div>
+									{/* {inputFirst && (
 										<>
 											<div className='popupTasks__walletTask-title'>
 												<span>{t('walletTaskTitle')}</span>
@@ -714,7 +710,7 @@ const Footer = ({ user }) => {
 												</button>
 											</div>
 										</>
-									)}
+									)} */}
 									<div className='popupTasks__walletTask-box'>
 										<div className='popupTasks__walletTask-right'>
 											<div className='popupTasks__walletTask-rightHint'>
