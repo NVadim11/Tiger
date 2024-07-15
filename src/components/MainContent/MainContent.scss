@@ -1,9 +1,8 @@
 .mainContent {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100%; 
   &__gameContent {
-    top: 45px;
     width: 100%;
     height: 100%;
   }
@@ -125,11 +124,8 @@
     align-items: center;  
     justify-content: center;
     img {        
-      width: 100%;
+      height: 245px;
     } 
-    @media (max-height: 730px) {
-      margin: 0;
-    }
   }
   &__clickArea {
     margin: 10px 0;
@@ -197,16 +193,15 @@
   padding: 0 1.25rem;
   order: 5;
   display: block;
-  padding-bottom: 30px;
   p {
    font-weight: 500;
    font-size: 12px;
    line-height: 130%;
    color: var(--mainColor);
    text-align: center;
-  }
-  @media (max-height: 730px) {
-   display: none;
+   @media (max-height: 730px) {
+    display: none;
+   }
   }
  }
 }

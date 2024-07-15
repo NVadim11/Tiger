@@ -272,7 +272,17 @@ const Header = ({ user }) => {
 							</a>
 							<div className='header__menu-toggle'>
 								<FormControlLabel
-									  label={<span style={{ fontSize: '24px', fontWeight: '400', fontFamily: 'Oswald' }}>{language === 'en' ? 'Switch to Russian' : 'Переключить на английский'}</span>}
+									label={
+										<span
+											style={{
+												fontSize: '24px',
+												fontWeight: '400',
+												fontFamily: 'Oswald',
+											}}
+										>
+											{language === 'en' ? 'Switch to Russian' : 'Вернуть английский'}
+										</span>
+									}
 									labelPlacement='start'
 									sx={{
 										display: 'flex',
@@ -281,14 +291,14 @@ const Header = ({ user }) => {
 										width: '100%',
 										border: '1px solid #172610',
 										borderRadius: '10px',
-    									padding: '16px 16px 16px 24px',
-   										height: '56px',
+										padding: '16px 16px 16px 24px',
+										height: '56px',
 										fontWeight: '400',
 										lineHeight: '100%',
 										letterSpacing: '0.02em',
 										color: 'var(--mainColor)',
 										margin: '0',
-									  }}
+									}}
 									control={
 										<Switch
 											checked={language === 'ru'}
