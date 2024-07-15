@@ -280,7 +280,7 @@ const Header = ({ user }) => {
 												fontFamily: 'Oswald',
 											}}
 										>
-											{language === 'en' ? 'Switch to Russian' : 'Вернуть английский'}
+											{language === 'ru' ? 'Switch to Russian' : 'Врубить английский'}
 										</span>
 									}
 									labelPlacement='start'
@@ -333,7 +333,7 @@ const Header = ({ user }) => {
 								<div className='popupInvite__refInfo-box'>
 									<p>{t('refBonus')}</p>
 									<div className='popupInvite__refInfo-item'>
-										<span>% 10</span>
+										<span>10 %</span>
 									</div>
 								</div>
 								{totalReferrals >= 0 && (

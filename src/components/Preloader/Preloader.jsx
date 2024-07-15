@@ -11,7 +11,7 @@ const Preloader = ({ loaded }) => {
 			}}
 		>
 			<div className='preloaderText'>
-				<h4>TIGER TRADE</h4>
+				<h4>TIGER CASH</h4>
 			</div>
 			<div className='progressBar'>
 				<div className='progress'></div>
