@@ -9,7 +9,7 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
-import { useTonAddress, useTonConnectModal, TonConnectButton } from '@tonconnect/ui-react';
+import { useTonAddress, TonConnectButton } from '@tonconnect/ui-react';
 import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigranBoost.webp';
@@ -66,15 +66,8 @@ const Footer = ({ user }) => {
 	const [timerChannel, setChannelTimer] = useState(0);
 	const [timerWebsite, setWebsiteTimer] = useState(0);
 
-	// useEffect(() => {
-	// 	console.log('Modal State:', state);
-	// 	console.log('Wallet:', wallet);
-	// 	if (wallet) {
-	// 		console.log('Wallet Name:', wallet.name);
-	// 		console.log('Device App Name:', wallet.device.appName);
-	// 		console.log('Wallet Address:', wallet.account.address);
-	// 	}
-	// }, [state, wallet]);
+	const wallet_address = useTonAddress(true);
+	console.log('Wallet Address:', wallet_address);
 
 	const openModal = (type, text, btnText) => {
 		setModalType(type);
