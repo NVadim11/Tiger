@@ -571,7 +571,7 @@ const Footer = ({ user }) => {
 											<p>20000</p>
 										</div>
 									) : (
-										<p>{t('activityDone')}</p>
+										<span>{t('activityDone')}</span>
 									)}
 								</div>
 								<div className='popupTasks__task'>
