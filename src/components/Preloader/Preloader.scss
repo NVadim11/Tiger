@@ -7,16 +7,15 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .preloaderText {
   display: flex;
   align-items: center;
-  position: absolute;
-  top: 80%;
+  bottom: 85px;
   padding: 0 40px;
-
+  margin-bottom: 25px;
   h4 {
     font-weight: 400;
     font-size: 48px;
@@ -28,8 +27,7 @@
 }
 
 .progressBar {
-  position: absolute;
-  bottom: 10%;
+  margin-bottom: 50px;
   width: 80%;
   height: 10px;
   background-color: #fff;
