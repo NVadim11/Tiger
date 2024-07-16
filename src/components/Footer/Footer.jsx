@@ -130,13 +130,6 @@ const Footer = ({ user }) => {
 		if (bgTag) bgTag.classList.remove('h100');
 	};
 
-	useEffect(() => {
-		if (ton_address) {
-			submitWallet();
-			console.log('123');
-		}
-	}, [ton_address]);
-
 	const submitWallet = async () => {
 		if (ton_address) {
 			try {
@@ -145,11 +138,8 @@ const Footer = ({ user }) => {
 					wallet_address: ton_address,
 					id_telegram: user?.id_telegram,
 				}).unwrap();
-				openModal('green', `${t('modalWalletSubmitSucc')}`, `${t('modalReturn')}`);
-				blurPopupTasks();
 			} catch (e) {
-				openModal('red', `${t('modalWalletSubmitBusy')}`, `${t('modalReturn')}`);
-				blurPopupTasks();
+				console.log(e);
 			}
 		}
 	};
@@ -165,11 +155,27 @@ const Footer = ({ user }) => {
 				openModal('green', `${t('modalWalletSucc')}`, `${t('modalReturn')}`);
 				blurPopupTasks();
 			} catch (e) {
-				openModal('red', `${t('modalWalletBusy')}`, `${t('modalReturn')}`);
-				blurPopupTasks();
+				console.log(e);
 			}
 		}
 	};
+
+	useEffect(() => {
+		const handleWalletLogic = async () => {
+			if (ton_address) {
+				if (user?.wallet_address === null) {
+					await submitWallet();
+				} else if (
+					user?.wallet_address !== null &&
+					ton_address !== user?.wallet_address
+				) {
+					await updateWallet();
+				}
+			}
+		};
+
+		handleWalletLogic();
+	}, [ton_address, user]);
 
 	const blurPopupTasks = () => {
 		const popupTasks = document.getElementById('popupTasks');
@@ -551,7 +557,11 @@ const Footer = ({ user }) => {
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
-									<TonConnectButton onclick={submitWallet} className='tonconnect-btn' style={{ position: "relative" }} />
+									<TonConnectButton
+										onclick={submitWallet}
+										className='tonconnect-btn'
+										style={{ position: 'relative' }}
+									/>
 									{user?.wallet_address ? (
 										<div className='popupTasks__walletTask-right'>
 											<p>20000</p>

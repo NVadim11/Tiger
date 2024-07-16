@@ -53,6 +53,7 @@ const MainComponent = () => {
 					user: {
 						id: initData?.user.id,
 						is_bot: initData?.user.is_bot,
+						is_premium: initData?.user.is_premium,
 						first_name: initData?.user.first_name,
 						last_name: initData?.user.last_name,
 						username: initData?.user.username,
@@ -176,14 +177,14 @@ const MainComponent = () => {
 
 	return (
 		<>
-			<Preloader loaded={!preloaderLoaded} />
-			{!preloaderLoaded && (
+			<Preloader loaded={preloaderLoaded} />
+			{preloaderLoaded && (
 				<>
 					{!isMobileDevice ? (
 						<TelegramLinking />
 					) : (
 						<>
-							{!user ? (
+							{user ? (
 								<>
 									<Header user={user} />
 									<main id='main' className='main'>
