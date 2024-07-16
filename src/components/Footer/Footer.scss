@@ -380,10 +380,19 @@ body::after {
       border: 1px solid #0d9047;
       border-radius: 10px;
     }
-    span {
-      color: #ffffff;
-      font-size: 16px;
-      margin-right: 53px;
+    p {
+      align-items: center;
+    background: #2cb726;
+    border: 1px solid #0d9047;
+    border-radius: 31px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 6px 12px;
+    width: 122px;
+    position: absolute;
+    right: 24px;
+    font-size: 16px;
     }
   }
   &__walletTask-right {
