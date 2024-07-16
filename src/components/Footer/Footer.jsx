@@ -153,8 +153,6 @@ const Footer = ({ user }) => {
 					wallet_address: ton_address,
 					user_id: user?.id,
 				}).unwrap();
-				openModal('green', `${t('modalWalletSucc')}`, `${t('modalReturn')}`);
-				blurPopupTasks();
 			} catch (e) {
 				console.log(e);
 			}
@@ -568,12 +566,12 @@ const Footer = ({ user }) => {
 										className='tonconnect-btn'
 										style={{ position: 'relative' }}
 									/>
-									{user?.wallet_address ? (
+									{!user?.wallet_address ? (
 										<div className='popupTasks__walletTask-right'>
 											<p>20000</p>
 										</div>
 									) : (
-										<span>Done!</span>
+										<p>{t('activityDone')}</p>
 									)}
 								</div>
 								<div className='popupTasks__task'>
