@@ -1,5 +1,4 @@
 import bcrypt from 'bcryptjs';
-import moment from 'moment-timezone';
 import React, { useEffect, useState } from 'react';
 import {
 	useChangeWalletMutation,
@@ -9,7 +8,7 @@ import {
 	useSetWalletMutation,
 } from '../../services/phpService';
 
-import { useTonAddress, TonConnectButton, TonConnectUI } from '@tonconnect/ui-react';
+import { useTonAddress, TonConnectButton } from '@tonconnect/ui-react';
 import { useTranslation } from 'react-i18next';
 import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigranBoost.webp';
@@ -19,7 +18,6 @@ import './Footer.scss';
 const Footer = ({ user }) => {
 	const tg = window.Telegram.WebApp;
 	const [tasksOpen, setTasksOpen] = useState(false);
-	const [tonOpen, SetTonOpen] = useState(false);
 	const [passTask] = usePassTaskMutation();
 	const [setWallet] = useSetWalletMutation();
 	const [changeWallet] = useChangeWalletMutation();
@@ -133,7 +131,7 @@ const Footer = ({ user }) => {
 	};
 
 	useEffect(() => {
-		if (ton_address ) {
+		if (ton_address) {
 			submitWallet();
 			console.log('123');
 		}
@@ -156,7 +154,22 @@ const Footer = ({ user }) => {
 		}
 	};
 
-
+	const updateWallet = async () => {
+		if (ton_address) {
+			try {
+				const res = await changeWallet({
+					token: await bcrypt.hash(secretKey + dateStringWithTime, 10),
+					wallet_address: ton_address,
+					user_id: user?.id,
+				}).unwrap();
+				openModal('green', `${t('modalWalletSucc')}`, `${t('modalReturn')}`);
+				blurPopupTasks();
+			} catch (e) {
+				openModal('red', `${t('modalWalletBusy')}`, `${t('modalReturn')}`);
+				blurPopupTasks();
+			}
+		}
+	};
 
 	const blurPopupTasks = () => {
 		const popupTasks = document.getElementById('popupTasks');
