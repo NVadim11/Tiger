@@ -552,12 +552,12 @@ const Footer = ({ user }) => {
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
 									<TonConnectButton onclick={submitWallet} className='tonconnect-btn' />
-									{!user?.wallet_address ? (
+									{user?.wallet_address ? (
 										<div className='popupTasks__walletTask-right'>
 											<p>20000</p>
 										</div>
 									) : (
-										'Done!'
+										<span>Done!</span>
 									)}
 								</div>
 								<div className='popupTasks__task'>

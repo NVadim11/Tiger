@@ -375,9 +375,15 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 7px;
     button {
       border: 1px solid #0d9047;
       border-radius: 10px;
+    }
+    span {
+      color: #ffffff;
+      font-size: 16px;
+      margin-right: 53px;
     }
   }
   &__walletTask-right {
