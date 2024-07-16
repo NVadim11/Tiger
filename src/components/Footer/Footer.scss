@@ -329,11 +329,12 @@ body::after {
 
 &__tabs-btns {
     display: flex;
-    justify-content: center;
-    width: fit-content;
+    justify-content: space-between;
+    width: 100%;
     align-self: center;
     position: relative;
     border: 1px solid #0d9047;
+    background: rgba(8, 18, 41, 0.2);
     border-radius: 18px;
     padding: 10px;
     gap: 10px;
@@ -342,15 +343,18 @@ body::after {
   &__tabs-btn {
     position: relative;
     z-index: 10;
+    width: 100%;
     button {
       height: 38px;
-      width: 100px;
+      width: 100%;
+      min-width: 75px;
       font-weight: 700;
       font-size: 16px;
       line-height: 100%;
       letter-spacing: 0.02em;
       color: var(--mainColor);
       border: 1px solid #0d9047;
+      background: rgba(0, 0, 0, 0.2);
       border-radius: 10px;
     }
     &.active {
@@ -380,34 +384,24 @@ body::after {
       border: 1px solid #0d9047;
       border-radius: 10px;
     }
-    span {
+    p {
       color: #ffffff;
-      font-size: 16px;
       align-items: center;
       background: transparent;
       border-radius: 31px;
-      color: #fff;
       display: flex;
-      justify-content: center;
       padding: 6px 12px;
-      width: 122px;
-      position: absolute;
-      right: 24px;
+      line-height: 100%;
       font-size: 16px;
-    }
-  }
-  &__walletTask-right {
-    p {
-      display: flex;
-      align-items: center;
-      background: #2cb726;
-      border: 1px solid #0d9047;
-      color: #fff;
-      border-radius: 31px;
-      padding: 6px 12px;
+      font-weight: 400;
+      width: 30%;
       justify-content: center;
-      margin-right: 12px;
-      width: 115px;
+      margin: 0 12px 0 0;
+      img {
+        margin-left: 5px;
+        width: 20px;
+        height: 20px;
+      }
     }
   }
   &__progressBar {
@@ -434,6 +428,11 @@ body::after {
 }
 
 .popupTasks__task {
+  img {
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+  }
   .popupTasks__task-rew {
     border: none;
     background: transparent;

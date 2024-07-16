@@ -437,9 +437,9 @@ const Footer = ({ user }) => {
 	}, [timerWebsite, websiteTaskStatus]);
 
 	useEffect(() => {
-	  if (user?.wallet_address) {
-		setHasWalletAddress(true);
-	  }
+		if (user?.wallet_address) {
+			setHasWalletAddress(true);
+		}
 	}, [user]);
 
 	return (
@@ -567,11 +567,12 @@ const Footer = ({ user }) => {
 										style={{ position: 'relative' }}
 									/>
 									{!user?.wallet_address ? (
-										<div className='popupTasks__walletTask-right'>
-											<p>20000</p>
-										</div>
+										<p>
+											20000
+											<img src={tigerCoin} alt='Tiger coin' />
+										</p>
 									) : (
-										<span>{t('activityDone')}</span>
+										<p>{t('activityDone')}</p>
 									)}
 								</div>
 								<div className='popupTasks__task'>
@@ -583,7 +584,12 @@ const Footer = ({ user }) => {
 												? `${t('activityCheck')}`
 												: `${t('followTwitter')}`}
 										</span>
-										{twitterTaskStatus === 0 && <p>10000</p>}
+										{twitterTaskStatus === 0 && (
+											<p>
+												10000
+												<img src={tigerCoin} alt='Tiger coin' />
+											</p>
+										)}
 										{twitterTaskStatus === 2 && (
 											<p>
 												{timerTwitter} {t('taskTimer')}
@@ -606,7 +612,12 @@ const Footer = ({ user }) => {
 												? `${t('activityCheck')}`
 												: `${t('followTGChat')}`}
 										</span>
-										{chatTaskStatus === 0 && <p>10000</p>}
+										{chatTaskStatus === 0 && (
+											<p>
+												10000
+												<img src={tigerCoin} alt='Tiger coin' />
+											</p>
+										)}
 										{chatTaskStatus === 2 && (
 											<p>
 												{timerChat} {t('taskTimer')}
@@ -629,7 +640,12 @@ const Footer = ({ user }) => {
 												? `${t('activityCheck')}`
 												: `${t('followTGChannel')}`}
 										</span>
-										{channelTaskStatus === 0 && <p>10000</p>}
+										{channelTaskStatus === 0 && (
+											<p>
+												10000
+												<img src={tigerCoin} alt='Tiger coin' />
+											</p>
+										)}
 										{channelTaskStatus === 2 && (
 											<p>
 												{timerChannel} {t('taskTimer')}
@@ -652,7 +668,12 @@ const Footer = ({ user }) => {
 												? `${t('activityCheck')}`
 												: `${t('visitWebsite')}`}
 										</span>
-										{websiteTaskStatus === 0 && <p>10000</p>}
+										{websiteTaskStatus === 0 && (
+											<p>
+												10000
+												<img src={tigerCoin} alt='Tiger coin' />
+											</p>
+										)}
 										{websiteTaskStatus === 2 && (
 											<p>
 												{timerWebsite} {t('taskTimer')}
