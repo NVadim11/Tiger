@@ -479,3 +479,13 @@ body::after {
 //     word-break: break-word;
 //   }
 // }
+
+[data-tc-dropdown-container="true"] {
+  left: 22px!important;
+  top: 227px!important;
+}
+
+
+[data-tc-dropdown="true"] {
+	
+}
