@@ -24,6 +24,7 @@ const Footer = ({ user }) => {
 	const [activeTab, setActiveTab] = useState(0);
 	const [passDaily] = usePassDailyMutation();
 	const [passPartners] = usePassPartnersMutation();
+	const [hasWalletAddress, setHasWalletAddress] = useState(false);
 
 	const { t } = useTranslation();
 
@@ -437,6 +438,12 @@ const Footer = ({ user }) => {
 		return () => clearInterval(timerInterval);
 	}, [timerWebsite, websiteTaskStatus]);
 
+	useEffect(() => {
+	  if (user?.wallet_address) {
+		setHasWalletAddress(true);
+	  }
+	}, [user]);
+
 	return (
 		<>
 			<footer id='footer' className='footerMain'>
@@ -558,7 +565,6 @@ const Footer = ({ user }) => {
 							<div className={`popupTasks__tasks ${activeTab === 0 ? 'active' : ''}`}>
 								<div className='popupTasks__walletTask'>
 									<TonConnectButton
-										onclick={submitWallet}
 										className='tonconnect-btn'
 										style={{ position: 'relative' }}
 									/>
