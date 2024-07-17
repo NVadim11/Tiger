@@ -20,7 +20,6 @@ const Header = ({ user }) => {
 	const [getLeaderboard] = useGetLeaderboardMutation();
 	const [generatedUrl, setGeneratedUrl] = useState('');
 	const [copied, setCopied] = useState(false);
-	const timeoutRef = useRef(null);
 
 	const popupClsTgl = isLeaderboardOpen ? 'popupLeaderboard_show' : null;
 	const popupClasses = `popupLeaderboard ${popupClsTgl}`;
@@ -168,10 +167,7 @@ const Header = ({ user }) => {
 		if (generatedUrl !== '') {
 			navigator.clipboard.writeText(generatedUrl).then(() => {
 				setCopied(true);
-				if (timeoutRef.current) {
-					clearTimeout(timeoutRef.current);
-				}
-				timeoutRef.current = setTimeout(() => {
+				setTimeout(() => {
 					setCopied(false);
 				}, 2000);
 			});
