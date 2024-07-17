@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import tigranChill from '../../../img/tigranChill.gif';
+import tigranChill from '../../../img/tigranChill-optimize.gif';
 import tigranCircle from '../../../img/tigran_circle.webp';
 
 const GamePaused = ({ user, remainingTime }) => {
