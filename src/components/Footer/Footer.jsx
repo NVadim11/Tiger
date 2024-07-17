@@ -14,6 +14,7 @@ import cross from '../../img/cross.svg';
 import tigerCoin from '../../img/tigranBoost.webp';
 import Modal from '../Modal/Modal';
 import './Footer.scss';
+import { init } from 'aos';
 
 const Footer = ({ user }) => {
 	const tg = window.Telegram.WebApp;
@@ -27,6 +28,8 @@ const Footer = ({ user }) => {
 	const [hasWalletAddress, setHasWalletAddress] = useState(false);
 
 	const { t } = useTranslation();
+	const initLanguage = localStorage.getItem('language');
+	const [currLanguage, setCurrLanguage] = useState(initLanguage);
 
 	const dailyTasksObj = user?.daily_quests;
 	const partnerTaskObj = user?.partners_quests;
@@ -442,6 +445,10 @@ const Footer = ({ user }) => {
 		}
 	}, [user]);
 
+	useEffect(() => {
+		setCurrLanguage(initLanguage);
+	}, [initLanguage]);
+
 	return (
 		<>
 			<footer id='footer' className='footerMain'>
@@ -702,7 +709,11 @@ const Footer = ({ user }) => {
 															passDailyHandler(quest.id, quest.daily_quest.link)
 														}
 													>
-														<span>{quest.daily_quest.name}</span>
+														<span>
+															{currLanguage === 'ru'
+																? quest.daily_quest.name_ru
+																: quest.daily_quest.name}
+														</span>
 														{quest.status === 0 ? (
 															<p className='popupTasks__task-rew'>
 																{quest.reward}{' '}
@@ -741,7 +752,11 @@ const Footer = ({ user }) => {
 																: {}
 														}
 													>
-														<span>{quest.daily_quest.name}</span>
+														<span>
+															{currLanguage === 'ru'
+																? quest.daily_quest.name_ru
+																: quest.daily_quest.name}
+														</span>
 														{quest.status === 0 ? (
 															<p className='popupTasks__task-rew'>
 																{quest.reward}{' '}
@@ -799,7 +814,11 @@ const Footer = ({ user }) => {
 															partnersTaskHandler(quest.id, quest.partners_quest.link)
 														}
 													>
-														<span>{quest.partners_quest.name}</span>
+														<span>
+															{currLanguage === 'ru'
+																? quest.partners_quest.name_ru
+																: quest.partners_quest.name}
+														</span>
 														{quest.status === 0 ? (
 															<p className='popupTasks__task-rew'>
 																{quest.reward}{' '}
