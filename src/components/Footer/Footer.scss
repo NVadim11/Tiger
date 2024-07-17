@@ -149,7 +149,6 @@ body::after {
     zoom: 0.9;
   &__wrapper {
     padding: 0 12px;
-    justify-content: center;
   }
   &__content {
     position: relative;
@@ -157,6 +156,7 @@ body::after {
     border-radius: 20px;
     padding: 22px 12px;
     background: #84c881;
+    margin-top: 30%;
   }
   &__close {
       position: absolute;

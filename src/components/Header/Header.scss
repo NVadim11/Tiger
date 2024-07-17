@@ -79,6 +79,7 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		text-transform: uppercase;
 	}
 }
 
@@ -129,9 +130,9 @@
 		min-height: 100%;
 		width: 100%;
 		display: flex;
-		justify-content: center;
 	}
 	&__content {
+		margin-top: 30%;
 		border: 2px solid #0d9047;
 		border-radius: 20px;
 		padding: 0px 12px 17px 12px;
@@ -355,9 +356,9 @@
 		min-height: 100%;
 		width: 100%;
 		display: flex;
-		justify-content: center;
 	}
 	&__content {
+		margin-top: 30%;
 		border: 2px solid #0d9047;
 		border-radius: 20px;
 		padding: 0px 12px 17px 12px;

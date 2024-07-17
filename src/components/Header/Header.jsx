@@ -266,6 +266,7 @@ const Header = ({ user }) => {
 												fontSize: '24px',
 												fontWeight: '400',
 												fontFamily: 'Oswald',
+												textTransform: 'uppercase'
 											}}
 										>
 											{language === 'ru' ? 'Switch to English' : 'Врубить Русский'}
