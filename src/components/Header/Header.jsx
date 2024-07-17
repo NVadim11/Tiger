@@ -444,8 +444,12 @@ const Header = ({ user }) => {
 							</div>
 							<div className='popupLeaderboard__playerList'>
 								<ul className='popupLeaderboard__table'>
-									{leaderboardData.map((player, index) => (
-										<li className='popupLeaderboard__tableItem' key={index}>
+									{leaderboardData.map((player, index) => {
+										const isCurrentUser = player.wallet_address === user.wallet_address || player.username === user.username;
+										const isTopThree = index < 3;
+										return (
+										<li  className={`popupLeaderboard__tableItem ${isCurrentUser && !isTopThree ? 'highlight' : ''}`}
+										key={index}>
 											<div className='popupLeaderboard__itemData'>
 												<div className='popupLeaderboard__id'>
 													<svg
@@ -537,7 +541,8 @@ const Header = ({ user }) => {
 												</div>
 											</div>
 										</li>
-									))}
+										);
+									})}
 								</ul>
 							</div>
 						</div>

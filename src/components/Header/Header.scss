@@ -129,9 +129,9 @@
 		min-height: 100%;
 		width: 100%;
 		display: flex;
+		justify-content: center;
 	}
 	&__content {
-		margin-top: 36px;
 		border: 2px solid #0d9047;
 		border-radius: 20px;
 		padding: 0px 12px 17px 12px;
@@ -355,9 +355,9 @@
 		min-height: 100%;
 		width: 100%;
 		display: flex;
+		justify-content: center;
 	}
 	&__content {
-		margin-top: 36px;
 		border: 2px solid #0d9047;
 		border-radius: 20px;
 		padding: 0px 12px 17px 12px;
@@ -521,4 +521,10 @@
 		width: fit-content;
 		font-size: 22px;
 	}
+}
+
+.highlight {
+	background: #2cb726;
+	border: 2px solid #fff;
+	color: #fff;
 }
