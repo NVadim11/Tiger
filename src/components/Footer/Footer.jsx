@@ -449,6 +449,16 @@ const Footer = ({ user }) => {
 		setCurrLanguage(initLanguage);
 	}, [initLanguage]);
 
+
+	const [claimStatus, setClaimStatus] = useState({});
+
+	const handleClaimClick = (id) => {
+		setClaimStatus((prevStatus) => ({
+		  ...prevStatus,
+		  [id]: 'done',
+		}));
+	  };
+
 	return (
 		<>
 			<footer id='footer' className='footerMain'>
@@ -697,108 +707,90 @@ const Footer = ({ user }) => {
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 1 ? 'active' : ''}`}>
 								{/* Render quests dynamically based on their status */}
-								{dailyQuests && dailyQuests.length > 0 && (
-									<>
-										{dailyQuests.map((quest) => (
-											<div className='popupTasks__task' key={quest.id}>
-												{/* Conditionally render button or div */}
-												{quest.required_amount === 0 && quest.required_referrals === 0 ? (
-													<button
-														disabled={quest.status === 1}
-														onClick={() =>
-															passDailyHandler(quest.id, quest.daily_quest.link)
-														}
-													>
-														<span>
-															{currLanguage === 'ru'
-																? quest.daily_quest.name_ru
-																: quest.daily_quest.name}
-														</span>
-														{quest.status === 0 ? (
-															<p className='popupTasks__task-rew'>
-																{quest.reward}{' '}
-																<div className='rewardCoin'>
-																	<img src={tigerCoin} alt='Tiger coin' />
-																</div>
-															</p>
-														) : (
-															<svg
-																width='24'
-																height='24'
-																viewBox='0 0 24 24'
-																fill='none'
-																xmlns='http://www.w3.org/2000/svg'
-															>
-																<g clipPath='url(#clip0_438_3053)'>
-																	<path
-																		d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-																		fill='#2CB726'
-																	/>
-																</g>
-																<defs>
-																	<clipPath id='clip0_438_3053'>
-																		<rect width='24' height='24' fill='white' />
-																	</clipPath>
-																</defs>
-															</svg>
-														)}
-													</button>
-												) : (
-													<button
-														disabled={quest.status === 1}
-														style={
-															quest.required_amount > 0 || quest.required_referrals > 0
-																? { paddingBottom: '24px' }
-																: {}
-														}
-													>
-														<span>
-															{currLanguage === 'ru'
-																? quest.daily_quest.name_ru
-																: quest.daily_quest.name}
-														</span>
-														{quest.status === 0 ? (
-															<p className='popupTasks__task-rew'>
-																{quest.reward}{' '}
-																<div className='rewardCoin'>
-																	<img src={tigerCoin} alt='Tiger coin' />
-																</div>
-															</p>
-														) : (
-															<svg
-																width='24'
-																height='24'
-																viewBox='0 0 24 24'
-																fill='none'
-																xmlns='http://www.w3.org/2000/svg'
-															>
-																<g clipPath='url(#clip0_438_3053)'>
-																	<path
-																		d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
-																		fill='#2CB726'
-																	/>
-																</g>
-																<defs>
-																	<clipPath id='clip0_438_3053'>
-																		<rect width='24' height='24' fill='white' />
-																	</clipPath>
-																</defs>
-															</svg>
-														)}
-													</button>
-												)}
-												{(quest.required_amount > 0 || quest.required_referrals > 0) && (
-													<div className='popupTasks__progressBar'>
-														<progress
-															max={quest.required_amount || quest.required_referrals}
-															value={quest.amount || quest.referrals}
-														></progress>
-													</div>
-												)}
-											</div>
-										))}
-									</>
-								)}
+								{dailyQuests && dailyQuests.length > 0 && dailyQuests.map((quest) => (
+        <div className='popupTasks__task' key={quest.id}>
+          {quest.required_amount === 0 && quest.required_referrals === 0 ? (
+            <div className='claimButtonContainer'>
+              <button
+      disabled={quest.status === 1}
+      onClick={() => passDailyHandler(quest.id, quest.daily_quest.link)}
+      style={quest.required_amount > 0 || quest.required_referrals > 0 ? { paddingBottom: '24px' } : {}}
+    >
+      <span>
+        {currLanguage === 'ru' ? quest.daily_quest.name_ru : quest.daily_quest.name}
+      </span>
+      {quest.status === 0 ? (
+        <p className='popupTasks__task-rew'>
+          {quest.reward}{' '}
+          <div className='rewardCoin'>
+            <img src={tigerCoin} alt='Tiger coin' />
+          </div>
+        </p>
+      ) : (
+        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+          <g clipPath='url(#clip0_438_3053)'>
+            <path
+              d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
+              fill='#2CB726'
+            />
+          </g>
+          <defs>
+            <clipPath id='clip0_438_3053'>
+              <rect width='24' height='24' fill='white' />
+            </clipPath>
+          </defs>
+        </svg>
+      )}
+    </button>
+              <div className='claimText' onClick={() => handleClaimClick(quest.id)}>
+                {claimStatus[quest.id] === 'done' ? 'done' : 'claim'}
+              </div>
+            </div>
+          ) : (
+            <>
+              <button
+      disabled={quest.status === 1}
+      onClick={() => passDailyHandler(quest.id, quest.daily_quest.link)}
+      style={quest.required_amount > 0 || quest.required_referrals > 0 ? { paddingBottom: '24px' } : {}}
+    >
+      <span>
+        {currLanguage === 'ru' ? quest.daily_quest.name_ru : quest.daily_quest.name}
+      </span>
+      {quest.status === 0 ? (
+        <p className='popupTasks__task-rew'>
+          {quest.reward}{' '}
+          <div className='rewardCoin'>
+            <img src={tigerCoin} alt='Tiger coin' />
+          </div>
+        </p>
+      ) : (
+        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+          <g clipPath='url(#clip0_438_3053)'>
+            <path
+              d='M12 0C5.38346 0 0 5.38346 0 12C0 18.6165 5.38346 24 12 24C18.6165 24 24 18.6165 24 12C24 5.38346 18.6165 0 12 0ZM18.7068 8.84211L11.0376 16.4511C10.5865 16.9023 9.86466 16.9323 9.38346 16.4812L5.32331 12.782C4.84211 12.3308 4.81203 11.5789 5.23308 11.0977C5.68421 10.6165 6.43609 10.5865 6.91729 11.0376L10.1353 13.985L16.9925 7.12782C17.4737 6.64662 18.2256 6.64662 18.7068 7.12782C19.188 7.60902 19.188 8.3609 18.7068 8.84211Z'
+              fill='#2CB726'
+            />
+          </g>
+          <defs>
+            <clipPath id='clip0_438_3053'>
+              <rect width='24' height='24' fill='white' />
+            </clipPath>
+          </defs>
+        </svg>
+      )}
+    </button>
+              {(quest.required_amount > 0 || quest.required_referrals > 0) && (
+                <div className='popupTasks__progressBar'>
+                  <progress
+                    max={quest.required_amount || quest.required_referrals}
+                    value={quest.amount || quest.referrals}
+                  ></progress>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      ))}
 							</div>
 							<div className={`popupTasks__tasks ${activeTab === 2 ? 'active' : ''}`}>
 								{/* Render quests dynamically based on their status */}
