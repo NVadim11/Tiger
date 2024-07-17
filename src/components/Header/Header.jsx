@@ -52,12 +52,6 @@ const Header = ({ user }) => {
 		changeLanguage(newLanguage);
 	};
 
-	const tg = window.Telegram.WebApp;
-
-	const openLink = (url) => {
-		tg.openLink(url);
-	};
-
 	const toggleMenu = () => {
 		setIsShown((prev) => !prev);
 	};
@@ -185,9 +179,8 @@ const Header = ({ user }) => {
 						<a
 							className='header__social-link'
 							href='#'
-							onClick={(e) => {
-								e.preventDefault();
-								openLink('https://t.me/TigRunVerif');
+							onClick={() => {
+								window.open('https://t.me/TigRunVerif', '_blank');
 							}}
 						>
 							<svg
@@ -208,9 +201,8 @@ const Header = ({ user }) => {
 						<a
 							className='header__social-link'
 							href='#'
-							onClick={(e) => {
-								e.preventDefault();
-								openLink('https://x.com/tigrun_tap');
+							onClick={() => {
+								window.open('https://x.com/tigrun_tap', '_blank');
 							}}
 						>
 							<svg
@@ -266,7 +258,7 @@ const Header = ({ user }) => {
 												fontSize: '24px',
 												fontWeight: '400',
 												fontFamily: 'Oswald',
-												textTransform: 'uppercase'
+												textTransform: 'uppercase',
 											}}
 										>
 											{language === 'ru' ? 'Switch to English' : 'Врубить Русский'}
@@ -329,7 +321,6 @@ const Header = ({ user }) => {
 									<div className='popupInvite__refInfo-box'>
 										<p> {t('refCount')}</p>
 										<div className='popupInvite__refInfo-item'>
-											{/* <span>24</span> */}
 											<span>{totalReferrals}</span>
 										</div>
 									</div>
