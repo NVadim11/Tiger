@@ -164,26 +164,12 @@ const Header = ({ user }) => {
 	};
 
 	const copyToClipboard = () => {
-		if (generatedUrl) {
-			navigator.clipboard
-				.writeText(generatedUrl)
-				.then(() => {
-					setCopied(true);
-					setTimeout(() => {
-						setCopied(false);
-					}, 2000);
-				})
-				.catch((err) => {
-					console.error('Failed to copy: ', err);
-				});
-		} else {
-		}
-	};
-
-	const [checked, setChecked] = useState(false);
-
-	const handleChange = (event) => {
-		setChecked(event.target.checked);
+		navigator.clipboard.writeText(generatedUrl).then(() => {
+			setCopied(true);
+			setTimeout(() => {
+				setCopied(false);
+			}, 2000);
+		});
 	};
 
 	return (
