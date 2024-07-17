@@ -12,18 +12,14 @@
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <title>Tiger</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
 </head>
 
 <body>
   <div id="root"></div>
-
 </body>
 <script>
-
   let tg = window.Telegram.WebApp
   tg.expand()
-
   tg.ready()
   tg.disableVerticalSwipes()
 
@@ -40,6 +36,13 @@
   } else {
     console.log('No user data available')
   }
+
+  tg.onEvent('viewportChanged', (event) => {
+    if (!tg.isExpanded) {
+      tg.expand()
+    }
+  });
+
 </script>
 
 </html>

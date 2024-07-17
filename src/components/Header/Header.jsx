@@ -30,6 +30,8 @@ const Header = ({ user }) => {
 	const containerRef = useRef(null);
 	const menuRef = useRef(null);
 
+	const tg = window.Telegram.WebApp;
+
 	// Localisation
 	const { t, i18n } = useTranslation();
 
@@ -179,7 +181,7 @@ const Header = ({ user }) => {
 						<a
 							className='header__social-link'
 							onClick={() => {
-								window.open('https://t.me/TigRunVerif', '_blank');
+								tg.openTelegramLink('https://t.me/TigRunVerif');
 							}}
 						>
 							<svg
@@ -200,7 +202,7 @@ const Header = ({ user }) => {
 						<a
 							className='header__social-link'
 							onClick={() => {
-								window.open('https://x.com/tigrun_tap', '_blank');
+								tg.openTelegramLink('https://x.com/tigrun_tap');
 							}}
 						>
 							<svg
