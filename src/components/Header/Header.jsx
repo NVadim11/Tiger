@@ -178,7 +178,6 @@ const Header = ({ user }) => {
 					<div className='header__social-links'>
 						<a
 							className='header__social-link'
-							href='#'
 							onClick={() => {
 								window.open('https://t.me/TigRunVerif', '_blank');
 							}}
@@ -200,7 +199,6 @@ const Header = ({ user }) => {
 						</a>
 						<a
 							className='header__social-link'
-							href='#'
 							onClick={() => {
 								window.open('https://x.com/tigrun_tap', '_blank');
 							}}
