@@ -748,7 +748,7 @@ const Footer = ({ user }) => {
 																</div>
 															</p>
 														) : (
-															' '
+															<span style={{ width: 'auto', position: 'absolute', right: '35px' }}>{t('activityDone')}</span>
 														)}
 													</button>
 												)}
