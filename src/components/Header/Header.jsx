@@ -181,7 +181,7 @@ const Header = ({ user }) => {
 						<a
 							className='header__social-link'
 							onClick={() => {
-								tg.openTelegramLink('https://t.me/TigRunVerif');
+								window.open('https://t.me/TigRunVerif', '_blank');
 							}}
 						>
 							<svg
@@ -202,7 +202,7 @@ const Header = ({ user }) => {
 						<a
 							className='header__social-link'
 							onClick={() => {
-								tg.openTelegramLink('https://x.com/tigrun_tap');
+								window.open('https://x.com/tigrun_tap', '_blank');
 							}}
 						>
 							<svg

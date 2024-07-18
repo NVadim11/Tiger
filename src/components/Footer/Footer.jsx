@@ -188,7 +188,7 @@ const Footer = ({ user }) => {
 
 	const passDailyHandler = async (taskId, link) => {
 		if (link !== null) {
-			tg.openTelegramLink(link);
+			window.open(link, '_blank');
 		}
 		try {
 			await passDaily({
@@ -225,7 +225,7 @@ const Footer = ({ user }) => {
 
 	const partnersTaskHandler = async (taskId, link) => {
 		if (link !== null) {
-			tg.openTelegramLink(link);
+			window.open(link, '_blank');
 		}
 		try {
 			await passPartners({
@@ -261,7 +261,7 @@ const Footer = ({ user }) => {
 	};
 
 	const twitterClick = async () => {
-		tg.openTelegramLink('https://x.com/tigrun_tap');
+		window.open('https://x.com/tigrun_tap', '_blank');
 
 		if (twitterTaskStatus === 0) {
 			setTwitterTimer(15);
@@ -270,7 +270,7 @@ const Footer = ({ user }) => {
 	};
 
 	const tgClickChat = async () => {
-		tg.openTelegramLink('https://t.me/Tig_run_tap');
+		window.open('https://t.me/Tig_run_tap', '_blank');
 
 		if (chatTaskStatus === 0) {
 			setChatTimer(15);
@@ -279,7 +279,7 @@ const Footer = ({ user }) => {
 	};
 
 	const tgClickChannel = async () => {
-		tg.openTelegramLink('https://t.me/TigRunVerif');
+		window.open('https://t.me/TigRunVerif', '_blank');
 
 		if (channelTaskStatus === 0) {
 			setChannelTimer(15);
@@ -288,7 +288,7 @@ const Footer = ({ user }) => {
 	};
 
 	const websiteClick = async () => {
-		tg.openTelegramLink('https://tema.cash/');
+		window.open('https://tema.cash/', '_blank');
 
 		if (websiteTaskStatus === 0) {
 			setWebsiteTimer(15);
