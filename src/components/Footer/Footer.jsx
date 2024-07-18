@@ -261,7 +261,7 @@ const Footer = ({ user }) => {
 	};
 
 	const twitterClick = async () => {
-		window.open('https://x.com/tigrun_tap', '_blank');
+		window.open('https://x.com/tema_cash', '_blank');
 
 		if (twitterTaskStatus === 0) {
 			setTwitterTimer(15);
@@ -270,7 +270,7 @@ const Footer = ({ user }) => {
 	};
 
 	const tgClickChat = async () => {
-		window.open('https://t.me/Tig_run_tap', '_blank');
+		window.open('https://t.me/Tiger_Cash_Chat', '_blank');
 
 		if (chatTaskStatus === 0) {
 			setChatTimer(15);
@@ -279,7 +279,13 @@ const Footer = ({ user }) => {
 	};
 
 	const tgClickChannel = async () => {
-		window.open('https://t.me/TigRunVerif', '_blank');
+		let url;
+		if (initLanguage === 'ru') {
+			url = 'https://t.me/TigerCash_ru';
+		} else if (initLanguage === 'en') {
+			url = 'https://t.me/TigerCashChannel';
+		}
+		window.open(url, '_blank');
 
 		if (channelTaskStatus === 0) {
 			setChannelTimer(15);

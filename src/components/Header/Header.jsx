@@ -36,8 +36,8 @@ const Header = ({ user }) => {
 	const { t, i18n } = useTranslation();
 
 	// Retrieve the initial language from localStorage or default to 'en'
-	const initialLanguage = localStorage.getItem('language') || 'ru';
-	const [language, setLanguage] = useState(initialLanguage);
+	const initLanguage = localStorage.getItem('language') || 'ru';
+	const [language, setLanguage] = useState(initLanguage);
 
 	useEffect(() => {
 		i18n.changeLanguage(language);
@@ -62,6 +62,16 @@ const Header = ({ user }) => {
 		// Update i18n language when user.language_code changes
 		changeLanguage(language);
 	}, [language]);
+
+	const handleTGUrl = () => {
+		let url;
+		if (initLanguage === 'ru') {
+			url = 'https://t.me/TigerCash_ru';
+		} else if (initLanguage === 'en') {
+			url = 'https://t.me/TigerCashChannel';
+		}
+		window.open(url, '_blank');
+	};
 
 	useEffect(() => {
 		const observer = new MutationObserver((mutationsList) => {
@@ -192,12 +202,7 @@ const Header = ({ user }) => {
 				</div>
 				<div className='header__btn-group'>
 					<div className='header__social-links'>
-						<a
-							className='header__social-link'
-							onClick={() => {
-								window.open('https://t.me/TigRunVerif', '_blank');
-							}}
-						>
+						<a className='header__social-link' onClick={handleTGUrl}>
 							<svg
 								width='24'
 								height='19'
@@ -216,7 +221,7 @@ const Header = ({ user }) => {
 						<a
 							className='header__social-link'
 							onClick={() => {
-								window.open('https://x.com/tigrun_tap', '_blank');
+								window.open('https://x.com/tema_cash', '_blank');
 							}}
 						>
 							<svg
