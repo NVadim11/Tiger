@@ -152,21 +152,35 @@ const Header = ({ user }) => {
 		if (footerTag) footerTag.classList.remove('show-blur');
 	};
 
+	useEffect(() => {
+		// Load the URL from localStorage on mount
+		const storedUrl = localStorage.getItem('generatedUrl');
+		if (storedUrl) {
+			setGeneratedUrl(storedUrl);
+		}
+	}, []);
+
 	const generateUrl = (user) => {
 		if (user.id_telegram) {
 			const referralURL = `t.me/Tema_cash_bot/app?startapp=${user.id_telegram}`;
 			setGeneratedUrl(referralURL);
+			localStorage.setItem('generatedUrl', referralURL);
 		}
 	};
 
 	const copyToClipboard = () => {
 		if (generatedUrl !== '') {
-			navigator.clipboard.writeText(generatedUrl).then(() => {
-				setCopied(true);
-				setTimeout(() => {
-					setCopied(false);
-				}, 2000);
-			});
+			navigator.clipboard
+				.writeText(generatedUrl)
+				.then(() => {
+					setCopied(true);
+					setTimeout(() => {
+						setCopied(false);
+					}, 2000);
+				})
+				.catch((err) => {
+					console.error('Failed to copy: ', err);
+				});
 		}
 	};
 
