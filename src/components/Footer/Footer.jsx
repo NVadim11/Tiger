@@ -716,14 +716,14 @@ const Footer = ({ user }) => {
 														</span>
 														{quest.status === 0 ? (
 															<p className='popupTasks__task-rew'>
-															<span>{t('activityClaim')}</span>
+															<span style={{alignItems:'center', background: '#2cb726', border: '1px solid #0d9047', borderRadius: '31px', color: '#ffffff', display: 'flex', justifyContent: 'center', padding: '6px 12px', width: '65%' }}>{t('activityClaim')}</span>
 																{quest.reward}{' '}
 																<div className='rewardCoin'>
 																	<img src={tigerCoin} alt='Tiger coin' />
 																</div>
 															</p>
 														) : (
-															<span style={{ width: 'auto', margin: 0, position: 'absolute', right: '35px' }}>{t('activityDone')}</span>
+															<span style={{ width: 'auto', position: 'absolute', right: '35px' }}>{t('activityDone')}</span>
 														)}
 													</button>
 												) : (
