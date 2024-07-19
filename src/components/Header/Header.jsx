@@ -179,19 +179,17 @@ const Header = ({ user }) => {
 	};
 
 	const copyToClipboard = () => {
-		if (generatedUrl !== '') {
-			navigator.clipboard
-				.writeText(generatedUrl)
-				.then(() => {
-					setCopied(true);
-					setTimeout(() => {
-						setCopied(false);
-					}, 2000);
-				})
-				.catch((err) => {
-					console.error('Failed to copy: ', err);
-				});
-		}
+		navigator.clipboard
+			.writeText(generatedUrl)
+			.then(() => {
+				setCopied(true);
+				setTimeout(() => {
+					setCopied(false);
+				}, 2000);
+			})
+			.catch((err) => {
+				console.error('Failed to copy: ', err);
+			});
 	};
 
 	return (
@@ -544,14 +542,7 @@ const Header = ({ user }) => {
 														<span>{player.position}</span>
 													</div>
 													<div className='popupLeaderboard__playerName'>
-														<span>
-															{player.wallet_address
-																? `${player.wallet_address.slice(
-																		0,
-																		4
-																  )}..${player.wallet_address.slice(-4)}`
-																: player.username}
-														</span>
+														<span>{player.username}</span>
 													</div>
 													<div className='popupLeaderboard__coins'>
 														<span>{player.wallet_balance}</span>
