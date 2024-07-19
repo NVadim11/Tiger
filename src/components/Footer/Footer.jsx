@@ -683,7 +683,7 @@ const Footer = ({ user }) => {
 										</span>
 										{websiteTaskStatus === 0 && (
 											<p>
-												10000
+												3000
 												<img src={tigerCoin} alt='Tiger coin' />
 											</p>
 										)}
