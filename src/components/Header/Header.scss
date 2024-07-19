@@ -166,7 +166,7 @@
 			font-size: 32px;
 			line-height: 110%;
 			text-align: center;
-			color: #1c2520;
+			color: var(--mainColor);
 		}
 		@media (max-height: 730px) {
 			display: none;
@@ -234,7 +234,7 @@
 			font-size: 24px;
 			line-height: 100%;
 			letter-spacing: 0.01em;
-			color: #1c2520;
+			color: var(--mainColor);
 		}
 		p {
 			font-weight: 400;
@@ -384,7 +384,7 @@
 			font-weight: 400;
 			font-size: 32px;
 			line-height: 110%;
-			color: #1c2520;
+			color: var(--mainColor);
 		}
 	}
 	&__playerList {
